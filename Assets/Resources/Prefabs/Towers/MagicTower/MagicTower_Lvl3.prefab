@@ -83,6 +83,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1971313223492662988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6288434936575860842}
+  m_Layer: 7
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6288434936575860842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971313223492662988}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 12.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8786050994541122185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2192335869950251488
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +125,7 @@ GameObject:
   - component: {fileID: 7788832961301836435}
   - component: {fileID: 6071350014166911323}
   - component: {fileID: 2016503116911116726}
+  - component: {fileID: 3650097437023313721}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -149,6 +181,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd06713d46a90e74fb3bf4053817e2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &3650097437023313721
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2192335869950251488}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &6082707866033169567
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +245,7 @@ Transform:
   - {fileID: 622497087392460252}
   - {fileID: 4394461507885273311}
   - {fileID: 7788832961301836435}
+  - {fileID: 6288434936575860842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4038969232851878876
@@ -283,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ea0ecb75f1c364babc42c6727da591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextTowerCon: {fileID: 8394789460888238178, guid: c5dac1993ae42e444a06a6a01c2022fd, type: 3}
 --- !u!1 &7012315202638320156
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SpawnManager
 {
-    private const float _spawnDelay = .3f;
+    private const float _spawnDelay = 1f;
     private Transform _movePoints;
     private Data _data;
     private Transform _spawnPoint;

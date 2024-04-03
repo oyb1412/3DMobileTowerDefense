@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 88475729640534552}
   - component: {fileID: 541334857993287426}
   m_Layer: 10
-  m_Name: DeathTowerProjectile
+  m_Name: DeathTowerProjectileLvl1
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4990,6 +4990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4060c46bae20c46b7c55c3f675de79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzlePrefab: {fileID: 1291653246976116, guid: 234e811611aa856468553aee90855a8d, type: 3}
-  hitPrefab: {fileID: 1594239829313766, guid: 26b29734bf3bebe4fb390f7cb3db7530, type: 3}
+  muzzlePrefab: {fileID: 1291653246976116, guid: 7c61a082398aaa4409d19d375655e8dd, type: 3}
+  hitPrefab: {fileID: 1594239829313766, guid: c04d0aff0b936074782243f7c3dcf2f2, type: 3}
   trails: []

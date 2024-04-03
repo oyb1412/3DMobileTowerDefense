@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6214084288073855079}
   - component: {fileID: 8121480701907575058}
   - component: {fileID: 487091585448911188}
+  - component: {fileID: 7984106882918067736}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -66,6 +67,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7984106882918067736
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886544517078635582}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &4236892698333110508
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +169,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4906459104407285753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7584333116387451574}
+  m_Layer: 7
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7584333116387451574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906459104407285753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 11.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 39819050745464899}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6334009815973740734
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +321,7 @@ Transform:
   - {fileID: 4215632714298655928}
   - {fileID: 7348448436941742185}
   - {fileID: 6214084288073855079}
+  - {fileID: 7584333116387451574}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1564917950695606443
@@ -359,7 +419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ea0ecb75f1c364babc42c6727da591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextTowerCon: {fileID: 971653583773968715, guid: 3140b3a5974d6214b9deeac83a9a6293, type: 3}
 --- !u!1 &7774074679190562794
 GameObject:
   m_ObjectHideFlags: 0

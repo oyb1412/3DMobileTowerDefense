@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArcherProjectileController : ProjectileControllerBase {
 
-    private const float _projectileVelocity = 100f;
+    private const float _projectileVelocity = 50f;
     public override void Init(Vector3 pos, Vector3 dir, int damage, GameObject target) {
         base.Init(pos, dir, damage, target);
     }
@@ -16,10 +16,10 @@ public class ArcherProjectileController : ProjectileControllerBase {
         _rigidbody.velocity = transform.forward * _projectileVelocity;
 
     }
-    private void OnTriggerEnter(Collider c) {
-        if (!c.CompareTag("Enemy"))
+    private void OnCollisionEnter(Collision collision) {
+        if (!collision.collider.CompareTag("Enemy"))
             return;
 
-        Crash(c.gameObject);
+        Crash(collision);
     }
 }

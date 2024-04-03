@@ -25,7 +25,7 @@ public abstract class TowerControllerBase : MonoBehaviour
         _attackRangeCollider = GetComponent<SphereCollider>();
         _firePoint = Util.FindChild(transform.root.gameObject, "FirePoint", false).transform;
         _attackRangeCollider.radius = _status.AttackRange * GameSystem.TowerAttackRangeImageSize * .5f;
-        _projectilePath = $"Projectile/{_status.TowerType.ToString()}/{_status.TowerType.ToString()}Projectile";
+        _projectilePath = $"Projectile/{_status.TowerType.ToString()}/{_status.TowerType.ToString()}ProjectileLvl{_status.Level}";
     }
 
     private void ChangeState(GameObject go) {
@@ -75,7 +75,6 @@ public abstract class TowerControllerBase : MonoBehaviour
             return;
 
         ChangeState(_targetEnemy = c.gameObject);
-        Debug.Log($"{_targetEnemy.name} 사거리 내로 진입");
     }
 
     private void OnTriggerExit(Collider c) {
@@ -88,7 +87,6 @@ public abstract class TowerControllerBase : MonoBehaviour
         if (c.gameObject != _targetEnemy)
             return;
 
-        Debug.Log($"{_targetEnemy.name} 사거리 밖으로 나감");
         ChangeState(_targetEnemy = null);
     }
 }

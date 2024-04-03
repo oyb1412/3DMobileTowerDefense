@@ -17,6 +17,6 @@ public class ArcherTowerController : TowerControllerBase {
             return;
 
         ArcherProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<ArcherProjectileController>();
-        projectile.Init(transform.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy);
+        projectile.Init(_firePoint.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy);
     }
 }

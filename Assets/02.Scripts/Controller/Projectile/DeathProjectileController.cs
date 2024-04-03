@@ -10,10 +10,10 @@ public class DeathProjectileController : ProjectileControllerBase {
     }
 
     private void FixedUpdate() {
-        if (_targetEnemy) {
+        if (_targetEnemy) 
             transform.LookAt(_targetEnemy.transform);
-            _rigidbody.velocity = transform.forward * _projectileVelocity;
-        }
+
+        _rigidbody.velocity = transform.forward * _projectileVelocity;
 
     }
 
