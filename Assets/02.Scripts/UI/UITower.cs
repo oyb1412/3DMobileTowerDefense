@@ -60,13 +60,13 @@ public class UITower : UIBase {
         _upgrade.SetActive(false);
 
         if (trigger) {
-            if(GameSystem.Instance.EnoughGold(Managers.Data.GetTowerCost(tower.TowerStatus.Level, (int)tower.TowerStatus.TowerType))) {
+            if(GameSystem.Instance.EnoughGold(Managers.Data.GetTowerCost((int)tower.TowerStatus.TowerType, tower.TowerStatus.Level))) {
                 _upgrade.SetActive(true);
                 _upgrade.GetComponentInChildren<Text>().text = $"·¹º§{tower.TowerStatus.Level + 1} {tower.TowerStatus.TowerType.ToString()}";
             }
             _selectTower = tower;
             Util.RectToWorldPosition(tower.transform.position, _centerRect);
-            _sell.GetComponentInChildren<Text>().text = $"{Managers.Data.GetSellCost(tower.TowerStatus.Level, (int)tower.TowerStatus.TowerType)}";
+            _sell.GetComponentInChildren<Text>().text = $"{Managers.Data.GetSellCost((int)tower.TowerStatus.TowerType, tower.TowerStatus.Level)}";
         }
     }
 

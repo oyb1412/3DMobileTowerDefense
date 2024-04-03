@@ -18,8 +18,7 @@ public abstract class BaseScene : MonoBehaviour
             Managers.Resources.Instantiate("UI/EventSystem", null).name = "@EventSystem";
     }
 
-    private void Start()
-    {
+    private void Awake() {
         Init();
     }
 }

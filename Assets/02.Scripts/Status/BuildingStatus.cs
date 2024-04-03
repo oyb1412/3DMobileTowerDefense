@@ -11,7 +11,7 @@ public class BuildingStatus : MonoBehaviour {
     private float _maxBuildingAmout;
 
     private void Awake() {
-        _maxBuildingAmout = Managers.Data.GetTowerCreateTime(_level, (int)_towerType);
+        _maxBuildingAmout = Managers.Data.GetTowerCreateTime((int)_towerType, _level);
     }
     public float CurrentBuildingAmout => _currentBuildingAmout;
     public float MaxBuildingAmout => _maxBuildingAmout;

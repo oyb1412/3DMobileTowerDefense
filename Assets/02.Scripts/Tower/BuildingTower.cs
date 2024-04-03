@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class BuildingTower : MonoBehaviour
 {
-    [SerializeField]private GameObject _completedTowerObject;
     private BuildingStatus _status;
     private Slider _creatorSlider;
-    
+    private string _createTowerPath;
     private float _curretCreatingAmout;
     private float _maxCreatingAmout;
 
@@ -17,6 +16,8 @@ public class BuildingTower : MonoBehaviour
         _status = GetComponent<BuildingStatus>();
         _curretCreatingAmout = _status.CurrentBuildingAmout;
         _maxCreatingAmout = _status.MaxBuildingAmout;
+        string name = gameObject.name;
+        _createTowerPath = name.Substring(0, name.Length - 4);
     }
 
     private void Update() {
@@ -27,8 +28,8 @@ public class BuildingTower : MonoBehaviour
     }
 
     private void CreateTower() {
-        TowerStatus tower = Managers.Resources.Instantiate(_completedTowerObject, null).GetComponent<TowerStatus>();
-        tower.Init(_status.Level, transform.position, _status.TowerType);
+        TowerStatus tower = Managers.Resources.Instantiate($"Towers/{_status.TowerType.ToString()}/{_createTowerPath}", null).GetComponent<TowerStatus>();
+        tower.Init(_status.Level, transform.position, _status.TowerType); 
         Managers.Resources.Destroy(gameObject);
     }
 

@@ -2,8 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherTowerController : TowerControllerBase
-{
+public class ArcherTowerController : TowerControllerBase {
 
-    
+    protected override void Init() {
+        base.Init();
+    }
+    protected override void OnIdleUpdate() {
+        
+    }
+
+    protected override void OnAttackEvent() {
+        base.OnAttackEvent();
+        if (!_targetEnemy)
+            return;
+
+        ArcherProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<ArcherProjectileController>();
+        projectile.Init(transform.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy);
+    }
 }

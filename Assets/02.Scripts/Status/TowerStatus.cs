@@ -23,8 +23,8 @@ public class TowerStatus : MonoBehaviour
         transform.position = pos;
         TowerType = type;
         Data data = Managers.Data;
-        _attackDamage = data.GetTowerAttackDamage(level, (int)type);
-        _attackRange = data.GetTowerAttacmRange(level, (int)type);
-        _attackDelay = data.GetTowerAttacnDelay(level, (int)type);
+        _attackDamage = data.GetTowerAttackDamage((int)type, level);
+        _attackRange = data.GetTowerAttacmRange((int)type, level);
+        _attackDelay = data.GetTowerAttacnDelay((int)type, level);
     }
 }

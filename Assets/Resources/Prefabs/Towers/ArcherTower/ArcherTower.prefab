@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b91f130c3130b4c94da3737f058488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextTowerCon: {fileID: 6335655779996204828, guid: 466c2e3c98eb0fe4ab246a51e4c59aec, type: 3}
 --- !u!1 &4097176222810387584
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,6 +303,7 @@ GameObject:
   - component: {fileID: 6996750075547837396}
   - component: {fileID: 9141796249352647214}
   - component: {fileID: 2570480534678631812}
+  - component: {fileID: 4318387079934793276}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -359,3 +359,30 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 80
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &4318387079934793276
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9221078855029672881}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0

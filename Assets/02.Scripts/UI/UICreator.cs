@@ -34,7 +34,7 @@ public class UICreator : UIBase
     }
 
     private void CreateTower(Define.TowerType type, Vector3 createPos) {
-        int cost = Managers.Data.GetTowerCost(1,(int)type);
+        int cost = Managers.Data.GetTowerCost((int)type, 1);
         if (!GameSystem.Instance.EnoughGold(cost))
             return;
 
@@ -61,7 +61,7 @@ public class UICreator : UIBase
 
     private void ShowTowerIcon() {
         for(int i = 0; i< _towersIcon.Length; i++)
-            if (GameSystem.Instance.EnoughGold(Managers.Data.GetTowerCost(1,i)))
+            if (GameSystem.Instance.EnoughGold(Managers.Data.GetTowerCost(i,1)))
                 _towersIcon[i].SetActive(true);
             else
                 _towersIcon[i].SetActive(false);

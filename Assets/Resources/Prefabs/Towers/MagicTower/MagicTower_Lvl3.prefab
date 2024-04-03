@@ -163,7 +163,6 @@ GameObject:
   - component: {fileID: 8151407374440329357}
   - component: {fileID: 7387290732165707894}
   - component: {fileID: 736721556608930312}
-  - component: {fileID: 8729966661295899446}
   m_Layer: 7
   m_Name: MagicTower_Lvl3
   m_TagString: Untagged
@@ -285,18 +284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextTowerCon: {fileID: 8394789460888238178, guid: c5dac1993ae42e444a06a6a01c2022fd, type: 3}
---- !u!114 &8729966661295899446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6082707866033169567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd06713d46a90e74fb3bf4053817e2ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7012315202638320156
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class Define 
 {
+    public enum EnemyState {
+        Idle,
+        Move,
+        Die,
+    }  
+    
+    public enum TowerState {
+        Idle,
+        Attack,
+    }
     public enum TowerType {
         ArcherTower,
         CanonTower,
         MagicTower,
         DeathTower,
+        Count,
+    } 
+    
+    public enum EnemyType {
+        Archer,
+        Mage,
+        Swordman,
+        Speaman,
         Count,
     }
 
@@ -17,6 +35,16 @@ public class Define
         Level2,
         Level3,
         Level4,
+    }
+
+    public enum EnemyLevel {
+        Level1,
+        Level2,
+        Level3,
+        Level4,
+        Level5,
+        Level6,
+        Count,
     }
 
     public enum MouseEventType

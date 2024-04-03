@@ -13,6 +13,7 @@ public class Managers : MonoBehaviour
         }
     }
     private Data _data = new Data();
+    private SpawnManager _spawn = new SpawnManager();
     private PoolManager _pool = new PoolManager();
     private CreatorManager _creator = new CreatorManager();
     private InputManager _input = new InputManager();
@@ -22,6 +23,7 @@ public class Managers : MonoBehaviour
     public UICreator creator => GameObject.Find("UI_Creator").GetComponent<UICreator>();
 
     public static CreatorManager Creator => _instance._creator;
+    public static SpawnManager Spawn => _instance._spawn;
     public static PoolManager Pool => _instance._pool;
     public static Data Data => _instance._data;
     public static SceneManagerEX Scene => _instance._scene;
@@ -56,6 +58,7 @@ public class Managers : MonoBehaviour
             
             Pool.Init();
             Data.Init();
+            Spawn.Init();
         }
     }
 }

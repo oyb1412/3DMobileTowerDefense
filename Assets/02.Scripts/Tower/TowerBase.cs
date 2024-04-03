@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerBase : SelectedObject, ISelectedObject {
-    [SerializeField]private GameObject _nextTowerCon;
+    private string _nextConPath;
     private GameObject _attackRange;
     protected TowerStatus _towerStatus;
 
@@ -19,6 +19,8 @@ public class TowerBase : SelectedObject, ISelectedObject {
         _attackRange.SetActive(false);
         _attackRange.GetComponent<RectTransform>().sizeDelta = 
             new Vector2(_towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize, _towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize);
+
+        _nextConPath = $"{gameObject.name}_Lvl{_towerStatus.Level + 1}Cons";
     }
     public void OnDeSelect() {
         UITower.Instance.SetTowerUI(false, this);
@@ -33,23 +35,22 @@ public class TowerBase : SelectedObject, ISelectedObject {
     }
 
     public void SellTower() {
-        int sellGold = Managers.Data.GetSellCost(TowerStatus.Level, (int)_towerStatus.TowerType);
+        int sellGold = Managers.Data.GetSellCost((int)_towerStatus.TowerType, TowerStatus.Level);
         GameSystem.Instance.SetGold(sellGold);
 
         Managers.Resources.Destroy(gameObject);
     }
 
     public void UpgradeTower() {
-        if(TowerStatus.Level >= GameSystem.TowerMaxLevel ||
-            _nextTowerCon == null) {
+        if(TowerStatus.Level >= GameSystem.TowerMaxLevel) {
             Debug.Log("최대레벨입니다.");
             return;
         }
 
-        int cost = Managers.Data.GetSellCost(TowerStatus.Level + 1, (int)_towerStatus.TowerType);
+        int cost = Managers.Data.GetSellCost((int)_towerStatus.TowerType, TowerStatus.Level + 1);
         GameSystem.Instance.SetGold(-cost);
 
-        GameObject go = Managers.Resources.Instantiate(_nextTowerCon.gameObject, null);
+        GameObject go = Managers.Resources.Instantiate($"Towers/{TowerStatus.TowerType.ToString()}/{_nextConPath}", null);
         go.transform.position = transform.position;
 
         Managers.Resources.Destroy(gameObject);
