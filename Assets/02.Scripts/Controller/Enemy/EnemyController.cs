@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     private Tween _moveTween;
     private Tween _rotateTween;
 
+    public EnemyStatus Status => _status;
     public int CurrentHp { get { return _status.CurrentHp; } }
     public Define.EnemyState State {
         get { return _state; }
@@ -36,8 +37,8 @@ public class EnemyController : MonoBehaviour
             _state = value;
         }
     }
-    
- 
+
+
     private void Awake() {
         _animator = GetComponentInChildren<Animator>();
         _collider = GetComponentInChildren<CapsuleCollider>();
@@ -58,6 +59,7 @@ public class EnemyController : MonoBehaviour
 
         StartCoroutine(CoMove());
     }
+
 
     private void StopAllBehaivoir() {
         StopAllCoroutines();
@@ -110,4 +112,6 @@ public class EnemyController : MonoBehaviour
         else
             StartCoroutine(CoMove());
     }
+
+ 
 }

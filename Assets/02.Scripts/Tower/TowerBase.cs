@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBase : SelectedObject, ISelectedObject {
+public class TowerBase : MonoBehaviour, ISelectedObject {
     private string _nextConPath;
     private GameObject _attackRange;
     protected TowerStatus _towerStatus;

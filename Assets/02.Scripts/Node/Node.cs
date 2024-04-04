@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Node : SelectedObject, ISelectedObject {
+public class Node : MonoBehaviour, ISelectedObject {
     private MeshRenderer _mesh;
 
     public Transform MyTransform { get {return transform; }  }
@@ -14,13 +14,11 @@ public class Node : SelectedObject, ISelectedObject {
     public ISelectedObject OnSelect() {
         Managers.Instance.creator.SelectNode(true, transform.position, this);
         _mesh.material = Managers.Data.GreenMaterial;
-        IsSelected = true;
         return this;
     }
 
     public void OnDeSelect() {
         Managers.Instance.creator.SelectNode(false, transform.position);
-        IsSelected = false;
         _mesh.material = Managers.Data.DefaultMaterial;
     }
 
