@@ -9,6 +9,8 @@ public class GameSystem : MonoBehaviour
     public const int EnemyMaxLevel = 6;
     public const int TowerMaxLevel = 4;
     public const float TowerAttackRangeImageSize = 10f;
+    private int _currentGameHp;
+    private int _maxGameHp = 5;
     private int _gameLevel = 1;
     private float _currentTime;
     private const float _maxTime = 30f;
@@ -23,6 +25,7 @@ public class GameSystem : MonoBehaviour
 
     private void Start() {
         Managers.Spawn.SpawnEnemy(_gameLevel);
+        _currentGameHp = _maxGameHp;
     }
 
     private void Update() {
@@ -45,5 +48,15 @@ public class GameSystem : MonoBehaviour
         OnGoldEvent?.Invoke(_currentGold);
         if (CurrentGold < 0)
             CurrentGold = 0;
+    }
+
+    public void SetGameHp(int value) {
+        _currentGameHp += value;
+        //ui액션 실행
+
+        if(_currentGameHp <= 0) {
+            //todo
+            //게임종료
+        }
     }
 }

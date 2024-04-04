@@ -28,7 +28,9 @@ public class SpawnManager
 
 
     IEnumerator CoSpwan(int currentGameLevel) {
-        Tuple<int, Define.EnemyType> spawnData = _data.GetSpawnData(currentGameLevel);
+        int spawnLevel = currentGameLevel % 3;
+
+        Tuple<int, Define.EnemyType> spawnData = _data.GetSpawnData(spawnLevel);
         int maxSpawnCount = spawnData.Item1;
         int currentCount = 0;
         Define.EnemyType type = spawnData.Item2;
@@ -36,7 +38,7 @@ public class SpawnManager
         while (true) {
             currentCount++;
 
-            GameObject go = Managers.Resources.Instantiate($"Enemy/Level{currentGameLevel}/{type.ToString()}_Level{currentGameLevel}", null);
+            GameObject go = Managers.Resources.Instantiate($"Enemy/Level{spawnLevel}/{type.ToString()}_Level{spawnLevel}", null);
             go.transform.position = _spawnPoint.position;
             if (currentCount >= maxSpawnCount) {
                 break;

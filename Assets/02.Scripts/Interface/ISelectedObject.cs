@@ -9,4 +9,6 @@ public interface ISelectedObject
     void OnDeSelect();
 
     Transform MyTransform { get; }
+
+    bool IsValid();
 }

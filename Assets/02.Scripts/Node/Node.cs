@@ -23,4 +23,8 @@ public class Node : SelectedObject, ISelectedObject {
         IsSelected = false;
         _mesh.material = Managers.Data.DefaultMaterial;
     }
+
+    public bool IsValid() {
+        return this;
+    }
 }

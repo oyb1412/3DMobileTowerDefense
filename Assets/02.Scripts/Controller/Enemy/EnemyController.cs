@@ -29,10 +29,7 @@ public class EnemyController : MonoBehaviour
 
             if(value == Define.EnemyState.Die) {
                 _collider.enabled = false;
-                StopAllCoroutines();
-                _moveTween?.Kill(false);
-                _rotateTween?.Kill(false);
-                DOTween.Kill(gameObject, false);
+                StopAllBehaivoir();
             }
 
             _animator.CrossFade(value.ToString(), _EnemyAnimationFadeTime);
@@ -60,6 +57,13 @@ public class EnemyController : MonoBehaviour
         transform.LookAt(_movePoint[_moveIndex].position);
 
         StartCoroutine(CoMove());
+    }
+
+    private void StopAllBehaivoir() {
+        StopAllCoroutines();
+        _moveTween?.Kill(false);
+        _rotateTween?.Kill(false);
+        DOTween.Kill(gameObject, false);
     }
     public void TakeDamage(int damage) {
         _status.CurrentHp += damage;
@@ -95,12 +99,15 @@ public class EnemyController : MonoBehaviour
             _rotateTween = transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), .3f).SetEase(Ease.Linear);
         }
 
-        if (State != Define.EnemyState.Move || _moveIndex == _lastMoveIndex) {
-            Debug.Log("¿Ãµø ¡ﬂ¥‹µ ");
-            StopAllCoroutines();
+        if(_moveIndex == _lastMoveIndex) {
+            GameSystem.Instance.SetGameHp(-1);
+            StopAllBehaivoir();
+            Managers.Resources.Destroy(gameObject);
         }
-        else {
+
+        if (State != Define.EnemyState.Move)
+            StopAllBehaivoir();
+        else
             StartCoroutine(CoMove());
-        }
     }
 }

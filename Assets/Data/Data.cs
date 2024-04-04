@@ -19,10 +19,10 @@ public class Data {
     };
 
     private float[,] _towerCreateTime = new float[,] {
-        { 1f, 10f, 15f, 20f },
-        { 1f,12f,18f,24f },
-        { 1f,14f,21f,28f},
-        { 1f,20f,30f,40f}
+        { 3f, 10f, 15f, 20f },
+        { 3f,12f,18f,24f },
+        { 3f,14f,21f,28f},
+        { 3f,20f,30f,40f}
     };
 
     private int[,] _towerDamage = new int[,] {
@@ -57,7 +57,7 @@ public class Data {
     private int[,] _enemyCurrentHp;
 
     private float[,] _enemyMoveSpeed = new float[,] {
-        {5f,10.1f,10.2f,10.3f,10.4f,10.5f },
+        {10f,10.1f,10.2f,10.3f,10.4f,10.5f },
         {10.1f,10.2f,10.3f,10.4f,10.5f,10.6f },
         {10.2f,10.3f,10.4f,10.5f,10.6f,10.7f },
         {10.3f,10.4f,10.5f,10.6f,10.7f,10.8f }
@@ -84,8 +84,8 @@ public class Data {
         {5,5,5,5,5,5 }
     };
 
-    private Tuple<int, Define.EnemyType>[] _spawnData = { Tuple.Create(10, Define.EnemyType.Archer),
-        Tuple.Create(10, Define.EnemyType.Swordman)};
+    private Tuple<int, Define.EnemyType>[] _spawnData = { Tuple.Create(20, Define.EnemyType.Archer),
+        Tuple.Create(20, Define.EnemyType.Swordman)};
 
     private static Material _defaultMaterial;
     private static Material _greenMaterial;

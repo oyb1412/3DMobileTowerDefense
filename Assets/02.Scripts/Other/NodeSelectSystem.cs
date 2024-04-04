@@ -28,10 +28,14 @@ public class NodeSelectSystem : MonoBehaviour
     }
 
     private void DeSelect() {
-        if (_lastSelectObject != null) {
-            _lastSelectObject.OnDeSelect();
-            _lastSelectObject = null;
-        }
+        if (_lastSelectObject == null)
+            return;
+
+        if (!_lastSelectObject.IsValid())
+            return;
+
+        _lastSelectObject.OnDeSelect();
+        _lastSelectObject = null;
     }
 
 }

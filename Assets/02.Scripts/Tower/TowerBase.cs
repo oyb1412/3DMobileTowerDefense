@@ -60,4 +60,8 @@ public class TowerBase : SelectedObject, ISelectedObject {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize * .5f);
     }
+
+    public bool IsValid() {
+        return this;
+    }
 }
