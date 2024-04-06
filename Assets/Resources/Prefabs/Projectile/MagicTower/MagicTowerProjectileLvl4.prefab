@@ -9902,6 +9902,7 @@ GameObject:
   - component: {fileID: 3917122189089059977}
   - component: {fileID: 7020893494589154661}
   - component: {fileID: 8002116795389023855}
+  - component: {fileID: 8302074803080163968}
   m_Layer: 10
   m_Name: MagicTowerProjectileLvl4
   m_TagString: Projectile
@@ -14903,6 +14904,18 @@ MonoBehaviour:
   - {fileID: 9127426817911664020}
   - {fileID: 2174856268596953275}
   - {fileID: 797159358972537249}
+--- !u!114 &8302074803080163968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3984022036784327976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5131431236281206955
 GameObject:
   m_ObjectHideFlags: 0

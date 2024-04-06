@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2231134218562711576}
   - component: {fileID: 1796415025344436526}
   - component: {fileID: 3760099557452963533}
+  - component: {fileID: -3433905232701604602}
   m_Layer: 8
   m_Name: ArcherTower_Lvl2Cons
   m_TagString: Untagged
@@ -132,6 +133,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 678c94dcf8ab39741b2b0b1d837606cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3433905232701604602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335655779996204828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3440115001782996241

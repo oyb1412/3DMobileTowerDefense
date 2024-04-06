@@ -11,7 +11,7 @@ public class UIBuilding : MonoBehaviour {
     private Transform _towerPoint;
 
     private void Start() {
-        _towerPoint = transform.root;
+        _towerPoint = transform.parent;
         _buildingTower = GetComponentInParent<BuildingTower>();
         _creatorSlider = GetComponentInChildren<Slider>();
         _sliderRect = _creatorSlider.GetComponent<RectTransform>();

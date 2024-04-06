@@ -35,6 +35,7 @@ public class Define
         Level2,
         Level3,
         Level4,
+        Count,
     }
 
     public enum EnemyLevel {

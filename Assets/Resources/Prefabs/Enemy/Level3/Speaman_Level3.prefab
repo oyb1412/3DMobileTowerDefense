@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7237770693158174935}
   - component: {fileID: 826724529874406036}
   - component: {fileID: 255813163186128809}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380277112494209227}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39,7 +39,7 @@ Transform:
   - {fileID: 8942906902063945052}
   - {fileID: 5771106160265912099}
   m_Father: {fileID: 4575641990298602938}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &3693551557377826244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 7944865372078506567}
   - component: {fileID: 7592314901323268836}
   - component: {fileID: 3189052106788994699}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4575641990298602938}
   - component: {fileID: 977130519431555142}
-  m_Layer: 0
+  - component: {fileID: 4087061234086667750}
+  m_Layer: 9
   m_Name: Speaman_Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,6 +290,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e9163e8efe5734d99f26f1937f2a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4087061234086667750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118231236155203728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2923291321059228259
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +313,7 @@ GameObject:
   - component: {fileID: 8942906902063945052}
   - component: {fileID: 50465467968818372}
   - component: {fileID: 4880827527046856728}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +396,7 @@ GameObject:
   - component: {fileID: 5771106160265912099}
   - component: {fileID: 224322923044327475}
   - component: {fileID: 7477307395662098025}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,9 +484,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 964067771776338560, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Name
       value: UI_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571844622134820466, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228423043527566906, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Pivot.x
@@ -554,6 +583,10 @@ PrefabInstance:
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545674268462615527, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

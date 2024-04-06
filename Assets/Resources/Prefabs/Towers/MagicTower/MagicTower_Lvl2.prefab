@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 2081330952789201182}
   - component: {fileID: 598729652912777374}
   - component: {fileID: 8668418535847069901}
+  - component: {fileID: 4105610801418790718}
   m_Layer: 7
   m_Name: MagicTower_Lvl2
   m_TagString: Untagged
@@ -417,6 +418,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ea0ecb75f1c364babc42c6727da591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4105610801418790718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099991735831156213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7774074679190562794

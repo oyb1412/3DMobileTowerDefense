@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,29 +7,31 @@ using UnityEngine;
 public abstract class TowerControllerBase : MonoBehaviour
 {
     private SphereCollider _attackRangeCollider;
+    protected GameObject _base;
     protected string _projectilePath;
     protected Transform _firePoint;
 
     protected GameObject _targetEnemy;
     protected TowerStatus _status;
     private Define.TowerState _state;
-    private float _currentAttackDelay;
+    protected float _currentAttackDelay;
     protected GameObject _projectileObject;
 
     private void Start() {
         Init();
+        _base = GetComponentInParent<TowerBase>().gameObject;
         _state = Define.TowerState.Idle;
     }
 
     protected virtual void Init() {
         _status = GetComponentInParent<TowerStatus>();
         _attackRangeCollider = GetComponent<SphereCollider>();
-        _firePoint = Util.FindChild(transform.root.gameObject, "FirePoint", false).transform;
+        _firePoint = Util.FindChild(transform.parent.gameObject, "FirePoint", false).transform;
         _attackRangeCollider.radius = _status.AttackRange * GameSystem.TowerAttackRangeImageSize * .5f;
         _projectilePath = $"Projectile/{_status.TowerType.ToString()}/{_status.TowerType.ToString()}ProjectileLvl{_status.Level}";
     }
 
-    private void ChangeState(GameObject go) {
+    protected void ChangeState(GameObject go) {
         _state = go == null ? _state = Define.TowerState.Idle : Define.TowerState.Attack;
     }
 
@@ -47,7 +50,8 @@ public abstract class TowerControllerBase : MonoBehaviour
     protected abstract void OnIdleUpdate();
     protected void OnAttackUpdate() {
         if (!_targetEnemy) {
-            ChangeState(_targetEnemy = null);
+            _targetEnemy = null;
+            ChangeState(_targetEnemy);
             return;
         }
 
@@ -60,9 +64,14 @@ public abstract class TowerControllerBase : MonoBehaviour
     }
 
     protected virtual void OnAttackEvent() {
-        _currentAttackDelay = 0;
+        if (!_targetEnemy) {
+            ChangeState(null);
+            return;
+        }
+
         if (_targetEnemy.GetComponentInParent<EnemyController>().CurrentHp <= 0) {
-            ChangeState(_targetEnemy = null);
+            _targetEnemy = null;
+            ChangeState(_targetEnemy);
             return;
         }
     }
@@ -74,7 +83,8 @@ public abstract class TowerControllerBase : MonoBehaviour
         if (_targetEnemy != null)
             return;
 
-        ChangeState(_targetEnemy = c.gameObject);
+        _targetEnemy = c.gameObject;
+        ChangeState(_targetEnemy);
     }
 
     private void OnTriggerExit(Collider c) {
@@ -87,6 +97,7 @@ public abstract class TowerControllerBase : MonoBehaviour
         if (c.gameObject != _targetEnemy)
             return;
 
-        ChangeState(_targetEnemy = null);
+        _targetEnemy = null;
+        ChangeState(_targetEnemy);
     }
 }

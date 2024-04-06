@@ -7,17 +7,20 @@ public class ProjectileControllerBase : MonoBehaviour {
 
     protected Rigidbody _rigidbody;
     private const float _destroyTime = 5f;
+    private GameObject _shooter;
     protected int _damage;
     protected GameObject _targetEnemy;
-
+    protected Collider _collider;
     public GameObject muzzlePrefab;
     public GameObject hitPrefab;
     public List<GameObject> trails;
 
     private bool collided;
-    public virtual void Init(Vector3 pos, Vector3 dir, int damage, GameObject target) {
+    public virtual void Init(Vector3 pos, Vector3 dir, int damage, GameObject target, GameObject shooter) {
+        _collider = GetComponent<Collider>();
         _rigidbody = GetComponent<Rigidbody>();
         transform.position = pos;
+        _shooter = shooter;
         _damage = damage;
         _targetEnemy = target;
         StartCoroutine(CoDestroy());
@@ -44,7 +47,7 @@ public class ProjectileControllerBase : MonoBehaviour {
 
     protected void Crash(GameObject go) {
         EnemyController enemy = go.GetComponentInParent<EnemyController>();
-        enemy.TakeDamage(-_damage);
+        enemy.TakeDamage(-_damage, _shooter);
     }
 
     public IEnumerator DestroyParticle(float waitTime) {
@@ -138,7 +141,7 @@ public class ProjectileControllerBase : MonoBehaviour {
             } else
                 Destroy(hitVFX, ps.main.duration);
 
-            hitVFX.GetComponent<ExplosionHit>().Init(_damage);
+            hitVFX.GetComponent<ExplosionHit>().Init(_damage, _shooter);
         }
 
         StartCoroutine(DestroyParticle(0f));

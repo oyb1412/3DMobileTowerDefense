@@ -9,8 +9,8 @@ public class CanonProjectileController : ProjectileControllerBase {
     private Vector3 _targetPos;
     [SerializeField]private float height;
     [SerializeField] private float duration;
-    public override void Init(Vector3 pos, Vector3 dir, int damage, GameObject target) {
-        base.Init(pos, dir, damage, target);
+    public override void Init(Vector3 pos, Vector3 dir, int damage, GameObject target, GameObject shooter) {
+        base.Init(pos, dir, damage, target, shooter);
         _targetPos = target.transform.position;
         Vector3 controlPoint = (pos + _targetPos) / 2 + Vector3.up * height;
         Vector3[] path = new Vector3[] { pos, controlPoint, _targetPos };

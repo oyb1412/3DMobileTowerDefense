@@ -14605,6 +14605,7 @@ GameObject:
   - component: {fileID: 8381404172520271124}
   - component: {fileID: 8101757209109755693}
   - component: {fileID: 5267827837852153705}
+  - component: {fileID: 3697626115904776193}
   m_Layer: 11
   m_Name: CanonTowerHitLvl3
   m_TagString: Explosion
@@ -14690,7 +14691,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 6
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5267827837852153705
 Rigidbody:
@@ -14719,6 +14720,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3697626115904776193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351045683517926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1969773048335070
 GameObject:
   m_ObjectHideFlags: 0

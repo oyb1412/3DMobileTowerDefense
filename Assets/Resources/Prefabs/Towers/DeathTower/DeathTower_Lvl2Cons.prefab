@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6505711199789769159}
   - component: {fileID: 7561666315008998443}
   - component: {fileID: 6636375065538610724}
+  - component: {fileID: 6036973060231732296}
   m_Layer: 8
   m_Name: DeathTower_Lvl2Cons
   m_TagString: Untagged
@@ -132,6 +133,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 678c94dcf8ab39741b2b0b1d837606cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6036973060231732296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271690628517296360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2334420569863489244

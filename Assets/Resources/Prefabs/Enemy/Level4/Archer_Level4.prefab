@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1477514594203384974}
   - component: {fileID: 4949498656984351665}
   - component: {fileID: 878794140518236505}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374499767268577746}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39,7 +39,7 @@ Transform:
   - {fileID: 5078307681293967091}
   - {fileID: 8087243955331226031}
   m_Father: {fileID: 64674174987298172}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &2705288748929522691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 8087243955331226031}
   - component: {fileID: 2231718224758557456}
   - component: {fileID: 1451630405342115107}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,8 @@ GameObject:
   m_Component:
   - component: {fileID: 64674174987298172}
   - component: {fileID: 333044727079237483}
-  m_Layer: 0
+  - component: {fileID: 2729915462009996598}
+  m_Layer: 9
   m_Name: Archer_Level4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +271,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2401474471683887008}
@@ -289,6 +290,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e9163e8efe5734d99f26f1937f2a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2729915462009996598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520915985570090556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3653577861279797427
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +313,7 @@ GameObject:
   - component: {fileID: 7622459728084880770}
   - component: {fileID: 2734731046169882272}
   - component: {fileID: 1839491684613109023}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +396,7 @@ GameObject:
   - component: {fileID: 5078307681293967091}
   - component: {fileID: 8711306934266641631}
   - component: {fileID: 1874286687389222394}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,9 +484,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 964067771776338560, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Name
       value: UI_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571844622134820466, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228423043527566906, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Pivot.x
@@ -554,6 +583,10 @@ PrefabInstance:
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545674268462615527, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreatorManager {
     public void CreateTower(string name, Vector3 createPos) {
-        GameObject tower = Managers.Resources.Instantiate($"Towers/{name}/{name}Cons", null);
-        tower.transform.position = createPos;
+        BuildingTower tower = Managers.Resources.Instantiate($"Towers/{name}/{name}_Lvl1Cons", null).GetComponent<BuildingTower>();
+        tower.Init(createPos);
     }
 }

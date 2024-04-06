@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Data {
+    private Sprite[,] _towerIcon;
+
     private int[,] _towerCost = new int[,] {
         { 5,10,15,20},
         { 6,12,18,24 },
@@ -82,10 +84,30 @@ public class Data {
         {5,5,5,5,5,5 },
         {5,5,5,5,5,5 },
         {5,5,5,5,5,5 }
+    }; 
+    
+    private int[,] _enemyProvideScore = new int[,] {
+        {5,5,5,5,5,5 },
+        {5,5,5,5,5,5 },
+        {5,5,5,5,5,5 },
+        {5,5,5,5,5,5 }
     };
 
-    private Tuple<int, Define.EnemyType>[] _spawnData = { Tuple.Create(20, Define.EnemyType.Archer),
-        Tuple.Create(20, Define.EnemyType.Swordman)};
+    private Sprite[,] _enemyIcon;
+
+    public class EnemySpawnData {
+        public int Count;
+        public Define.EnemyType EnemyType;
+        public Define.EnemyLevel EnemyLevel;
+
+        public EnemySpawnData(int count, Define.EnemyType type, Define.EnemyLevel enemyLevel) {
+            Count = count;
+            EnemyType = type;
+            EnemyLevel = enemyLevel;
+        }
+    }
+
+    private Dictionary<int, List<EnemySpawnData>> _enemySpawnData = new Dictionary<int, List<EnemySpawnData>>();
 
     private static Material _defaultMaterial;
     private static Material _greenMaterial;
@@ -96,6 +118,55 @@ public class Data {
         _defaultMaterial = (Material)Resources.Load<Material>("Material/Default");
         _greenMaterial = (Material)Resources.Load<Material>("Material/Green");
         _enemyCurrentHp = new int[(int)Define.EnemyType.Count, (int)Define.EnemyLevel.Count];
+        _towerIcon = new Sprite[(int)Define.TowerType.Count, (int)Define.TowerLevel.Count];
+        _enemyIcon = new Sprite[(int)Define.EnemyType.Count, (int)Define.EnemyLevel.Count];
+
+        #region IconSpriteInit
+
+        for (int i = 0; i< (int)Define.TowerLevel.Count; i++) {
+            _towerIcon[(int)Define.TowerType.ArcherTower, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Towers/ArcherTower/ArcherTower_Lvl{i + 1}");
+        }
+
+        for (int i = 0; i < (int)Define.TowerLevel.Count; i++) {
+            _towerIcon[(int)Define.TowerType.CanonTower, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Towers/CanonTower/CanonTower_Lvl{i + 1}");
+        }
+
+        for (int i = 0; i < (int)Define.TowerLevel.Count; i++) {
+            _towerIcon[(int)Define.TowerType.MagicTower, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Towers/MagicTower/MagicTower_Lvl{i + 1}");
+        }
+
+        for (int i = 0; i < (int)Define.TowerLevel.Count; i++) {
+            _towerIcon[(int)Define.TowerType.DeathTower, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Towers/DeathTower/DeathTower_Lvl{i + 1}");
+        }
+
+        for(int i = 0; i< (int)Define.EnemyLevel.Count; i++) {
+            _enemyIcon[(int)Define.EnemyType.Archer, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Units/Level{i + 1}/Archer_Level{i + 1}");
+        }
+
+        for (int i = 0; i < (int)Define.EnemyLevel.Count; i++) {
+            _enemyIcon[(int)Define.EnemyType.Swordman, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Units/Level{i + 1}/Swordman_Level{i + 1}");
+        }
+
+        for (int i = 0; i < (int)Define.EnemyLevel.Count; i++) {
+            _enemyIcon[(int)Define.EnemyType.Mage, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Units/Level{i + 1}/Mage_Level{i + 1}");
+        }
+
+        for (int i = 0; i < (int)Define.EnemyLevel.Count; i++) {
+            _enemyIcon[(int)Define.EnemyType.Speaman, i] = (Sprite)Resources.Load<Sprite>($"Sprites/Units/Level{i + 1}/Speaman_Level{i + 1}");
+        }
+        #endregion
+
+        if(!_enemySpawnData.ContainsKey(1)) {
+            _enemySpawnData.Add(1, new List<EnemySpawnData>
+            {
+                new EnemySpawnData(10, Define.EnemyType.Archer, Define.EnemyLevel.Level1),
+                new EnemySpawnData(10, Define.EnemyType.Swordman, Define.EnemyLevel.Level1)
+            });
+        }
+       
+    }
+    public List<EnemySpawnData> GetEnemySpawnData(int level) {
+        return _enemySpawnData[level];
     }
     public int GetTowerCost(int type, int level) => _towerCost[type, level - 1];
     public int GetTowerAttackDamage(int type, int level) => _towerDamage[type, level - 1];
@@ -108,8 +179,8 @@ public class Data {
     public int GetEnemyPhysicsDefense(int type, int level) => _enemyPhysicsDefense[type, level - 1];
     public int GetEnemyMagicDefense(int type, int level) => _enemyMagicDefense[type, level - 1];
     public int GetEnemyProvideGold(int type, int level) => _enemyProvideGold[type, level - 1];
+    public int GetEnemyProvideScore(int type, int level) => _enemyProvideScore[type, level - 1];
 
-    public Tuple<int, Define.EnemyType> GetSpawnData(int level) => _spawnData[level - 1];
-
-
+    public Sprite GetTowerIcon(int type, int level) => _towerIcon[type, level - 1];
+    public Sprite GetEnemyIcon(int type, int level) => _enemyIcon[type, level - 1];
 }

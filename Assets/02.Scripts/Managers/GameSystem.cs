@@ -9,13 +9,20 @@ public class GameSystem : MonoBehaviour
     public const int EnemyMaxLevel = 6;
     public const int TowerMaxLevel = 4;
     public const float TowerAttackRangeImageSize = 10f;
+    public const int MaxGameLevel = 25;
+    public const int MaxGameHp = 100;
+
+    private int _currentGameScore;
     private int _currentGameHp;
-    private int _maxGameHp = 5;
     private int _gameLevel = 1;
     private float _currentTime;
-    private const float _maxTime = 30f;
+    private const float _maxTime = 60f;
     [SerializeField]private int _currentGold;
+
     public Action<int> OnGoldEvent;
+    public Action<int> OnGameLevelEvent;
+    public Action<int> OnGameHpEvent;
+    public Action<int> OnScoreEvent;
     public int GameLevel => _gameLevel;
 
     public int CurrentGold { get { return _currentGold; } set { _currentGold = value; } }
@@ -25,7 +32,7 @@ public class GameSystem : MonoBehaviour
 
     private void Start() {
         Managers.Spawn.SpawnEnemy(_gameLevel);
-        _currentGameHp = _maxGameHp;
+        _currentGameHp = MaxGameHp;
     }
 
     private void Update() {
@@ -34,13 +41,19 @@ public class GameSystem : MonoBehaviour
         if (_currentTime < _maxTime)
             return;
 
-        _gameLevel++;
+        OnGameLevelEvent?.Invoke(++_gameLevel);
         _currentTime = 0f;
         Managers.Spawn.SpawnEnemy(_gameLevel);
     }
 
     public bool EnoughGold(int gold) {
         return gold <= _currentGold;
+    }
+
+
+    public void SetScore(int score) {
+        _currentGameScore += score;
+        OnScoreEvent?.Invoke(score);
     }
 
     public void SetGold(int gold) {
@@ -52,7 +65,7 @@ public class GameSystem : MonoBehaviour
 
     public void SetGameHp(int value) {
         _currentGameHp += value;
-        //ui액션 실행
+        OnGameHpEvent?.Invoke(value);
 
         if(_currentGameHp <= 0) {
             //todo

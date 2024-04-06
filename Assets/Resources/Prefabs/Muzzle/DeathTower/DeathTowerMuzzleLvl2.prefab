@@ -4711,6 +4711,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4229121568349138}
+  - component: {fileID: 1954836789961089297}
   m_Layer: 0
   m_Name: DeathTowerMuzzleLvl2
   m_TagString: Untagged
@@ -4735,6 +4736,18 @@ Transform:
   - {fileID: 4374140939025226}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1954836789961089297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291653246976116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1625572493762738
 GameObject:
   m_ObjectHideFlags: 0

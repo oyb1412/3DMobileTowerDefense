@@ -159,7 +159,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89c9230d74ea69747b970bfe0d44d00e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f4c08267fea998479954a15197f132a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 4440451953225833468}
   - component: {fileID: 8176947294668632047}
   - component: {fileID: 9021708702893310181}
+  - component: {fileID: 6708456439363377440}
   m_Layer: 7
   m_Name: ArcherTower_Lvl4
   m_TagString: Untagged
@@ -301,6 +302,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0b91f130c3130b4c94da3737f058488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6708456439363377440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2203281558436215863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3722836236337829737

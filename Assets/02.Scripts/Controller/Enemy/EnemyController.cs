@@ -15,8 +15,8 @@ public class EnemyController : MonoBehaviour
     private int _lastMoveIndex;
     private CapsuleCollider _collider;
     private Transform[] _movePoint;
+    public Action OnRewardEvent;
     public Action<int, int> OnHpEvent;
-    public Action OnDieEvent;
     private Tween _moveTween;
     private Tween _rotateTween;
 
@@ -67,14 +67,16 @@ public class EnemyController : MonoBehaviour
         _rotateTween?.Kill(false);
         DOTween.Kill(gameObject, false);
     }
-    public void TakeDamage(int damage) {
+    public void TakeDamage(int damage, GameObject attacker) {
         _status.CurrentHp += damage;
 
         OnHpEvent?.Invoke(_status.CurrentHp , _status.MaxHp);
 
         if (_status.CurrentHp <= 0) {
-            OnDieEvent?.Invoke();
+            OnRewardEvent?.Invoke();
+            attacker.GetComponent<TowerBase>().SetKill();
             GameSystem.Instance.SetGold(_status.ProvideGold);
+            GameSystem.Instance.SetScore(_status.ProvideScore);
             State = Define.EnemyState.Die;
         }
     }

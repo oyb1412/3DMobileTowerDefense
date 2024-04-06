@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ExplosionHit : MonoBehaviour
 {
     private int _damage;
+    private GameObject _attacker;
     private const float _disalbeTimer = .3f;
     private const float _destroyTimer = 1f;
     private SphereCollider _collider;
 
-    public void Init(int damage) {
+    public void Init(int damage, GameObject shooter) {
+        _attacker = shooter;
         _collider = GetComponent<SphereCollider>();
         _damage = damage;
         StartCoroutine(CoDestroy());
@@ -26,6 +29,6 @@ public class ExplosionHit : MonoBehaviour
         if (!c.CompareTag("Enemy"))
             return;
 
-        c.GetComponentInParent<EnemyController>().TakeDamage(-_damage);
+        c.GetComponentInParent<EnemyController>().TakeDamage(-_damage, _attacker);
     }
 }

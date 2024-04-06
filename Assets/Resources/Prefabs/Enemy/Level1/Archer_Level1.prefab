@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1418749942264995583}
   - component: {fileID: 4949685992858640020}
   - component: {fileID: 755523098388035479}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1238318659867720878}
   - component: {fileID: 4972406526049801771}
   - component: {fileID: 1364362111277644963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 1779374066918701794}
   - component: {fileID: 9067660672752850960}
   - component: {fileID: 5460961361958925533}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -336,7 +336,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8315149194305154963}
   - component: {fileID: 6596811445947671133}
-  m_Layer: 0
+  - component: {fileID: -1155087419287812545}
+  m_Layer: 9
   m_Name: Archer_Level1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 6687671039530270652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.3, y: -0.5, z: 93.42}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -372,6 +373,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e9163e8efe5734d99f26f1937f2a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1155087419287812545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687671039530270652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9064484139877306420
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +396,7 @@ GameObject:
   - component: {fileID: 585359835041694202}
   - component: {fileID: 592515255263634815}
   - component: {fileID: 3889731488373318586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

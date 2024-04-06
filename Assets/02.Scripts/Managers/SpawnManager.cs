@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SpawnManager
 {
-    private const float _spawnDelay = 1f;
+    private const float _spawnDelay = 1.5f;
     private Transform _movePoints;
     private Data _data;
     private Transform _spawnPoint;
@@ -28,23 +28,15 @@ public class SpawnManager
 
 
     IEnumerator CoSpwan(int currentGameLevel) {
-        int spawnLevel = currentGameLevel % 3;
 
-        Tuple<int, Define.EnemyType> spawnData = _data.GetSpawnData(spawnLevel);
-        int maxSpawnCount = spawnData.Item1;
-        int currentCount = 0;
-        Define.EnemyType type = spawnData.Item2;
+        List<Data.EnemySpawnData> spawnData = _data.GetEnemySpawnData(currentGameLevel);
 
-        while (true) {
-            currentCount++;
-
-            GameObject go = Managers.Resources.Instantiate($"Enemy/Level{spawnLevel}/{type.ToString()}_Level{spawnLevel}", null);
-            go.transform.position = _spawnPoint.position;
-            if (currentCount >= maxSpawnCount) {
-                break;
+        foreach(var data in spawnData) {
+            for(int i = 0; i<data.Count; i++) {
+                GameObject go = Managers.Resources.Instantiate($"Enemy/{data.EnemyLevel.ToString()}/{data.EnemyType.ToString()}_{data.EnemyLevel.ToString()}", null);
+                go.transform.position = _spawnPoint.position;
+                yield return new WaitForSeconds(_spawnDelay);
             }
-            yield return new WaitForSeconds(_spawnDelay);
-
         }
     }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5234763419304659764}
   - component: {fileID: 9016730134106549061}
   - component: {fileID: 2474208336416869514}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 173042081095562096}
   - component: {fileID: 6490606601890446718}
   - component: {fileID: 7352262691685247732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -113,8 +113,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3924287463995026846}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -122,7 +122,7 @@ Transform:
   - {fileID: 9151685399126804055}
   - {fileID: 5085134132108812558}
   m_Father: {fileID: 2432259854340479136}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1274594870657555917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 5085134132108812558}
   - component: {fileID: 1173909379134075918}
   - component: {fileID: 232487698366881836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +336,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2432259854340479136}
   - component: {fileID: 8142730603979501728}
-  m_Layer: 0
+  - component: {fileID: -6791545266553154999}
+  m_Layer: 9
   m_Name: Speaman_Level4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +354,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7553678167812804751}
@@ -372,6 +373,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e9163e8efe5734d99f26f1937f2a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6791545266553154999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5825781565542360171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8304711725576286078
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +396,7 @@ GameObject:
   - component: {fileID: 9151685399126804055}
   - component: {fileID: 1026398666138585984}
   - component: {fileID: 6944508967295868926}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,9 +484,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 964067771776338560, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Name
       value: UI_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571844622134820466, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228423043527566906, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Pivot.x
@@ -554,6 +583,10 @@ PrefabInstance:
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545674268462615527, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

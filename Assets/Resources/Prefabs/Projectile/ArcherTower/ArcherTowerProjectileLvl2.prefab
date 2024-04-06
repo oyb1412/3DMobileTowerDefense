@@ -9751,6 +9751,7 @@ GameObject:
   - component: {fileID: 6675543588667388647}
   - component: {fileID: 8192359529411395449}
   - component: {fileID: -1643776774727924983}
+  - component: {fileID: -857839188957598373}
   m_Layer: 10
   m_Name: ArcherTowerProjectileLvl2
   m_TagString: Projectile
@@ -9838,6 +9839,18 @@ MonoBehaviour:
   hitPrefab: {fileID: 1266152770621770, guid: 17bc0fb39b8254947be59b6a5de6938a, type: 3}
   trails:
   - {fileID: 8415156669302510803}
+--- !u!114 &-857839188957598373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8346818116002279449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8415156669302510803
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2098426032247950919}
   - component: {fileID: 7646586762871008188}
   - component: {fileID: 2630512302525052833}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6665678489222674785}
   - component: {fileID: 8194229727274670981}
   - component: {fileID: 8289265523908989794}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -113,14 +113,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5836813924040393981}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2098426032247950919}
   m_Father: {fileID: 559592513815830970}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1585411242437466454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +251,8 @@ GameObject:
   m_Component:
   - component: {fileID: 559592513815830970}
   - component: {fileID: 1667780764897424543}
-  m_Layer: 0
+  - component: {fileID: -5509364598463445929}
+  m_Layer: 9
   m_Name: Mage_Level3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,6 +288,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e9163e8efe5734d99f26f1937f2a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5509364598463445929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411028975396616072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &243828556169787693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,9 +316,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 964067771776338560, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Name
       value: UI_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913020705597791006, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3571844622134820466, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228423043527566906, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Pivot.x
@@ -386,6 +415,10 @@ PrefabInstance:
     - target: {fileID: 6863670487110643293, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545674268462615527, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

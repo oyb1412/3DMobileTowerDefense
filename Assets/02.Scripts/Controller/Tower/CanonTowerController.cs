@@ -13,10 +13,13 @@ public class CanonTowerController : TowerControllerBase {
 
     protected override void OnAttackEvent() {
         base.OnAttackEvent();
-        if (!_targetEnemy)
+        if (!_targetEnemy) {
+            ChangeState(null);
             return;
+        }
 
         CanonProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<CanonProjectileController>();
-        projectile.Init(_firePoint.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy);
+        projectile.Init(_firePoint.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy, _base);
+        _currentAttackDelay = 0;
     }
 }
