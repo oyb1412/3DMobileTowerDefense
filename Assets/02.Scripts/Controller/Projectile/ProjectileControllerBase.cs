@@ -6,7 +6,7 @@ using UnityEngine;
 public class ProjectileControllerBase : MonoBehaviour {
 
     protected Rigidbody _rigidbody;
-    private const float _destroyTime = 5f;
+    private const float _destroyTime = 3f;
     private GameObject _shooter;
     protected int _damage;
     protected GameObject _targetEnemy;
@@ -15,7 +15,7 @@ public class ProjectileControllerBase : MonoBehaviour {
     public GameObject hitPrefab;
     public List<GameObject> trails;
 
-    private bool collided;
+    private bool collided = false;
     public virtual void Init(Vector3 pos, Vector3 dir, int damage, GameObject target, GameObject shooter) {
         _collider = GetComponent<Collider>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -23,27 +23,32 @@ public class ProjectileControllerBase : MonoBehaviour {
         _shooter = shooter;
         _damage = damage;
         _targetEnemy = target;
-        StartCoroutine(CoDestroy());
+        StartCoroutine(Util.CoDestroy(gameObject, _destroyTime));
 
         if (muzzlePrefab != null) {
-            var muzzleVFX = Instantiate(muzzlePrefab, transform.position, Quaternion.identity);
+            var muzzleVFX = Managers.Resources.Instantiate(muzzlePrefab, null);
+            muzzleVFX.transform.position = transform.position;
+            muzzleVFX.transform.rotation = Quaternion.identity;
             muzzleVFX.transform.forward = gameObject.transform.forward;
             var ps = muzzleVFX.GetComponent<ParticleSystem>();
             if (ps != null)
-                Destroy(muzzleVFX, ps.main.duration);
+                StartCoroutine(Util.CoDestroy(muzzleVFX, ps.main.duration));
             else {
                 var psChild = muzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(muzzleVFX, psChild.main.duration);
+                StartCoroutine(Util.CoDestroy(muzzleVFX, psChild.main.duration));
+
             }
         }
     }
 
-    IEnumerator CoDestroy() {
-        yield return new WaitForSeconds(_destroyTime);
-        Managers.Resources.Destroy(gameObject);
+    private void OnEnable() {
+        collided = false;
+        GetComponent<Rigidbody>().isKinematic = false;
+        foreach(var item in trails)
+            item.SetActive(true);
     }
 
- 
+
 
     protected void Crash(GameObject go) {
         EnemyController enemy = go.GetComponentInParent<EnemyController>();
@@ -69,7 +74,7 @@ public class ProjectileControllerBase : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(waitTime);
-        Destroy(gameObject);
+        Managers.Resources.Destroy(gameObject);
     }
 
     protected void Crash(Collision co) {
@@ -80,30 +85,29 @@ public class ProjectileControllerBase : MonoBehaviour {
 
         if (trails.Count > 0) {
             for (int i = 0; i < trails.Count; i++) {
-                trails[i].transform.parent = null;
                 var ps = trails[i].GetComponent<ParticleSystem>();
                 if (ps != null) {
                     ps.Stop();
-                    Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+                    Util.CoActive(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
                 }
             }
         }
 
         GetComponent<Rigidbody>().isKinematic = true;
 
-        ContactPoint contact = co.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
-        Vector3 pos = contact.point;
 
         if (hitPrefab != null) {
-            var hitVFX = Instantiate(hitPrefab, pos, rot) as GameObject;
+            var hitVFX = Managers.Resources.Instantiate(hitPrefab, null);
             hitVFX.transform.LookAt(Vector3.up);
+            hitVFX.transform.position = co.contacts[0].point;
             var ps = hitVFX.GetComponent<ParticleSystem>();
             if (ps == null) {
                 var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(hitVFX, psChild.main.duration);
+                StartCoroutine(Util.CoDestroy(hitVFX, psChild.main.duration));
+
             } else
-                Destroy(hitVFX, ps.main.duration);
+                StartCoroutine(Util.CoDestroy(hitVFX, ps.main.duration));
+
         }
         Crash(co.gameObject);
 
@@ -118,11 +122,10 @@ public class ProjectileControllerBase : MonoBehaviour {
 
         if (trails.Count > 0) {
             for (int i = 0; i < trails.Count; i++) {
-                trails[i].transform.parent = null;
                 var ps = trails[i].GetComponent<ParticleSystem>();
                 if (ps != null) {
                     ps.Stop();
-                    Destroy(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+                    Util.CoActive(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
                 }
             }
         }
@@ -132,16 +135,18 @@ public class ProjectileControllerBase : MonoBehaviour {
         Vector3 pos = transform.position;
 
         if (hitPrefab != null) {
-            var hitVFX = Instantiate(hitPrefab, pos, Quaternion.identity) as GameObject;
+            var hitVFX = Managers.Resources.Instantiate(hitPrefab, null) as GameObject;
+            hitVFX.transform.position = pos;
             hitVFX.transform.LookAt(Vector3.up);
-            var ps = hitVFX.GetComponent<ParticleSystem>();
-            if (ps == null) {
-                var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-                Destroy(hitVFX, psChild.main.duration);
-            } else
-                Destroy(hitVFX, ps.main.duration);
-
             hitVFX.GetComponent<ExplosionHit>().Init(_damage, _shooter);
+
+            var ps = hitVFX.GetComponent<ParticleSystem>();
+            //if (ps == null) {
+            //    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+            //    StartCoroutine(Util.CoDestroy(hitVFX, psChild.main.duration));
+            //} else
+            //    StartCoroutine(Util.CoDestroy(hitVFX, ps.main.duration));
+
         }
 
         StartCoroutine(DestroyParticle(0f));

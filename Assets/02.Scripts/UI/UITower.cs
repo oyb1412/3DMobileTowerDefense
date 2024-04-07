@@ -8,6 +8,9 @@ using static UnityEditor.PlayerSettings;
 public class UITower : UIBase {
     public static UITower Instance;
 
+    public UI_EnterInfo _creatorInfoPanel;
+    public UI_SellInfo _sellInfoPanel;
+    private Data _data;
     private GameObject _upgrade;
     private GameObject _sell;
     private GameObject _bundle;
@@ -43,21 +46,64 @@ public class UITower : UIBase {
         _lowerIcon = Util.FindChild(_lower, "Icon", false).GetComponent<Image>();
         _upgradeIcon = Util.FindChild(_center, "Icon", true).GetComponent<Image>();
 
-        _upgrade.GetComponent<Button>().onClick.AddListener(UpgradeTower);
-        _sell.GetComponent<Button>().onClick.AddListener(SellTower);
+        _upgrade.GetComponent<Button>().onClick.AddListener(SelecteCreator);
+        _sell.GetComponent<Button>().onClick.AddListener(SelecteSell);
+
+        _data = Managers.Data;
 
         _centerRect = _center.GetComponent<RectTransform>();
         _bundle.SetActive(false);
     }
 
+    private void SelecteCreator() {
+        _creatorInfoPanel.gameObject.SetActive(true);
+        _sellInfoPanel.gameObject.SetActive(false);
+        _creatorInfoPanel.SetPosition(_centerRect);
+
+        string name = $"{_selectTower.TowerStatus.TowerType.ToString()} Lvl{_selectTower.TowerStatus.Level + 1}";
+        string info = _data.GetTowerInfo((int)_selectTower.TowerStatus.TowerType);
+        int damage = _data.GetTowerAttackDamage((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level + 1);
+        float delay = _data.GetTowerAttacnDelay((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level + 1);
+        float range = _data.GetTowerAttacmRange((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level + 1);
+
+        int cost = _data.GetTowerCost((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level + 1);
+
+        ResetOutline();
+        Util.SetOutLine(_upgrade, true);
+
+        _creatorInfoPanel.SetEnterInfoUI(name, info, damage, delay, range, cost);
+        _creatorInfoPanel.SetBtn(UpgradeTower, cost);
+    }
+
+    private void SelecteSell() {
+        _creatorInfoPanel.gameObject.SetActive(false);
+        _sellInfoPanel.gameObject.SetActive(true);
+        _sellInfoPanel.SetPosition(_centerRect);
+
+        int reward = _data.GetSellCost((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level);
+
+        ResetOutline();
+        Util.SetOutLine(_sell, true);
+
+        _sellInfoPanel.SetSellInfoUI(reward);
+        _sellInfoPanel.SetBtn(SellTower);
+    }
+
+    private void ResetOutline() {
+        Util.SetOutLine(_sell, false);
+        Util.SetOutLine(_upgrade, false);
+    }
+
     private void UpgradeTower() {
         _selectTower.UpgradeTower();
         _bundle.SetActive(false);
+        _creatorInfoPanel.gameObject.SetActive(false);
     }
 
     private void SellTower() {
         _selectTower.SellTower();
         _bundle.SetActive(false);
+        _sellInfoPanel.gameObject.SetActive(false);
     }
 
     public void SetTowerUI(bool trigger, TowerBase tower) {
@@ -67,17 +113,17 @@ public class UITower : UIBase {
     private void SetTowerCenterUI(bool trigger, TowerBase tower) {
         _bundle.SetActive(trigger);
         _selectTower = null;
-        _upgrade.SetActive(false);
-
+        ResetOutline();
         if (trigger) {
-            if(GameSystem.Instance.EnoughGold(Managers.Data.GetTowerCost((int)tower.TowerStatus.TowerType, tower.TowerStatus.Level))) {
-                _upgrade.SetActive(true);
-                int max = Mathf.Min(GameSystem.TowerMaxLevel, tower.TowerStatus.Level + 1);
-                _upgradeIcon.sprite = Managers.Data.GetTowerIcon((int)tower.TowerStatus.TowerType, max);
-            }
+            int max = Mathf.Min(GameSystem.TowerMaxLevel, tower.TowerStatus.Level + 1);
+            _upgradeIcon.sprite = Managers.Data.GetTowerIcon((int)tower.TowerStatus.TowerType, max);
             _selectTower = tower;
             Util.RectToWorldPosition(tower.transform.position, _centerRect);
-           // _sell.GetComponentInChildren<Text>().text = $"{Managers.Data.GetSellCost((int)tower.TowerStatus.TowerType, tower.TowerStatus.Level)}";
+        }
+        else {
+            _sellInfoPanel.gameObject.SetActive(false);
+            _creatorInfoPanel.gameObject.SetActive(false);
+
         }
     }
 

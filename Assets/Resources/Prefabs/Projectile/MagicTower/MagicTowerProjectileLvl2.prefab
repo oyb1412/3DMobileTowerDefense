@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4346914901038727088}
   - component: {fileID: 6555517068375156821}
   - component: {fileID: 2681792422690125462}
+  - component: {fileID: 5547445446338023819}
   m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
@@ -4842,6 +4843,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5547445446338023819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797159358972537249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171392476287062638
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,6 +9774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5231539074095251905}
   - component: {fileID: 567933652520790522}
+  - component: {fileID: 1919187353481466412}
   m_Layer: 10
   m_Name: TrailAB
   m_TagString: Untagged
@@ -9887,6 +9901,18 @@ TrailRenderer:
   m_Autodestruct: 1
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!114 &1919187353481466412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174856268596953275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3984022036784327976
 GameObject:
   m_ObjectHideFlags: 0
@@ -19835,6 +19861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8273045922589206630}
   - component: {fileID: 428501659001735642}
+  - component: {fileID: 2987613326119325089}
   m_Layer: 10
   m_Name: Trail
   m_TagString: Untagged
@@ -19970,3 +19997,15 @@ TrailRenderer:
   m_Autodestruct: 1
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!114 &2987613326119325089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9127426817911664020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

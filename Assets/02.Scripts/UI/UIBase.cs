@@ -8,9 +8,9 @@ using UnityEngine.UI;
 
 public class UIBase : MonoBehaviour
 {
-    protected void BindEvent(GameObject go, Action<PointerEventData> action, Define.MouseEventType type)
+    protected void BindEvent(Action<PointerEventData> action, Define.MouseEventType type)
     {
-        UI_EventHandler evt = Util.GetorAddComponent<UI_EventHandler>(go);
+        UI_EventHandler evt = Util.GetorAddComponent<UI_EventHandler>(gameObject);
 
         switch (type)
         {
@@ -19,6 +19,9 @@ public class UIBase : MonoBehaviour
                 break;
             case Define.MouseEventType.LeftMouseDown:
                 evt.OnClickHandler += action;
+                break;
+            case Define.MouseEventType.Exit:
+                evt.OnExitHandler += action;
                 break;
         }
     }

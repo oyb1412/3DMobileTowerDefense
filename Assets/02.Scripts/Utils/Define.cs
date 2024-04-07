@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Define 
 {
+    public enum GameState {
+        Play,
+        GameOver,
+    }
+    public enum CursorType {
+        DefaultCursor,
+        NodeCursor,
+        ButtonCursor,
+        EnemyCursor,
+        Count,
+    }
     public enum EnemyState {
         Idle,
         Move,
@@ -59,11 +70,14 @@ public class Define
         RightMouse,
         Enter,
         Drag,
+        Exit,
     }
 
     public enum SceneType
     {
         None,
+        Loading,
+        Main,
         InGame,
     }
 }

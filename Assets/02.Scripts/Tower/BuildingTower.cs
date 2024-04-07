@@ -27,6 +27,9 @@ public class BuildingTower : MonoBehaviour
     }
 
     private void Update() {
+        if (!GameSystem.Instance.IsPlay())
+            return;
+
         _curretCreatingAmout += Time.deltaTime;
         if (_curretCreatingAmout >= _maxCreatingAmout)
             CreateTower();

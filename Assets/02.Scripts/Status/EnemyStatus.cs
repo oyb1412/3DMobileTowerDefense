@@ -14,8 +14,8 @@ public class EnemyStatus : MonoBehaviour {
     private Sprite _icon;
 
     private float _moveSpeed;
-    private float _physicsDefense;
-    private float _magicDefense;
+    private int _physicsDefense;
+    private int _magicDefense;
     public Action OnDeadEvent;
     public int CurrentHp { get { return _currentHp; } set { _currentHp = value; } }
         
@@ -24,8 +24,8 @@ public class EnemyStatus : MonoBehaviour {
     public int ProvideScore => _provideScore;
     public int MaxHp => _maxHp;
     public float MoveSpeed => _moveSpeed;
-    public float PhysicsDefense => _physicsDefense;
-    public float MagicDefense => _magicDefense;
+    public int PhysicsDefense => _physicsDefense;
+    public int MagicDefense => _magicDefense;
     public int Level => _level;
 
     public void Init() {

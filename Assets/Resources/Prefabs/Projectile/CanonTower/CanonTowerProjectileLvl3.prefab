@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2947619739305105395}
   - component: {fileID: 5621253453403990919}
+  - component: {fileID: 992019019329765978}
   m_Layer: 0
   m_Name: TrailAB
   m_TagString: Untagged
@@ -145,6 +146,18 @@ TrailRenderer:
   m_Autodestruct: 1
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!114 &992019019329765978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078581991988258065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5040823452523340158
 GameObject:
   m_ObjectHideFlags: 0
@@ -14905,6 +14918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6728714780711848028}
   - component: {fileID: 3643181086952672762}
+  - component: {fileID: 8141135803020988391}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -15040,6 +15054,18 @@ TrailRenderer:
   m_Autodestruct: 1
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!114 &8141135803020988391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007612177382355797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8129105572336159190
 GameObject:
   m_ObjectHideFlags: 0

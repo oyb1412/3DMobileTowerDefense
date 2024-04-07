@@ -12,7 +12,9 @@ public class Managers : MonoBehaviour
             return _instance;
         }
     }
+    public static CameraController MainCamera;
     private Data _data = new Data();
+    private CursorManager _cursor = new CursorManager();
     private SpawnManager _spawn = new SpawnManager();
     private PoolManager _pool = new PoolManager();
     private CreatorManager _creator = new CreatorManager();
@@ -22,6 +24,7 @@ public class Managers : MonoBehaviour
  
     public UICreator creator => GameObject.Find("UI_Creator").GetComponent<UICreator>();
 
+    public static CursorManager Cursor => _instance._cursor;
     public static CreatorManager Creator => _instance._creator;
     public static SpawnManager Spawn => _instance._spawn;
     public static PoolManager Pool => _instance._pool;
@@ -55,7 +58,8 @@ public class Managers : MonoBehaviour
             
             DontDestroyOnLoad(managers);
             _instance = managers.GetComponent<Managers>();
-            
+
+            MainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
             Pool.Init();
             Data.Init();
             Spawn.Init();

@@ -8,6 +8,7 @@ public class UISystem : UIBase {
     private Text _waveText;
     private Text _scoreText;
     private Text _hpText;
+    private Text _timeText;
     private Slider _hpSlider;
     private GameSystem _gameSystem;
     void Start() {
@@ -19,6 +20,7 @@ public class UISystem : UIBase {
         _waveText = Util.FindChild(gameObject, "WaveText", true).GetComponent<Text>();
         _scoreText = Util.FindChild(gameObject, "ScoreText", true).GetComponent<Text>();
         _hpText = Util.FindChild(gameObject, "HpText", true).GetComponent<Text>();
+        _timeText = Util.FindChild(gameObject, "TimeText", true).GetComponent<Text>();
         _hpSlider = Util.FindChild(gameObject, "HpSlider", true).GetComponent<Slider>();
 
         _gameSystem = GameSystem.Instance;
@@ -38,5 +40,8 @@ public class UISystem : UIBase {
         _hpSlider.maxValue = GameSystem.MaxGameHp;
         _hpSlider.value = _hpSlider.maxValue;
         _gameSystem.OnGameHpEvent += ((hp) => _hpSlider.value = hp );
+
+        GameSystem.Instance.OnTimeEvent += ((time) => _timeText.text = $"다음 라운드까지 {time}s");
+        
     }
 }

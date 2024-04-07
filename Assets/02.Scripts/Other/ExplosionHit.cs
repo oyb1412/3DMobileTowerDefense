@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -9,13 +10,16 @@ public class ExplosionHit : MonoBehaviour
     private GameObject _attacker;
     private const float _disalbeTimer = .3f;
     private const float _destroyTimer = 1f;
-    private SphereCollider _collider;
+    [SerializeField]private SphereCollider _collider;
 
     public void Init(int damage, GameObject shooter) {
         _attacker = shooter;
-        _collider = GetComponent<SphereCollider>();
         _damage = damage;
         StartCoroutine(CoDestroy());
+    }
+
+    private void OnEnable() {
+        _collider.enabled = true;
     }
 
     IEnumerator CoDestroy() {

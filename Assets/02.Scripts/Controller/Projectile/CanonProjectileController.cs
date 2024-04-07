@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System.Net;
+using Unity.VisualScripting;
 
 public class CanonProjectileController : ProjectileControllerBase {
     private const float _limitYPos = -0.4f;
@@ -21,7 +22,11 @@ public class CanonProjectileController : ProjectileControllerBase {
     }
 
     private void FixedUpdate() {
-        if (transform.position.y < _limitYPos)
+        if (!GameSystem.Instance.IsPlay())
+            return;
+
+        if (transform.position.y <= _limitYPos ||
+            transform.position.y <= _targetPos.y)
             Crash();
     }
 }

@@ -7,13 +7,15 @@ using UnityEngine;
 public abstract class TowerControllerBase : MonoBehaviour
 {
     private SphereCollider _attackRangeCollider;
+    private const float LimitPosRight = 75f;
+    private const float LimitPosLeft = -105f;
     protected GameObject _base;
     protected string _projectilePath;
     protected Transform _firePoint;
 
-    protected GameObject _targetEnemy;
+    [SerializeField]protected GameObject _targetEnemy;
     protected TowerStatus _status;
-    private Define.TowerState _state;
+    [SerializeField]private Define.TowerState _state;
     protected float _currentAttackDelay;
     protected GameObject _projectileObject;
 
@@ -32,10 +34,13 @@ public abstract class TowerControllerBase : MonoBehaviour
     }
 
     protected void ChangeState(GameObject go) {
-        _state = go == null ? _state = Define.TowerState.Idle : Define.TowerState.Attack;
+        _state = Util.NullCheck(go) ?  Define.TowerState.Idle : Define.TowerState.Attack;
     }
 
     private void Update() {
+        if (!GameSystem.Instance.IsPlay())
+            return;
+
         switch (_state) {
             case Define.TowerState.Idle:
                 OnIdleUpdate();
@@ -80,7 +85,11 @@ public abstract class TowerControllerBase : MonoBehaviour
         if (!c.CompareTag("Enemy"))
             return;
 
-        if (_targetEnemy != null)
+        if (!Util.NullCheck(_targetEnemy))
+            return;
+
+        if (c.transform.parent.position.x > LimitPosRight ||
+            c.transform.parent.position.x < LimitPosLeft)
             return;
 
         _targetEnemy = c.gameObject;
@@ -91,7 +100,7 @@ public abstract class TowerControllerBase : MonoBehaviour
         if(!c.CompareTag("Enemy"))
             return;
 
-        if (_targetEnemy == null)
+        if (Util.NullCheck(_targetEnemy))
             return;
 
         if (c.gameObject != _targetEnemy)

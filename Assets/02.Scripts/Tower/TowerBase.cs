@@ -6,6 +6,8 @@ using UnityEngine;
 public class TowerBase : MonoBehaviour, ISelectedObject {
     private string _nextConPath;
     private GameObject _attackRange;
+    private GameObject _mark;
+    private ParticleSystem _destroyEffect;
     protected TowerStatus _towerStatus;
     public Action<int> OnKillEvent;
     public TowerStatus TowerStatus => _towerStatus;
@@ -17,11 +19,17 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
     protected virtual void Init() {
         _towerStatus = GetComponent<TowerStatus>();
         _attackRange = Util.FindChild(gameObject, "AttackRange", true);
-        _attackRange.SetActive(false);
+        _mark = Util.FindChild(gameObject, "Mark", true);
+ 
         _attackRange.GetComponent<RectTransform>().sizeDelta = 
             new Vector2(_towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize, _towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize);
 
         _nextConPath = $"{_towerStatus.TowerType.ToString()}_Lvl{_towerStatus.Level + 1}Cons";
+
+        _attackRange.SetActive(false);
+        _mark.SetActive(false);
+
+        _destroyEffect = Resources.Load<ParticleSystem>("Prefabs/Effect/DestroyEffect");
     }
 
     public void SetKill() {
@@ -31,11 +39,13 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
     public void OnDeSelect() {
         UITower.Instance.SetTowerUI(false, this);
         _attackRange.SetActive(false);
+        _mark.SetActive(false);
     }
 
     public ISelectedObject OnSelect() {
         UITower.Instance.SetTowerUI(true, this);
         _attackRange.SetActive(true);
+        _mark.SetActive(true);
 
         return this;
     }
@@ -43,7 +53,8 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
     public void SellTower() {
         int sellGold = Managers.Data.GetSellCost((int)_towerStatus.TowerType, TowerStatus.Level);
         GameSystem.Instance.SetGold(sellGold);
-
+        GameObject go = Managers.Resources.Instantiate(_destroyEffect.gameObject, null);
+        go.transform.position = transform.position;
         Managers.Resources.Destroy(gameObject);
     }
 
@@ -53,7 +64,7 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
             return;
         }
 
-        int cost = Managers.Data.GetSellCost((int)_towerStatus.TowerType, TowerStatus.Level + 1);
+        int cost = Managers.Data.GetTowerCost((int)_towerStatus.TowerType, TowerStatus.Level + 1);
         GameSystem.Instance.SetGold(-cost);
 
         BuildingTower con = Managers.Resources.Instantiate($"Towers/{TowerStatus.TowerType.ToString()}/{_nextConPath}", null).GetComponent<BuildingTower>();

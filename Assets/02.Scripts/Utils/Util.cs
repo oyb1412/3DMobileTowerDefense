@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Util : MonoBehaviour
 {
@@ -29,6 +30,34 @@ public class Util : MonoBehaviour
         return null;
     }
 
+    public static void SetOutLine(GameObject go, bool trigger) {
+
+        Outline outline = go.GetComponent<Outline>();
+        if (trigger) {
+            outline.effectColor = Color.red;
+            outline.effectDistance = new Vector2(10f, -10f);
+        } else {
+            outline.effectColor = Color.black;
+            outline.effectDistance = new Vector2(2f, -2f);
+        }
+
+    }
+
+    public static IEnumerator CoDestroy(GameObject go, float time) {
+        yield return new WaitForSeconds(time);
+        Managers.Resources.Destroy(go);
+    }
+
+    public static IEnumerator CoActive(GameObject go, float time, bool trigger = false) {
+        yield return new WaitForSeconds(time);
+        go.SetActive(trigger);
+    }
+
+    public static bool NullCheck(GameObject go) {
+        if (go == null) return true;
+        else if (!go.activeInHierarchy) return true;
+        else return false;
+    }
     public static void RectToWorldPosition(Vector3 pos, RectTransform rect) {
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(new Vector3(pos.x, pos.y, pos.z));
         rect.position = screenPoint;
@@ -40,5 +69,10 @@ public class Util : MonoBehaviour
             component = go.AddComponent<T>();
 
         return component;
+    }
+
+    public static void CreateErrorMessage(string message) {
+        UI_Error error = Managers.Resources.Instantiate("UI/UI_Error", null).GetComponent<UI_Error>();
+        error.Init(message);
     }
 }
