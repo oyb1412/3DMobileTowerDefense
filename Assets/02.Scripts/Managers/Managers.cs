@@ -33,7 +33,6 @@ public class Managers : MonoBehaviour
     public static InputManager Input => Instance._input;
     public static ResourcesManager Resources => Instance._resources;
 
-
     private void Awake()
     {
         Init();
@@ -62,7 +61,7 @@ public class Managers : MonoBehaviour
             MainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
             Pool.Init();
             Data.Init();
-            Spawn.Init();
+            Scene.Init();
         }
     }
 }

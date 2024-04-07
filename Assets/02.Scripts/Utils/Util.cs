@@ -58,6 +58,14 @@ public class Util : MonoBehaviour
         else if (!go.activeInHierarchy) return true;
         else return false;
     }
+
+    public static void ExitGame() {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
     public static void RectToWorldPosition(Vector3 pos, RectTransform rect) {
         Vector3 screenPoint = Camera.main.WorldToScreenPoint(new Vector3(pos.x, pos.y, pos.z));
         rect.position = screenPoint;

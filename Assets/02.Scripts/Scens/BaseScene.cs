@@ -18,11 +18,16 @@ public abstract class BaseScene : MonoBehaviour
         if (obj == null)
             Managers.Resources.Instantiate("UI/EventSystem", null).name = "@EventSystem";
 
-        _fade = GameObject.Find("UI_Fade").GetComponent<UI_Fade>();
-        _fade.SetFade(false);
+        if(_fade == null)
+            _fade = GameObject.Find("UI_Fade").GetComponent<UI_Fade>();
+
     }
 
     private void Awake() {
         Init();
+    }
+
+    private void Start() {
+        _fade.SetFade(false);
     }
 }

@@ -16,8 +16,8 @@ public class UI_Fade : MonoBehaviour
         _fadeImage = GetComponentInChildren<Image>();
         _fadeImage.color = Color.black;
     }
- 
 
+    
     public Tween SetFade(bool trigger) {
         if(trigger) {
             return _fadeImage.DOFade(1f, _fadeTime);

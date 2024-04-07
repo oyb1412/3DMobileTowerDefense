@@ -11,6 +11,7 @@ public class GameScene : BaseScene
 
     public override void Init() {
         base.Init();
-
+        SceneType = Define.SceneType.InGame;
+        Managers.Spawn.Init();
     }
 }
