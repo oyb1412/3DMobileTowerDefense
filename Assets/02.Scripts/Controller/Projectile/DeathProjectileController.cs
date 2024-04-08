@@ -16,6 +16,9 @@ public class DeathProjectileController : ProjectileControllerBase {
         if (!GameSystem.Instance.IsPlay())
             return;
 
+        if (transform.position.y < _limitYPos)
+            Managers.Resources.Destroy(gameObject);
+
         if (!Util.NullCheck(_target.gameObject) && _target.Status.CurrentHp > 0)
             transform.LookAt(_target.transform);
 

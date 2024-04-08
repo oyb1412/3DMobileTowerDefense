@@ -29,5 +29,7 @@ public abstract class BaseScene : MonoBehaviour
 
     private void Start() {
         _fade.SetFade(false);
+
+
     }
 }

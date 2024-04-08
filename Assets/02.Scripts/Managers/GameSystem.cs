@@ -11,7 +11,7 @@ public class GameSystem : MonoBehaviour
     private Define.GameState _gameState = Define.GameState.Play;
     public const int EnemyMaxLevel = 6;
     public const int TowerMaxLevel = 4;
-    public const float TowerAttackRangeImageSize = 15f;
+    public const float TowerAttackRangeImageSize = 10f;
     public const int MaxGameLevel = 25;
     public const int MaxGameHp = 100;
 
@@ -19,7 +19,7 @@ public class GameSystem : MonoBehaviour
     private int _currentGameHp;
     private int _gameLevel = 0;
     private float _currentTime;
-    [SerializeField]private float _maxTime = 30f;
+    [SerializeField]private float _maxTime = 60f;
     [SerializeField]private int _currentGold;
 
     public Action<int> OnGoldEvent;
@@ -27,6 +27,7 @@ public class GameSystem : MonoBehaviour
     public Action<int> OnGameHpEvent;
     public Action<int> OnScoreEvent;
     public Action<int> OnTimeEvent;
+    public Action OnStartEvent;
     public int GameLevel => _gameLevel;
     public Define.GameState GameState => _gameState;
     public int CurrentGold { get { return _currentGold; } set { _currentGold = value; } }
@@ -41,12 +42,32 @@ public class GameSystem : MonoBehaviour
     }
 
   
+    public void GameStart() {
+        _gameLevel++;
+
+        if (_gameLevel > MaxGameLevel) {
+            _gameoverUI.gameObject.SetActive(true);
+            _gameoverUI.SetGameOverUI(_gameLevel, _currentGameScore, true);
+            _gameState = Define.GameState.GameOver;
+            return;
+        }
+
+        OnGameLevelEvent?.Invoke(_gameLevel);
+        _currentTime = 0f;
+        Managers.Spawn.SpawnEnemy(_gameLevel, _summonEffect);
+    }
     private void Update() {
         if (!IsPlay())
             return;
 
         _currentTime += Time.deltaTime;
         OnTimeEvent?.Invoke((int)_maxTime - (int)_currentTime);
+
+        if(_currentTime * 3f > _maxTime &&
+            _gameLevel < MaxGameLevel) {
+            OnStartEvent?.Invoke();
+        }
+
         if (_currentTime < _maxTime)
             return;
 

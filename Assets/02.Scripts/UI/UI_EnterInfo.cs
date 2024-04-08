@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -50,6 +51,6 @@ public class UI_EnterInfo : UIBase
     }
 
     public void SetPosition(RectTransform rect) {
-        _rectTransform.anchoredPosition = rect.anchoredPosition + new Vector2(964f, 740f);
+         _rectTransform.anchoredPosition = rect.anchoredPosition;
     }
 }

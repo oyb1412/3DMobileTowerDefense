@@ -6,6 +6,7 @@ using UnityEngine;
 public class ProjectileControllerBase : MonoBehaviour {
 
     protected Rigidbody _rigidbody;
+    protected const float _limitYPos = -0.4f;
     private const float _destroyTime = 3f;
     private GameObject _shooter;
     protected int _damage;

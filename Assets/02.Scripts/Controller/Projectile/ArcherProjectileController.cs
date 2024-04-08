@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ArcherProjectileController : ProjectileControllerBase {
@@ -14,6 +15,9 @@ public class ArcherProjectileController : ProjectileControllerBase {
     private void FixedUpdate() {
         if (!GameSystem.Instance.IsPlay())
             return;
+
+        if(transform.position.y < _limitYPos)
+            Managers.Resources.Destroy(gameObject);
 
         if (!Util.NullCheck(_target.gameObject) && _target.Status.CurrentHp > 0) 
             transform.LookAt(_target.transform);

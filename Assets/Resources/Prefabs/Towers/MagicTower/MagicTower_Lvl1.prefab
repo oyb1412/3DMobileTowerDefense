@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd06713d46a90e74fb3bf4053817e2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targets: []
+  _targetEnemy: {fileID: 0}
+  _state: 0
 --- !u!135 &2271584467891596897
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -562,8 +565,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.1779227, y: 5.4715853, z: 6.1779227}
-  m_Center: {x: 0.00000023841858, y: 2.7357922, z: -0.00000023841858}
+  m_Size: {x: 10, y: 5.4715853, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &6303023509105739836
 MonoBehaviour:
   m_ObjectHideFlags: 0

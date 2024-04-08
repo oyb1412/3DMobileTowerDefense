@@ -11,8 +11,6 @@ public class UI_Fade : MonoBehaviour
     private const float _fadeTime = 1f;
 
     private void Awake() {
-        DontDestroyOnLoad(this);
-
         _fadeImage = GetComponentInChildren<Image>();
         _fadeImage.color = Color.black;
     }

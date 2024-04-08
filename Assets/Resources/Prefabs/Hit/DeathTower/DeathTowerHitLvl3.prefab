@@ -4874,7 +4874,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4710338527683554}
   - component: {fileID: -3852452224372660253}
-  - component: {fileID: 3661289013190653572}
   m_Layer: 0
   m_Name: DeathTowerHitLvl3
   m_TagString: Untagged
@@ -4911,18 +4910,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3661289013190653572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594239829313766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e77689d02cec34fa080af054700fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1643588779132114
@@ -5529,7 +5516,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 1
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 5
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -10249,7 +10236,7 @@ ParticleSystem:
         m_RotationOrder: 0
     randomizeRotationDirection: 1
     gravitySource: 0
-    maxNumParticles: 10
+    maxNumParticles: 2
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0

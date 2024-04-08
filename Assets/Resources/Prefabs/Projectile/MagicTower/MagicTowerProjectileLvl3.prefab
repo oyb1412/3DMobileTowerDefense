@@ -605,7 +605,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 1
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -5459,7 +5459,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 4
+    maxNumParticles: 1
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
     rotation3D: 1
@@ -14930,6 +14930,7 @@ MonoBehaviour:
   - {fileID: 9127426817911664020}
   - {fileID: 2174856268596953275}
   - {fileID: 797159358972537249}
+  _target: {fileID: 0}
 --- !u!114 &636841776334035143
 MonoBehaviour:
   m_ObjectHideFlags: 0

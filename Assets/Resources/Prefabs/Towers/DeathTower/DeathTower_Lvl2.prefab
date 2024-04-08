@@ -169,6 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14524b71b496a2547886a069f66443a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targets: []
+  _targetEnemy: {fileID: 0}
+  _state: 0
 --- !u!1 &2768447075118440483
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,8 +398,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.321817, y: 8.930475, z: 9.321818}
-  m_Center: {x: -0.00000023841858, y: 4.4652367, z: 0}
+  m_Size: {x: 10, y: 8.930475, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &6251853593131627237
 MonoBehaviour:
   m_ObjectHideFlags: 0

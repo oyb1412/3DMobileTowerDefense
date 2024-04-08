@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Util : MonoBehaviour
 {
+    private static float _touchTime;
+    private static bool _isLongTouch;
     public static GameObject FindChild(GameObject go, string name, bool recursion) 
     {
         if (go == null || string.IsNullOrEmpty(name))
@@ -30,6 +32,7 @@ public class Util : MonoBehaviour
         return null;
     }
 
+    
     public static void SetOutLine(GameObject go, bool trigger) {
 
         Outline outline = go.GetComponent<Outline>();
@@ -60,7 +63,7 @@ public class Util : MonoBehaviour
     }
 
     public static void ExitGame() {
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();

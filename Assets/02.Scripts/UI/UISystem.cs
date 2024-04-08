@@ -10,6 +10,7 @@ public class UISystem : UIBase {
     private Text _hpText;
     private Text _timeText;
     private Slider _hpSlider;
+    private Button _startBtn;
     private GameSystem _gameSystem;
     void Start() {
         Init();
@@ -22,6 +23,7 @@ public class UISystem : UIBase {
         _hpText = Util.FindChild(gameObject, "HpText", true).GetComponent<Text>();
         _timeText = Util.FindChild(gameObject, "TimeText", true).GetComponent<Text>();
         _hpSlider = Util.FindChild(gameObject, "HpSlider", true).GetComponent<Slider>();
+        _startBtn = Util.FindChild(gameObject, "StartBtn", true).GetComponent<Button>();
 
         _gameSystem = GameSystem.Instance;
 
@@ -37,11 +39,20 @@ public class UISystem : UIBase {
         _hpText.text = $"{GameSystem.MaxGameHp}";
         _gameSystem.OnGameHpEvent += ((hp) => _hpText.text = $"{hp}");
 
+        _startBtn.interactable = false;
+        _startBtn.onClick.AddListener(GameStart);
+        _gameSystem.OnStartEvent += (() => _startBtn.interactable = true);
+
         _hpSlider.maxValue = GameSystem.MaxGameHp;
         _hpSlider.value = _hpSlider.maxValue;
         _gameSystem.OnGameHpEvent += ((hp) => _hpSlider.value = hp );
 
         GameSystem.Instance.OnTimeEvent += ((time) => _timeText.text = $"다음 라운드까지 {time}s");
         
+    }
+
+    private void GameStart() {
+        _startBtn.interactable = false;
+        _gameSystem.GameStart();
     }
 }

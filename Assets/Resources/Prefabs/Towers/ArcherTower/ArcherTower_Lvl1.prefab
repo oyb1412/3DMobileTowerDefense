@@ -141,8 +141,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.4848948, y: 5.3236704, z: 6.756498}
-  m_Center: {x: 0.00000059604645, y: 2.641955, z: -0.13580108}
+  m_Size: {x: 10, y: 5.3236704, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &1862496772157587450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec6dd55256fee34ea384581ce780b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targets: []
   _targetEnemy: {fileID: 0}
   _state: 0
 --- !u!135 &2570480534678631812
@@ -489,7 +490,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 80
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4318387079934793276
 Rigidbody:

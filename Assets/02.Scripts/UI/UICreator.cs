@@ -38,6 +38,8 @@ public class UICreator : UIBase
     }
 
     private void SelecteCreator(Define.TowerType type) {
+        Debug.Log("활성화");
+
         _creatorInfoPanel.gameObject.SetActive(true);
         _creatorInfoPanel.SetPosition(_rectTransform);
 
@@ -73,6 +75,7 @@ public class UICreator : UIBase
 
     public void SelectNode(bool trigger, Vector3 pos, ISelectedObject obj = null) {
         _creatorInfoPanel.gameObject.SetActive(false);
+        Debug.Log("비활성화");
         foreach (var item in _towersIcon) {
             Util.SetOutLine(item, false);
         }

@@ -82,11 +82,14 @@ public class EnemyController : MonoBehaviour
         int magicDefense = _status.MagicDefense;
         var type = tower.TowerStatus.TowerType;
 
-        if(type == Define.TowerType.ArcherTower || type == Define.TowerType.CanonTower)
+        if (type == Define.TowerType.ArcherTower || type == Define.TowerType.CanonTower)
             damage += physicsDefense;
-        if(type == Define.TowerType.MagicTower)
+        else if (type == Define.TowerType.MagicTower)
             damage += magicDefense;
-
+        else {
+            damage += (physicsDefense / 5);
+            damage += (magicDefense / 5);
+        }
         damage = Mathf.Min(damage, 1);
 
         _status.CurrentHp += damage;
@@ -118,7 +121,7 @@ public class EnemyController : MonoBehaviour
             StopAllBehaivoir();
 
         if (_moveIndex == _lastMoveIndex && gameObject.activeInHierarchy) {
-            GameSystem.Instance.SetGameHp(-1);
+            GameSystem.Instance.SetGameHp(-10);
             Managers.MainCamera.CameraShake();
             StopAllBehaivoir();
             Managers.Resources.Destroy(gameObject);

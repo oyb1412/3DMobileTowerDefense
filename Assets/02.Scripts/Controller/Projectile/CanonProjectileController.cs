@@ -6,7 +6,6 @@ using System.Net;
 using Unity.VisualScripting;
 
 public class CanonProjectileController : ProjectileControllerBase {
-    private const float _limitYPos = -0.4f;
     private Vector3 _targetPos;
     [SerializeField]private float height;
     [SerializeField] private float duration;

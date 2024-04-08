@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Define;
-using static UnityEditor.PlayerSettings;
 
 public class UITower : UIBase {
     public static UITower Instance;
@@ -121,6 +120,12 @@ public class UITower : UIBase {
         ResetOutline();
         if (trigger) {
             int max = Mathf.Min(GameSystem.TowerMaxLevel, tower.TowerStatus.Level + 1);
+            if(tower.TowerStatus.Level >= GameSystem.TowerMaxLevel) {
+                _upgrade.SetActive(false);
+            }
+            else
+                _upgrade.SetActive(true);
+
             _upgradeIcon.sprite = Managers.Data.GetTowerIcon((int)tower.TowerStatus.TowerType, max);
             _selectTower = tower;
             Util.RectToWorldPosition(tower.transform.position, _centerRect);
