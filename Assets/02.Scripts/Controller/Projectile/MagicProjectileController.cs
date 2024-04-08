@@ -1,27 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class MagicProjectileController : ProjectileControllerBase {
-
-    private const float _projectileVelocity = 50f;
+    [SerializeField] private EnemyController _target;
+    private const float _projectileVelocity = 70f;
     public override void Init(Vector3 pos, Vector3 dir, int damage, GameObject target, GameObject shooter) {
         base.Init(pos, dir, damage, target, shooter);
+        _target = target.GetComponentInParent<EnemyController>();
+
     }
 
     private void FixedUpdate() {
         if (!GameSystem.Instance.IsPlay())
             return;
 
-        if (_targetEnemy) {
-            transform.LookAt(_targetEnemy.transform);
-            _rigidbody.velocity = transform.forward * _projectileVelocity;
+        if (!Util.NullCheck(_target.gameObject) && _target.Status.CurrentHp > 0)
+            transform.LookAt(_target.transform);
 
-        } else {
-            _collider.enabled = false;
-            _rigidbody.velocity = Vector3.zero;
-            StartCoroutine(DestroyParticle(0f));
-        }
+        _rigidbody.velocity = transform.forward * _projectileVelocity;
     }
     private void OnCollisionEnter(Collision collision) {
         if (!collision.collider.CompareTag("Enemy"))

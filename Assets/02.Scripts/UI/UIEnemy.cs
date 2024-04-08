@@ -11,24 +11,23 @@ public class UIEnemy : MonoBehaviour
     private Transform _unitPoint;
     private GameObject _rewardPanel;
     private Text _rewardText;
+    private EnemyController _root;
     [SerializeField] float UpperAmout;
 
-    void Start()
+    void Awake()
     {
         _hpSlider = Util.FindChild(gameObject, "HpSlider", false).GetComponent<Slider>();
         _unitPoint = Util.FindChild(transform.parent.gameObject, "Model", false).transform;
         _rewardPanel = Util.FindChild(gameObject, "RewardPanel", false);
         _rewardText = Util.FindChild(_rewardPanel, "RewardText", false).GetComponent<Text>();
-        EnemyController root = transform.parent.GetComponent<EnemyController>();
+        _root = transform.parent.GetComponent<EnemyController>();
 
-        root.OnHpEvent += HpEventDelegate;
-        root.OnRewardEvent += OnRewardEvent;
-        root.Status.OnDeadEvent += (() => Managers.Resources.Destroy(gameObject)) ;
+        _root.OnHpEvent += HpEventDelegate;
+        _root.OnRewardEvent += OnRewardEvent;
+        _root.Status.OnDeadEvent += OnDeadUpdate;
 
-        _hpSlider.value = _hpSlider.maxValue;
         _hpSliderRect = _hpSlider.GetComponent<RectTransform>();
 
-        _rewardText.text = $"+ {root.Status.ProvideGold}g";
         _rewardPanelRect = _rewardPanel.GetComponent<RectTransform>();
 
         Vector3 pos = new Vector3(_unitPoint.position.x, _unitPoint.position.y, _unitPoint.position.z + UpperAmout);
@@ -36,8 +35,21 @@ public class UIEnemy : MonoBehaviour
         Util.RectToWorldPosition(pos, _rewardPanelRect);
 
         _rewardPanel.SetActive(false);
-
     }
+
+    private void OnDeadUpdate() {
+        _rewardPanel.SetActive(false);
+        _hpSlider.gameObject.SetActive(false);
+    }
+
+    public void Init() {
+        _hpSlider.gameObject.SetActive(true);
+        _hpSlider.maxValue = _root.Status.MaxHp;
+        _hpSlider.value = _hpSlider.maxValue;
+        _rewardText.text = $"+ {_root.Status.ProvideGold}g";
+    }
+
+
 
     private void Update() {
         Vector3 pos = new Vector3(_unitPoint.position.x, _unitPoint.position.y, _unitPoint.position.z + UpperAmout);
@@ -58,6 +70,10 @@ public class UIEnemy : MonoBehaviour
         while(true) {
             _rewardPanelRect.anchoredPosition += Vector2.up / 2;
             yield return null;
+            if (Util.NullCheck(_rewardPanel)) {
+                StopAllCoroutines();
+                break;
+            }
         }
     }
     private void HpEventDelegate(int currentHp, int maxHp) {

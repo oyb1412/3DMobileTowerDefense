@@ -8,8 +8,8 @@ using static UnityEditor.PlayerSettings;
 public class UITower : UIBase {
     public static UITower Instance;
 
-    public UI_EnterInfo _creatorInfoPanel;
-    public UI_SellInfo _sellInfoPanel;
+    private UI_EnterInfo _creatorInfoPanel;
+    private UI_SellInfo _sellInfoPanel;
     private Data _data;
     private GameObject _upgrade;
     private GameObject _sell;
@@ -33,6 +33,8 @@ public class UITower : UIBase {
     }
 
     private void Init() {
+        _creatorInfoPanel = GameObject.Find("UI_CreatorInfo").GetComponent<UI_EnterInfo>();
+        _sellInfoPanel = GameObject.Find("UI_SellInfo").GetComponent<UI_SellInfo>();
         _bundle = Util.FindChild(gameObject, "Bundle", false);
         _center = Util.FindChild(_bundle, "Center", false);
         _lower = Util.FindChild(_bundle, "Lower", false);
@@ -56,6 +58,9 @@ public class UITower : UIBase {
     }
 
     private void SelecteCreator() {
+        if (_selectTower.TowerStatus.Level == GameSystem.TowerMaxLevel)
+            return;
+
         _creatorInfoPanel.gameObject.SetActive(true);
         _sellInfoPanel.gameObject.SetActive(false);
         _creatorInfoPanel.SetPosition(_centerRect);

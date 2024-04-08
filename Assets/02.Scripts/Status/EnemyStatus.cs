@@ -7,10 +7,11 @@ public class EnemyStatus : MonoBehaviour {
     [SerializeField] private int _level;
     [SerializeField] protected Define.EnemyType _enemyType;
     public Define.EnemyType EnemyType => _enemyType;
-    private int _currentHp;
-    private int _maxHp;
+    [SerializeField] private int _currentHp;
+    [SerializeField] private int _maxHp;
     private int _provideGold;
     private int _provideScore;
+    [SerializeField] private int _number;
     private Sprite _icon;
 
     private float _moveSpeed;
@@ -21,6 +22,7 @@ public class EnemyStatus : MonoBehaviour {
         
     public Sprite Icon => _icon;
     public int ProvideGold => _provideGold;
+   public int Number => _number;
     public int ProvideScore => _provideScore;
     public int MaxHp => _maxHp;
     public float MoveSpeed => _moveSpeed;
@@ -28,7 +30,7 @@ public class EnemyStatus : MonoBehaviour {
     public int MagicDefense => _magicDefense;
     public int Level => _level;
 
-    public void Init() {
+    public void Init(int number) {
         Data data = Managers.Data;
         _icon = data.GetEnemyIcon((int)_enemyType, _level);
         _maxHp = data.GetEnemyMaxHp((int)_enemyType, _level);
@@ -38,6 +40,7 @@ public class EnemyStatus : MonoBehaviour {
         _magicDefense = data.GetEnemyMagicDefense((int)_enemyType, _level);
         _provideGold = data.GetEnemyProvideGold((int)_enemyType, _level);
         _provideScore = data.GetEnemyProvideScore((int)_enemyType, _level);
+        _number = number;
     }
 
     public void OnDieEvent() {

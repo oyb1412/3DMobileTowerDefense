@@ -7,14 +7,12 @@ public class ArcherTowerController : TowerControllerBase {
     protected override void Init() {
         base.Init();
     }
-    protected override void OnIdleUpdate() {
-        
-    }
+   
 
     protected override void OnAttackEvent() {
         base.OnAttackEvent();
         if (!_targetEnemy) {
-            ChangeState(null);
+            ChangeState(false);
             return;
         }
             

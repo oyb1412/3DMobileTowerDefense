@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     private int _lastMoveIndex;
     private CapsuleCollider _collider;
     private Transform[] _movePoint;
+    private Transform _movePoints;
     public Action OnRewardEvent;
     public Action<int, int> OnHpEvent;
     private Tween _moveTween;
@@ -39,26 +40,33 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+  
+
+    public void Init(Vector3 pos, int number) {
+        transform.position = pos;
+        _collider.enabled = true;
+        _status.Init(number);
+        State = Define.EnemyState.Move;
+        _moveIndex = 0;
+        transform.LookAt(_movePoint[_moveIndex].position);
+        StartCoroutine(CoMove());
+        GetComponentInChildren<UIEnemy>().Init();
+    }
+
 
     private void Awake() {
         _animator = GetComponentInChildren<Animator>();
         _collider = GetComponentInChildren<CapsuleCollider>();
+        _status = GetComponentInChildren<EnemyStatus>();
+        _movePoints = GameObject.Find("MovePoints").transform;
+        _movePoint = new Transform[_movePoints.childCount];
+        for (int i = 0; i < _movePoints.childCount; i++) {
+            _movePoint[i] = _movePoints.GetChild(i).transform;
+        }
     }
 
     private void Start() {
-        _status = GetComponentInChildren<EnemyStatus>();
-        _status.Init();
-        State = Define.EnemyState.Move;
-        Transform movePoints = GameObject.Find("MovePoints").transform;
-        _movePoint = new Transform[movePoints.childCount];
         _lastMoveIndex = _movePoint.Length;
-        for (int i = 0; i< movePoints.childCount; i++) {
-            _movePoint[i] = movePoints.GetChild(i).transform;
-        }
-
-        transform.LookAt(_movePoint[_moveIndex].position);
-
-        StartCoroutine(CoMove());
     }
 
 

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UICreator : UIBase
 {
     private Data _data;
-    public UI_EnterInfo _creatorInfoPanel;
+    private UI_EnterInfo _creatorInfoPanel;
     private RectTransform _rectTransform;
     private ISelectedObject _selectObject;
     private GameObject _centerImage;
@@ -19,6 +19,7 @@ public class UICreator : UIBase
     }
 
     private void Init() {
+        _creatorInfoPanel = GameObject.Find("UI_CreatorInfo").GetComponent<UI_EnterInfo>();
         _data = Managers.Data;
         _centerImage = Util.FindChild(gameObject, "Center", false);
         _towersIcon[(int)Define.TowerType.ArcherTower] = Util.FindChild(_centerImage, "ArcherTower", false);

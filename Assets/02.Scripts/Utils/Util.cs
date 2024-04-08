@@ -55,8 +55,8 @@ public class Util : MonoBehaviour
 
     public static bool NullCheck(GameObject go) {
         if (go == null) return true;
-        else if (!go.activeInHierarchy) return true;
-        else return false;
+        if (!go.activeInHierarchy) return true;
+        return false;
     }
 
     public static void ExitGame() {

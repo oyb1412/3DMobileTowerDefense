@@ -11,6 +11,7 @@ public class SpawnManager
     private Data _data;
     private Transform _spawnPoint;
     private Transform _arrivalPoint;
+    private int _enemyNumber;
   
     public void Init() {
         _movePoints = GameObject.Find("MovePoints").transform;
@@ -36,8 +37,9 @@ public class SpawnManager
                 if (!GameSystem.Instance.IsPlay())
                     GameSystem.Instance.StopAllCoroutines();
 
-                GameObject go = Managers.Resources.Instantiate($"Enemy/{data.EnemyLevel.ToString()}/{data.EnemyType.ToString()}_{data.EnemyLevel.ToString()}", null);
-                go.transform.position = _spawnPoint.position;
+                _enemyNumber++;
+                Managers.Resources.Instantiate($"Enemy/{data.EnemyLevel.ToString()}/{data.EnemyType.ToString()}_{data.EnemyLevel.ToString()}", null)
+                    .GetComponent<EnemyController>().Init(_spawnPoint.position, _enemyNumber);
                 yield return new WaitForSeconds(_spawnDelay);
             }
         }

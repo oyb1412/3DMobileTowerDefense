@@ -59,6 +59,7 @@ public class Managers : MonoBehaviour
             _instance = managers.GetComponent<Managers>();
 
             MainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+
             Pool.Init();
             Data.Init();
             Scene.Init();

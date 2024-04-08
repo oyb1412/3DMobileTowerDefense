@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameSystem : MonoBehaviour
 {
     public static GameSystem Instance;
-    public UI_GameOver _gameoverUI;
+    private UI_GameOver _gameoverUI;
     private ParticleSystem _summonEffect;
     private Define.GameState _gameState = Define.GameState.Play;
     public const int EnemyMaxLevel = 6;
@@ -19,7 +19,7 @@ public class GameSystem : MonoBehaviour
     private int _currentGameHp;
     private int _gameLevel = 0;
     private float _currentTime;
-    [SerializeField] private float _maxTime = 30f;
+    [SerializeField]private float _maxTime = 30f;
     [SerializeField]private int _currentGold;
 
     public Action<int> OnGoldEvent;
@@ -32,6 +32,7 @@ public class GameSystem : MonoBehaviour
     public int CurrentGold { get { return _currentGold; } set { _currentGold = value; } }
     private void Awake() {
         Instance = this;
+        _gameoverUI = GameObject.Find("UI_GameOver").GetComponent<UI_GameOver>();
     }
 
     private void Start() {
@@ -39,6 +40,7 @@ public class GameSystem : MonoBehaviour
         _currentGameHp = MaxGameHp;
     }
 
+  
     private void Update() {
         if (!IsPlay())
             return;
@@ -73,7 +75,7 @@ public class GameSystem : MonoBehaviour
 
     public void SetScore(int score) {
         _currentGameScore += score;
-        OnScoreEvent?.Invoke(score);
+        OnScoreEvent?.Invoke(_currentGameScore);
     }
 
     public void SetGold(int gold) {

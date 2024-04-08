@@ -44,8 +44,8 @@ public class ProjectileControllerBase : MonoBehaviour {
     private void OnEnable() {
         collided = false;
         GetComponent<Rigidbody>().isKinematic = false;
-        foreach(var item in trails)
-            item.SetActive(true);
+        //foreach(var item in trails)
+        //    item.SetActive(true);
     }
 
 
@@ -83,15 +83,15 @@ public class ProjectileControllerBase : MonoBehaviour {
 
         collided = true;
 
-        if (trails.Count > 0) {
-            for (int i = 0; i < trails.Count; i++) {
-                var ps = trails[i].GetComponent<ParticleSystem>();
-                if (ps != null) {
-                    ps.Stop();
-                    Util.CoActive(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                }
-            }
-        }
+        //if (trails.Count > 0) {
+        //    for (int i = 0; i < trails.Count; i++) {
+        //        var ps = trails[i].GetComponent<ParticleSystem>();
+        //        if (ps != null) {
+        //            ps.Stop();
+        //            Util.CoActive(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+        //        }
+        //    }
+        //}
 
         GetComponent<Rigidbody>().isKinematic = true;
 
@@ -120,15 +120,15 @@ public class ProjectileControllerBase : MonoBehaviour {
 
         collided = true;
 
-        if (trails.Count > 0) {
-            for (int i = 0; i < trails.Count; i++) {
-                var ps = trails[i].GetComponent<ParticleSystem>();
-                if (ps != null) {
-                    ps.Stop();
-                    Util.CoActive(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
-                }
-            }
-        }
+        //if (trails.Count > 0) {
+        //    for (int i = 0; i < trails.Count; i++) {
+        //        var ps = trails[i].GetComponent<ParticleSystem>();
+        //        if (ps != null) {
+        //            ps.Stop();
+        //            Util.CoActive(ps.gameObject, ps.main.duration + ps.main.startLifetime.constantMax);
+        //        }
+        //    }
+        //}
 
         GetComponent<Rigidbody>().isKinematic = true;
 
@@ -141,11 +141,11 @@ public class ProjectileControllerBase : MonoBehaviour {
             hitVFX.GetComponent<ExplosionHit>().Init(_damage, _shooter);
 
             var ps = hitVFX.GetComponent<ParticleSystem>();
-            //if (ps == null) {
-            //    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
-            //    StartCoroutine(Util.CoDestroy(hitVFX, psChild.main.duration));
-            //} else
-            //    StartCoroutine(Util.CoDestroy(hitVFX, ps.main.duration));
+            if (ps == null) {
+                var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                StartCoroutine(Util.CoDestroy(hitVFX, psChild.main.duration));
+            } else
+                StartCoroutine(Util.CoDestroy(hitVFX, ps.main.duration));
 
         }
 

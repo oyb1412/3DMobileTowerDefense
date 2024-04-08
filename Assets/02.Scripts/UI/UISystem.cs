@@ -28,8 +28,8 @@ public class UISystem : UIBase {
         _goldText.text = $"{_gameSystem.CurrentGold.ToString()}g";
         _gameSystem.OnGoldEvent += ((currentGold) => _goldText.text = $"{currentGold.ToString()}g");
 
-        _waveText.text = $"웨이브 1 / {GameSystem.MaxGameLevel}";
-        _gameSystem.OnGameLevelEvent += ((level) => _waveText.text = $"{level} / {GameSystem.MaxGameLevel}");
+        _waveText.text = $"웨이브 0 / {GameSystem.MaxGameLevel}";
+        _gameSystem.OnGameLevelEvent += ((level) => _waveText.text = $"웨이브 {level} / {GameSystem.MaxGameLevel}");
 
         _scoreText.text = $"점수 : 0";
         _gameSystem.OnScoreEvent += ((score) => _scoreText.text = $"점수 : {score}");

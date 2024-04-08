@@ -8,7 +8,7 @@ public class ExplosionHit : MonoBehaviour
 {
     private int _damage;
     private GameObject _attacker;
-    private const float _disalbeTimer = .3f;
+    private const float _disalbeTimer = .1f;
     private const float _destroyTimer = 1f;
     [SerializeField]private SphereCollider _collider;
 

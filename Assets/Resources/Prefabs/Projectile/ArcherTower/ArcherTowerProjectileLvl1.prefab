@@ -9794,8 +9794,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.1, z: 1.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 1, z: 10}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &8192359529411395449
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9839,6 +9839,7 @@ MonoBehaviour:
   hitPrefab: {fileID: 1266152770621770, guid: e20536655a54ca14aad7b513e9c60249, type: 3}
   trails:
   - {fileID: 8415156669302510803}
+  _target: {fileID: 0}
 --- !u!114 &5181370467995368402
 MonoBehaviour:
   m_ObjectHideFlags: 0

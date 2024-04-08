@@ -35,10 +35,10 @@ public class Data {
     };
 
     private int[,] _towerDamage = new int[,] {
-        { 10,20,30,50},
-        { 20,40,60,80 },
-        { 16,28,40,70},
-        { 7,12,22,35}
+        { 12,24,36,60},
+        { 20,38,60,80 },
+        { 19,30,45,70},
+        { 9,14,24,40}
     };
 
     private float[,] _towerAttackDelay = new float[,] {
@@ -57,10 +57,10 @@ public class Data {
 
     
     private int[,] _enemyMaxHp = new int[,] {
-        {50,100,200,300,400,600 },
-        {40,80,160,250,320,500 },
-        {100,200,350,500,800,1000 },
-        {120,250,400,600,900,1200 }
+        {60,110,230,350,470,650 },
+        {50,190,190,280,360,500 },
+        {90,170,310,430,680,850 },
+        {100,220,330,480,770,900 }
     };
 
     private int[,] _enemyCurrentHp;
@@ -69,7 +69,7 @@ public class Data {
         {10f,11f,11f,12f,12f,13f },
         {12f,13f,13f,14f,15f,16f },
         {14f,15f,15f,16f,16f,17f },
-         {14f,15f,15f,16f,16f,17f },
+        {14f,15f,15f,16f,16f,17f },
     };
     
     private int[,] _enemyPhysicsDefense = new int[,] {
@@ -87,10 +87,10 @@ public class Data {
     };
 
     private int[,] _enemyProvideGold = new int[,] {
-        {15,20,25,30,35,40 },
-        {20,25,30,35,40,45 },
-        {40,50,60,60,70,70 },
-        {50,60,70,80,90,100 }
+        {8,11,14,17,20,26 },
+        {10,14,18,22,26,31 },
+        {14,19,24,29,34,39 },
+        {21,31,41,51,61,71 }
     }; 
     
     private int[,] _enemyProvideScore = new int[,] {
@@ -256,8 +256,8 @@ public class Data {
         if (!_enemySpawnData.ContainsKey(11)) {
             _enemySpawnData.Add(11, new List<EnemySpawnData>
             {
-                new EnemySpawnData(10, Define.EnemyType.Archer, Define.EnemyLevel.Level3),
-                new EnemySpawnData(10, Define.EnemyType.Mage, Define.EnemyLevel.Level3),
+                new EnemySpawnData(8, Define.EnemyType.Archer, Define.EnemyLevel.Level3),
+                new EnemySpawnData(8, Define.EnemyType.Mage, Define.EnemyLevel.Level3),
                 new EnemySpawnData(5, Define.EnemyType.Swordman, Define.EnemyLevel.Level2),
                 new EnemySpawnData(5, Define.EnemyType.Speaman, Define.EnemyLevel.Level2),
             });
@@ -266,8 +266,8 @@ public class Data {
         if (!_enemySpawnData.ContainsKey(12)) {
             _enemySpawnData.Add(12, new List<EnemySpawnData>
             {
-                new EnemySpawnData(10, Define.EnemyType.Archer, Define.EnemyLevel.Level3),
-                new EnemySpawnData(10, Define.EnemyType.Mage, Define.EnemyLevel.Level3),
+                new EnemySpawnData(8, Define.EnemyType.Archer, Define.EnemyLevel.Level3),
+                new EnemySpawnData(8, Define.EnemyType.Mage, Define.EnemyLevel.Level3),
                 new EnemySpawnData(5, Define.EnemyType.Swordman, Define.EnemyLevel.Level3),
                 new EnemySpawnData(5, Define.EnemyType.Speaman, Define.EnemyLevel.Level3),
             });
