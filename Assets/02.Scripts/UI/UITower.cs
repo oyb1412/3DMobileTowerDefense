@@ -15,7 +15,6 @@ public class UITower : UIBase {
     private GameObject _bundle;
     private GameObject _center;
     private GameObject _lower;
-    private RectTransform _centerRect;
     private TowerBase _selectTower;
     private Text _towerName;
     private Text _towerDamage;
@@ -52,7 +51,6 @@ public class UITower : UIBase {
 
         _data = Managers.Data;
 
-        _centerRect = _center.GetComponent<RectTransform>();
         _bundle.SetActive(false);
     }
 
@@ -62,7 +60,6 @@ public class UITower : UIBase {
 
         _creatorInfoPanel.gameObject.SetActive(true);
         _sellInfoPanel.gameObject.SetActive(false);
-        _creatorInfoPanel.SetPosition(_centerRect);
 
         string name = $"{_selectTower.TowerStatus.TowerType.ToString()} Lvl{_selectTower.TowerStatus.Level + 1}";
         string info = _data.GetTowerInfo((int)_selectTower.TowerStatus.TowerType);
@@ -82,7 +79,6 @@ public class UITower : UIBase {
     private void SelecteSell() {
         _creatorInfoPanel.gameObject.SetActive(false);
         _sellInfoPanel.gameObject.SetActive(true);
-        _sellInfoPanel.SetPosition(_centerRect);
 
         int reward = _data.GetSellCost((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level);
 
@@ -128,7 +124,6 @@ public class UITower : UIBase {
 
             _upgradeIcon.sprite = Managers.Data.GetTowerIcon((int)tower.TowerStatus.TowerType, max);
             _selectTower = tower;
-            Util.RectToWorldPosition(tower.transform.position, _centerRect);
         }
         else {
             _sellInfoPanel.gameObject.SetActive(false);

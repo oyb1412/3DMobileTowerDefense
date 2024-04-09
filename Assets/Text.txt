@@ -1,6 +1,23 @@
-최고레벨 이상 업그레이드 불가능하게
-게임 시간 60초, 스스로 시작 가능하게 변경
+
+다중언어 지원
+환경설정(사운드, 감도, 볼륨)
 
 
+필요한 사운드
+main bgm
+ingame bgm
 
-각종 장애물 배치
+btn select vfx
+node,tower,unit select vfx
+summon vfx
+create vfx
+complete vfx
+destroy vfx
+round start vfx
+arrive vfx
+enemy die vfx
+각 타워 발사체 발사 vfx
+각 타워 hit vfx
+victory vfx
+gameover vfx
+

@@ -79,5 +79,6 @@ public class Define
         Loading,
         Main,
         InGame,
+        Exit,
     }
 }

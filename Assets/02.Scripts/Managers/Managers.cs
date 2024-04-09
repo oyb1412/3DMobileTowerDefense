@@ -35,7 +35,6 @@ public class Managers : MonoBehaviour
 
     private void Awake()
     {
-        Init();
     }
 
     private void Update()

@@ -32,10 +32,9 @@ public abstract class TowerControllerBase : MonoBehaviour
     }
 
     protected virtual void Init() {
-        
         _firePoint = Util.FindChild(transform.parent.gameObject, "FirePoint", false).transform;
         _attackRangeCollider.radius = _status.AttackRange * (GameSystem.TowerAttackRangeImageSize * .5f);
-        _projectilePath = $"Projectile/{_status.TowerType.ToString()}/{_status.TowerType.ToString()}ProjectileLvl{_status.Level}";
+        _projectilePath = $"Projectile/{_status.TowerType.ToString()}(Mobile)/{_status.TowerType.ToString()}ProjectileLvl{_status.Level}";
     }
 
     protected void ChangeState(bool trigger) {

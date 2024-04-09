@@ -13,7 +13,7 @@ public class Node : MonoBehaviour, ISelectedObject {
     }
     public ISelectedObject OnSelect() {
         Managers.Instance.creator.SelectNode(true, transform.position, this);
-        _mesh.material = Managers.Data.GreenMaterial;
+        _mesh.material = Managers.Data.RedMaterial;
         return this;
     }
 

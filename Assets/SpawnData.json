@@ -1,0 +1,457 @@
+{
+  "1": [
+    {
+      "Count": 10,
+      "EnemyType": 0,
+      "EnemyLevel": 0
+    },
+    {
+      "Count": 10,
+      "EnemyType": 1,
+      "EnemyLevel": 0
+    }
+  ],
+  "2": [
+    {
+      "Count": 10,
+      "EnemyType": 0,
+      "EnemyLevel": 0
+    },
+    {
+      "Count": 10,
+      "EnemyType": 1,
+      "EnemyLevel": 0
+    }
+  ],
+  "3": [
+    {
+      "Count": 7,
+      "EnemyType": 0,
+      "EnemyLevel": 0
+    },
+    {
+      "Count": 7,
+      "EnemyType": 1,
+      "EnemyLevel": 0
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 0
+    }
+  ],
+  "4": [
+    {
+      "Count": 7,
+      "EnemyType": 0,
+      "EnemyLevel": 0
+    },
+    {
+      "Count": 7,
+      "EnemyType": 1,
+      "EnemyLevel": 0
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 0
+    }
+  ],
+  "5": [
+    {
+      "Count": 10,
+      "EnemyType": 0,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 10,
+      "EnemyType": 1,
+      "EnemyLevel": 1
+    }
+  ],
+  "6": [
+    {
+      "Count": 10,
+      "EnemyType": 0,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 10,
+      "EnemyType": 1,
+      "EnemyLevel": 1
+    }
+  ],
+  "7": [
+    {
+      "Count": 7,
+      "EnemyType": 0,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 7,
+      "EnemyType": 1,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 1
+    }
+  ],
+  "8": [
+    {
+      "Count": 7,
+      "EnemyType": 0,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 7,
+      "EnemyType": 1,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 1
+    }
+  ],
+  "9": [
+    {
+      "Count": 5,
+      "EnemyType": 0,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 1,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 3,
+      "EnemyLevel": 1
+    }
+  ],
+  "10": [
+    {
+      "Count": 5,
+      "EnemyType": 0,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 1,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 3,
+      "EnemyLevel": 1
+    }
+  ],
+  "11": [
+    {
+      "Count": 8,
+      "EnemyType": 0,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 8,
+      "EnemyType": 1,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 1
+    },
+    {
+      "Count": 5,
+      "EnemyType": 3,
+      "EnemyLevel": 1
+    }
+  ],
+  "12": [
+    {
+      "Count": 8,
+      "EnemyType": 0,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 8,
+      "EnemyType": 1,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 5,
+      "EnemyType": 2,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 5,
+      "EnemyType": 3,
+      "EnemyLevel": 2
+    }
+  ],
+  "13": [
+    {
+      "Count": 15,
+      "EnemyType": 2,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 15,
+      "EnemyType": 3,
+      "EnemyLevel": 2
+    }
+  ],
+  "14": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 15,
+      "EnemyType": 2,
+      "EnemyLevel": 2
+    },
+    {
+      "Count": 15,
+      "EnemyType": 3,
+      "EnemyLevel": 2
+    }
+  ],
+  "15": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 3
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 3
+    }
+  ],
+  "16": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 3
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 3
+    },
+    {
+      "Count": 15,
+      "EnemyType": 2,
+      "EnemyLevel": 3
+    }
+  ],
+  "17": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 3
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 3
+    },
+    {
+      "Count": 15,
+      "EnemyType": 2,
+      "EnemyLevel": 3
+    },
+    {
+      "Count": 15,
+      "EnemyType": 3,
+      "EnemyLevel": 3
+    }
+  ],
+  "18": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 10,
+      "EnemyType": 2,
+      "EnemyLevel": 4
+    }
+  ],
+  "19": [
+    {
+      "Count": 10,
+      "EnemyType": 0,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 10,
+      "EnemyType": 1,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 10,
+      "EnemyType": 2,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 10,
+      "EnemyType": 3,
+      "EnemyLevel": 4
+    }
+  ],
+  "20": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 15,
+      "EnemyType": 2,
+      "EnemyLevel": 4
+    },
+    {
+      "Count": 15,
+      "EnemyType": 3,
+      "EnemyLevel": 4
+    }
+  ],
+  "21": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 10,
+      "EnemyType": 2,
+      "EnemyLevel": 5
+    }
+  ],
+  "22": [
+    {
+      "Count": 10,
+      "EnemyType": 0,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 10,
+      "EnemyType": 1,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 10,
+      "EnemyType": 2,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 10,
+      "EnemyType": 3,
+      "EnemyLevel": 5
+    }
+  ],
+  "23": [
+    {
+      "Count": 15,
+      "EnemyType": 0,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 15,
+      "EnemyType": 1,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 15,
+      "EnemyType": 2,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 15,
+      "EnemyType": 3,
+      "EnemyLevel": 5
+    }
+  ],
+  "24": [
+    {
+      "Count": 20,
+      "EnemyType": 0,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 20,
+      "EnemyType": 1,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 20,
+      "EnemyType": 2,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 20,
+      "EnemyType": 3,
+      "EnemyLevel": 5
+    }
+  ],
+  "25": [
+    {
+      "Count": 25,
+      "EnemyType": 0,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 25,
+      "EnemyType": 1,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 25,
+      "EnemyType": 2,
+      "EnemyLevel": 5
+    },
+    {
+      "Count": 25,
+      "EnemyType": 3,
+      "EnemyLevel": 5
+    }
+  ]
+}

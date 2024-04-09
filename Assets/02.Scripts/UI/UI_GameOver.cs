@@ -22,7 +22,11 @@ public class UI_GameOver : MonoBehaviour
         _exitBtn = Util.FindChild(_panel, "ExitBtn", false).GetComponent<Button>();
 
         _restartBtn.onClick.AddListener(() => Managers.Scene.LoadScene(Define.SceneType.InGame));
+        _restartBtn.onClick.AddListener(() => _restartBtn.interactable = false);
+        _restartBtn.onClick.AddListener(() => _exitBtn.interactable = false);
         _exitBtn.onClick.AddListener(() => Managers.Scene.LoadScene(Define.SceneType.Main));
+        _exitBtn.onClick.AddListener(() => _restartBtn.interactable = false);
+        _exitBtn.onClick.AddListener(() => _exitBtn.interactable = false);
         gameObject.SetActive(false);
     }
 

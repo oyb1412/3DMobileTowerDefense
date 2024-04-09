@@ -69,6 +69,11 @@ public class EnemyController : MonoBehaviour
         _lastMoveIndex = _movePoint.Length;
     }
 
+    private void Update() {
+        if (State != Define.EnemyState.Move ||
+            !GameSystem.Instance.IsPlay())
+            StopAllBehaivoir();
+    }
 
     private void StopAllBehaivoir() {
         StopAllCoroutines();
@@ -117,14 +122,10 @@ public class EnemyController : MonoBehaviour
 
         _moveIndex++;
 
-        if (!GameSystem.Instance.IsPlay())
-            StopAllBehaivoir();
-
         if (_moveIndex == _lastMoveIndex && gameObject.activeInHierarchy) {
-            GameSystem.Instance.SetGameHp(-10);
             Managers.MainCamera.CameraShake();
-            StopAllBehaivoir();
-            Managers.Resources.Destroy(gameObject);
+            GameSystem.Instance.SetGameHp(-10);
+            State = Define.EnemyState.Die;
         }
 
         if(_moveIndex < _lastMoveIndex) {
@@ -138,13 +139,8 @@ public class EnemyController : MonoBehaviour
                 _rotateTween = transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), .3f).SetEase(Ease.Linear);
             }
         }
-        
 
-        if (State != Define.EnemyState.Move)
-            StopAllBehaivoir();
-        else if(_moveIndex < _lastMoveIndex && gameObject.activeInHierarchy)
+        if(_moveIndex < _lastMoveIndex && gameObject.activeInHierarchy)
             StartCoroutine(CoMove());
     }
-
- 
 }

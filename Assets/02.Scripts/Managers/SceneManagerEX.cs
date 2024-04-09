@@ -18,6 +18,10 @@ public class SceneManagerEX
     public void LoadScene(Define.SceneType type)
     {
         var tween = _fade.SetFade(true);
-        tween.OnComplete(() => SceneManager.LoadScene(type.ToString()));
+        if(type == Define.SceneType.Exit) {
+            tween.OnComplete(() => Util.ExitGame());
+        }
+        else
+            tween.OnComplete(() => SceneManager.LoadScene(type.ToString()));
     }
 }
