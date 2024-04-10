@@ -124,6 +124,7 @@ public class EnemyController : MonoBehaviour
 
         if (_moveIndex == _lastMoveIndex && gameObject.activeInHierarchy) {
             Managers.MainCamera.CameraShake();
+            Managers.Audio.PlaySfx(Define.SfxType.EnemyArrive);
             GameSystem.Instance.SetGameHp(-10);
             State = Define.EnemyState.Die;
         }

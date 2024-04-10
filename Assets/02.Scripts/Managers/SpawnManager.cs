@@ -24,6 +24,7 @@ public class SpawnManager
 
    
     public void SpawnEnemy(int currentGameLevel, ParticleSystem effect) {
+        Managers.Audio.PlaySfx(Define.SfxType.RoundStart);
         GameSystem.Instance.StartCoroutine(CoSpwan(currentGameLevel, effect));
     }
 

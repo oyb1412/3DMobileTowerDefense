@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Define;
 
 public class Util : MonoBehaviour
 {
@@ -33,6 +35,7 @@ public class Util : MonoBehaviour
     }
 
     
+ 
     public static void SetOutLine(GameObject go, bool trigger) {
 
         Outline outline = go.GetComponent<Outline>();
@@ -60,6 +63,24 @@ public class Util : MonoBehaviour
         if (go == null) return true;
         if (!go.activeInHierarchy) return true;
         return false;
+    }
+    
+    public static void SetButtonEvent(Button btn,  UnityAction[] actions = null, UnityAction action = null, Define.SfxType sfxType = Define.SfxType.BtnSelect) {
+        if(actions == null && action == null) {
+            Debug.Log("버튼에 액션이 추가되지 않았습니다");
+            return;
+        }
+        
+        if(actions != null) {
+            for(int i = 0; i< actions.Length; i++) {
+                btn.onClick.AddListener(actions[i]);
+            }
+        }
+        else if(action != null) {
+            btn.onClick.AddListener(action);
+        }
+
+        btn.onClick.AddListener(() => Managers.Audio.PlaySfx(sfxType));
     }
 
     public static void ExitGame() {

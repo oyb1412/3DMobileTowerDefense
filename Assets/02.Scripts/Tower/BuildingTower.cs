@@ -10,6 +10,7 @@ public class BuildingTower : MonoBehaviour
     private BuildingStatus _status;
     private string _createTowerPath;
     private float _curretCreatingAmout;
+    private float _soundAmout;
     private float _maxCreatingAmout;
     public Action<float> OnCreatEvent;
 
@@ -31,6 +32,12 @@ public class BuildingTower : MonoBehaviour
             return;
 
         _curretCreatingAmout += Time.deltaTime;
+        _soundAmout += Time.deltaTime;
+        if(_soundAmout >= 1.5f) {
+            Managers.Audio.PlaySfx(Define.SfxType.Build);
+            _soundAmout = 0;
+        }
+            
         if (_curretCreatingAmout >= _maxCreatingAmout)
             CreateTower();
 
@@ -39,7 +46,8 @@ public class BuildingTower : MonoBehaviour
 
     private void CreateTower() {
         TowerStatus tower = Managers.Resources.Instantiate($"Towers/{_status.TowerType.ToString()}/{_createTowerPath}", null).GetComponent<TowerStatus>();
-        tower.Init(_status.KillNumber, _status.Level, transform.position, _status.TowerType); 
+        tower.Init(_status.KillNumber, _status.Level, transform.position, _status.TowerType);
+        Managers.Audio.PlaySfx(Define.SfxType.BuildCompleted);
         Managers.Resources.Destroy(gameObject);
     }
 

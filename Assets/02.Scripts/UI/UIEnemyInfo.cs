@@ -47,8 +47,6 @@ public class UIEnemyInfo : MonoBehaviour
             _provideGoldText.text = status.ProvideGold.ToString();
             _icon.sprite = status.Icon;
         }
-        //} else if(!Util.NullCheck(enemy.gameObject))
-        //    enemy.GetComponentInParent<EnemyController>().OnHpEvent = null;
     }
 
     private void SetHpText(int currentHp, int maxHp) {

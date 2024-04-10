@@ -1,4 +1,22 @@
 {
   "DefaultMaterialPath": "Material/Default",
-  "RedMaterialPath": "Material/Red"
+  "RedMaterialPath": "Material/Red",
+  "BgmPath": [
+    "Sound/BGM/Main",
+    "Sound/BGM/Ingame"
+  ],
+  "SfxPath": [
+    "Sound/SFX/BeamProjectile",
+    "Sound/SFX/CanonProjectile",
+    "Sound/SFX/MagicProjectile",
+    "Sound/SFX/Build",
+    "Sound/SFX/BuildCompleted",
+    "Sound/SFX/Demolition",
+    "Sound/SFX/Victory",
+    "Sound/SFX/Lose",
+    "Sound/SFX/RoundStart",
+    "Sound/SFX/EnemyArrive",
+    "Sound/SFX/BtnSelect",
+    "Sound/SFX/ObjectSelect"
+  ]
 }

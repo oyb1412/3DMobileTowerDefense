@@ -12,7 +12,9 @@ public class Managers : MonoBehaviour
             return _instance;
         }
     }
+
     public static CameraController MainCamera;
+    public static AudioManager Audio;
     private Data _data = new Data();
     private CursorManager _cursor = new CursorManager();
     private SpawnManager _spawn = new SpawnManager();
@@ -21,6 +23,7 @@ public class Managers : MonoBehaviour
     private InputManager _input = new InputManager();
     private ResourcesManager _resources = new ResourcesManager();
     private SceneManagerEX _scene = new SceneManagerEX();
+    private LanguageManager _language = new LanguageManager();
  
     public UICreator creator => GameObject.Find("UI_Creator").GetComponent<UICreator>();
 
@@ -30,8 +33,10 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool => _instance._pool;
     public static Data Data => _instance._data;
     public static SceneManagerEX Scene => _instance._scene;
+    public static LanguageManager Language => _instance._language;
     public static InputManager Input => Instance._input;
     public static ResourcesManager Resources => Instance._resources;
+
 
     private void Awake()
     {
@@ -43,7 +48,7 @@ public class Managers : MonoBehaviour
     }
 
   
-    private static void Init()
+    public static void Init()
     {
         if (_instance == null)
         {
@@ -58,10 +63,12 @@ public class Managers : MonoBehaviour
             _instance = managers.GetComponent<Managers>();
 
             MainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
-
+            Audio = GameObject.Find("@AudioManager").GetComponent<AudioManager>();
             Pool.Init();
             Data.Init();
             Scene.Init();
         }
     }
+
+  
 }

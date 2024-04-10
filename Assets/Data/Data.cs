@@ -5,6 +5,9 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Text;
+using static Define;
+using Unity.VisualScripting;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Data {
     [System.Serializable]
@@ -27,12 +30,6 @@ public class Data {
             }
         }
         public string[,] TowerIconPath = new string[(int)Define.TowerType.Count, (int)Define.TowerLevel.Count];
-        public string[] _towerInfo = new string[] {
-         "빠른 공격속도와 긴 사거리를 지닌 물리공격 타워입니다." ,
-         "넓은범위의 적을 동시에 공격하는 물리공격 타워입니다." ,
-         "강력한 공격력을 지닌 마법공격 타워입니다.",
-         "빠른 공격속도를 지닌 적의 방어타입을 무시하는 타워입니다."
-        };
 
         public int[,] _towerCost = new int[,] {
         { 70,140,210,280},
@@ -154,12 +151,29 @@ public class Data {
     public class OtherData {
         public string DefaultMaterialPath = "Material/Default";
         public string RedMaterialPath = "Material/Red";
+
+        public string[] BgmPath = new string[] {
+            $"Sound/BGM/{Define.BgmType.Main.ToString()}",
+            $"Sound/BGM/{Define.BgmType.Ingame.ToString()}",
+        };
+
+        public string[] SfxPath = new string[] {
+            $"Sound/SFX/{Define.SfxType.BeamProjectile.ToString()}",
+            $"Sound/SFX/{Define.SfxType.CanonProjectile.ToString()}",
+            $"Sound/SFX/{Define.SfxType.MagicProjectile.ToString()}",
+            $"Sound/SFX/{Define.SfxType.Build.ToString()}",
+            $"Sound/SFX/{Define.SfxType.BuildCompleted.ToString()}",
+            $"Sound/SFX/{Define.SfxType.Demolition.ToString()}",
+            $"Sound/SFX/{Define.SfxType.Victory.ToString()}",
+            $"Sound/SFX/{Define.SfxType.Lose.ToString()}",
+            $"Sound/SFX/{Define.SfxType.RoundStart.ToString()}",
+            $"Sound/SFX/{Define.SfxType.EnemyArrive.ToString()}",
+            $"Sound/SFX/{Define.SfxType.BtnSelect.ToString()}",
+            $"Sound/SFX/{Define.SfxType.ObjectSelect.ToString()}",
+        };
     }
 
-    private Material _defaultMaterial;
-    private Material _redMaterial;
-    public Material DefaultMaterial => _defaultMaterial;
-    public Material RedMaterial => _redMaterial;
+
     public class EnemySpawnData {
         public int Count;
         public Define.EnemyType EnemyType;
@@ -175,11 +189,24 @@ public class Data {
         public Dictionary<int, List<EnemySpawnData>> _enemySpawnData = new Dictionary<int, List<EnemySpawnData>>();
     }
 
+    public class LanguagePack {
+        public Dictionary<Define.TextKey, Dictionary<Define.Language, string>> _languagePack = new Dictionary<Define.TextKey, Dictionary<Define.Language, string>>();
+    }
+
+   
+
     private TowerData _towerData;
     private EnemyData _enemyData;
     private OtherData _otherData;
     private EnemySpawnDataDictionary _enemySpawnData = new EnemySpawnDataDictionary();
+    private LanguagePack _languageData = new LanguagePack();
+    
 
+    private Material _defaultMaterial;
+    private Material _redMaterial;
+    public Material DefaultMaterial => _defaultMaterial;
+    public Material RedMaterial => _redMaterial; 
+    
     public void Init() {
         #region EnemySpawnData
 
@@ -418,6 +445,60 @@ public class Data {
 
         #endregion
 
+
+        #region LanguageData
+
+        LanguagePack _pack = new LanguagePack();
+        AddLanguageData(_pack, Define.TextKey.GameStart, Define.Language.Korean, "게임 시작");
+        AddLanguageData(_pack, Define.TextKey.Setting, Define.Language.Korean, "게임 설정");
+        AddLanguageData(_pack, Define.TextKey.GameExit, Define.Language.Korean, "게임 종료");
+        AddLanguageData(_pack, Define.TextKey.LanguageSetting, Define.Language.Korean, "언어 설정");
+        AddLanguageData(_pack, Define.TextKey.BgmVolumeSetting, Define.Language.Korean, "배경음 설정");
+        AddLanguageData(_pack, Define.TextKey.SfxVolumeSetting, Define.Language.Korean, "효과음 설정");
+        AddLanguageData(_pack, Define.TextKey.SensitivitySetting, Define.Language.Korean, "감도 설정");
+        AddLanguageData(_pack, Define.TextKey.ToNextRound, Define.Language.Korean, "다음 라운드까지");
+        AddLanguageData(_pack, Define.TextKey.StartNextRound, Define.Language.Korean, "다음 라운드");
+        AddLanguageData(_pack, Define.TextKey.Wave, Define.Language.Korean, "웨이브");
+        AddLanguageData(_pack, Define.TextKey.Score, Define.Language.Korean, "점수");
+        AddLanguageData(_pack, Define.TextKey.Build, Define.Language.Korean, "건설");
+        AddLanguageData(_pack, Define.TextKey.Demolition, Define.Language.Korean, "판매");
+        AddLanguageData(_pack, Define.TextKey.ArcherTowerDescription, Define.Language.Korean, "빠른 공격속도와 긴 사거리를 지닌 물리공격 타워입니다.");
+        AddLanguageData(_pack, Define.TextKey.CanonTowerDescription, Define.Language.Korean, "넓은범위의 적을 동시에 공격하는 물리공격 타워입니다.");
+        AddLanguageData(_pack, Define.TextKey.MagicTowerDescription, Define.Language.Korean, "강력한 공격력을 지닌 마법공격 타워입니다.");
+        AddLanguageData(_pack, Define.TextKey.DeathTowerDescription, Define.Language.Korean, "빠른 공격속도를 지닌 적의 방어타입을 무시하는 타워입니다.");
+        AddLanguageData(_pack, Define.TextKey.HighRound, Define.Language.Korean, "최고 라운드");
+        AddLanguageData(_pack, Define.TextKey.HighScore, Define.Language.Korean, "최고 점수");
+        AddLanguageData(_pack, Define.TextKey.Restart, Define.Language.Korean, "재시작");
+        AddLanguageData(_pack, Define.TextKey.Main, Define.Language.Korean, "메인 화면");
+        AddLanguageData(_pack, Define.TextKey.Victory, Define.Language.Korean, "승리!!");
+        AddLanguageData(_pack, Define.TextKey.GameOver, Define.Language.Korean, "패배...");
+
+
+        AddLanguageData(_pack, Define.TextKey.GameStart, Define.Language.English, "GameStart");
+        AddLanguageData(_pack, Define.TextKey.Setting, Define.Language.English, "GameSetting");
+        AddLanguageData(_pack, Define.TextKey.GameExit, Define.Language.English, "ExitGame");
+        AddLanguageData(_pack, Define.TextKey.LanguageSetting, Define.Language.English, "Language Setting");
+        AddLanguageData(_pack, Define.TextKey.BgmVolumeSetting, Define.Language.English, "Bgm Setting");
+        AddLanguageData(_pack, Define.TextKey.SfxVolumeSetting, Define.Language.English, "Sfx Setting");
+        AddLanguageData(_pack, Define.TextKey.SensitivitySetting, Define.Language.English, "Sensitivity Setting");
+        AddLanguageData(_pack, Define.TextKey.ToNextRound, Define.Language.English, "ToNextRound");
+        AddLanguageData(_pack, Define.TextKey.StartNextRound, Define.Language.English, "Start");
+        AddLanguageData(_pack, Define.TextKey.Wave, Define.Language.English, "Wave");
+        AddLanguageData(_pack, Define.TextKey.Score, Define.Language.English, "Score");
+        AddLanguageData(_pack, Define.TextKey.Build, Define.Language.English, "Build");
+        AddLanguageData(_pack, Define.TextKey.Demolition, Define.Language.English, "Sell");
+        AddLanguageData(_pack, Define.TextKey.ArcherTowerDescription, Define.Language.English, "It is a physical attack tower with fast attack speed and long range.");
+        AddLanguageData(_pack, Define.TextKey.CanonTowerDescription, Define.Language.English, "It is a physical attack tower that simultaneously attacks a wide range of enemies.");
+        AddLanguageData(_pack, Define.TextKey.MagicTowerDescription, Define.Language.English, "It is a magic attack tower with strong attack power.");
+        AddLanguageData(_pack, Define.TextKey.DeathTowerDescription, Define.Language.English, "It is a tower that ignores the enemy's defensive type with fast attack speed.");
+        AddLanguageData(_pack, Define.TextKey.HighRound, Define.Language.English, "High Round");
+        AddLanguageData(_pack, Define.TextKey.HighScore, Define.Language.English, "High Score");
+        AddLanguageData(_pack, Define.TextKey.Restart, Define.Language.English, "Restart");
+        AddLanguageData(_pack, Define.TextKey.Main, Define.Language.English, "Main");
+        AddLanguageData(_pack, Define.TextKey.Victory, Define.Language.English, "Victory!!");
+        AddLanguageData(_pack, Define.TextKey.GameOver, Define.Language.English, "Gameover..");
+        #endregion
+
         #region SaveJson
         TowerData towerData = new TowerData();
         string data = JsonConvert.SerializeObject(towerData, Formatting.Indented);
@@ -433,13 +514,20 @@ public class Data {
         
         string spawnData = JsonConvert.SerializeObject(_enemySpawnDic._enemySpawnData, Formatting.Indented);
         SaveJson(Application.dataPath, "SpawnData", spawnData);
+
+        string languageData = JsonConvert.SerializeObject(_pack._languagePack, Formatting.Indented,
+            new JsonSerializerSettings {
+                Converters = new List<JsonConverter> { new Newtonsoft.Json.Converters.StringEnumConverter()}
+            });
+        SaveJson(Application.dataPath, "LanguageData", languageData);
         #endregion
 
         #region LoadJson
         _towerData = LoadJson<TowerData>(Application.dataPath, "TowerData");
         _enemyData = LoadJson<EnemyData>(Application.dataPath, "EnemyData");
         _otherData = LoadJson<OtherData>(Application.dataPath, "OtherData");
-        _enemySpawnData = LoadJson<EnemySpawnDataDictionary>(Application.dataPath, "SpawnData");
+        _enemySpawnData._enemySpawnData = LoadJson<Dictionary<int, List<EnemySpawnData>>>(Application.dataPath, "SpawnData");
+        _languageData._languagePack = LoadJson<Dictionary<Define.TextKey, Dictionary<Define.Language, string>>>(Application.dataPath, "LanguageData");
         #endregion
 
         _defaultMaterial = Resources.Load<Material>(_otherData.DefaultMaterialPath);
@@ -495,7 +583,13 @@ public class Data {
         #endregion
     }
 
-    public void SaveJson(string path, string name, string jsonData) {
+    private void AddLanguageData(LanguagePack pack, Define.TextKey key, Define.Language language, string text) {
+        if(!pack._languagePack.ContainsKey(key)) {
+            pack._languagePack[key] = new Dictionary<Define.Language, string>();
+        }
+        pack._languagePack[key][language] = text;
+    }
+    private void SaveJson(string path, string name, string jsonData) {
         string Path = string.Format("{0}/{1}.json", path, name);
         if(File.Exists(Path)) {
             Debug.Log("이미 파일이 존재합니다");
@@ -505,19 +599,26 @@ public class Data {
         byte[] data = Encoding.UTF8.GetBytes(jsonData);
         stream.Write(data, 0, data.Length);
         stream.Close();
+        Debug.Log($"{Path}에 {name}이름의 Json파일 세이브");
     }
-    public T LoadJson<T>(string path, string name) {
+    private T LoadJson<T>(string path, string name) {
         FileStream stream = new FileStream(string.Format("{0}/{1}.json", path, name), FileMode.Open);
         byte[] data = new byte[stream.Length];
         stream.Read(data, 0, data.Length);
         stream.Close();
         string jsonData = Encoding.UTF8.GetString(data);
+        Debug.Log($"{path}에서 {name}이름의 Json파일 로드");
         return JsonConvert.DeserializeObject<T>(jsonData);
+
     }
     public List<EnemySpawnData> GetEnemySpawnData(int level) {
         return _enemySpawnData._enemySpawnData[level];
     }
-    public string GetTowerInfo(int type) => _towerData._towerInfo[type];
+
+    public string GetLanguage(int key, int language) => _languageData._languagePack[(Define.TextKey)key][(Define.Language)language];
+
+    public string GetBgmPath(int type) => _otherData.BgmPath[type];
+    public string GetSfxPath(int type) => _otherData.SfxPath[type];
     public int GetTowerCost(int type, int level) => _towerData._towerCost[type, level - 1];
     public int GetTowerAttackDamage(int type, int level) => _towerData._towerDamage[type, level - 1];
     public float GetTowerAttacmRange(int type, int level) => _towerData._towerAttackRange[type, level - 1];

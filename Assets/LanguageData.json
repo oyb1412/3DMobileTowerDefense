@@ -1,0 +1,94 @@
+{
+  "GameStart": {
+    "Korean": "게임 시작",
+    "English": "GameStart"
+  },
+  "Setting": {
+    "Korean": "게임 설정",
+    "English": "GameSetting"
+  },
+  "GameExit": {
+    "Korean": "게임 종료",
+    "English": "ExitGame"
+  },
+  "LanguageSetting": {
+    "Korean": "언어 설정",
+    "English": "Language Setting"
+  },
+  "BgmVolumeSetting": {
+    "Korean": "배경음 설정",
+    "English": "Bgm Setting"
+  },
+  "SfxVolumeSetting": {
+    "Korean": "효과음 설정",
+    "English": "Sfx Setting"
+  },
+  "SensitivitySetting": {
+    "Korean": "감도 설정",
+    "English": "Sensitivity Setting"
+  },
+  "ToNextRound": {
+    "Korean": "다음 라운드까지",
+    "English": "ToNextRound"
+  },
+  "StartNextRound": {
+    "Korean": "다음 라운드",
+    "English": "Start"
+  },
+  "Wave": {
+    "Korean": "웨이브",
+    "English": "Wave"
+  },
+  "Score": {
+    "Korean": "점수",
+    "English": "Score"
+  },
+  "Build": {
+    "Korean": "건설",
+    "English": "Build"
+  },
+  "Demolition": {
+    "Korean": "판매",
+    "English": "Sell"
+  },
+  "ArcherTowerDescription": {
+    "Korean": "빠른 공격속도와 긴 사거리를 지닌 물리공격 타워입니다.",
+    "English": "It is a physical attack tower with fast attack speed and long range."
+  },
+  "CanonTowerDescription": {
+    "Korean": "넓은범위의 적을 동시에 공격하는 물리공격 타워입니다.",
+    "English": "It is a physical attack tower that simultaneously attacks a wide range of enemies."
+  },
+  "MagicTowerDescription": {
+    "Korean": "강력한 공격력을 지닌 마법공격 타워입니다.",
+    "English": "It is a magic attack tower with strong attack power."
+  },
+  "DeathTowerDescription": {
+    "Korean": "빠른 공격속도를 지닌 적의 방어타입을 무시하는 타워입니다.",
+    "English": "It is a tower that ignores the enemy's defensive type with fast attack speed."
+  },
+  "HighRound": {
+    "Korean": "최고 라운드",
+    "English": "High Round"
+  },
+  "HighScore": {
+    "Korean": "최고 점수",
+    "English": "High Score"
+  },
+  "Restart": {
+    "Korean": "재시작",
+    "English": "Restart"
+  },
+  "Main": {
+    "Korean": "메인 화면",
+    "English": "Main"
+  },
+  "Victory": {
+    "Korean": "승리!!",
+    "English": "Victory!!"
+  },
+  "GameOver": {
+    "Korean": "패배...",
+    "English": "Gameover.."
+  }
+}

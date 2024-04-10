@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UI_GameOver : MonoBehaviour
@@ -10,7 +11,11 @@ public class UI_GameOver : MonoBehaviour
     private Text _logoText;
     private Text _scoreText;
     private Button _restartBtn;
-    private Button _exitBtn;
+    private Button _mainBtn;
+
+    private Text _restartText;
+    private Text _mainText;
+
 
     void Start()
     {
@@ -18,25 +23,38 @@ public class UI_GameOver : MonoBehaviour
         _roundText = Util.FindChild(_panel, "RoundText", true).GetComponent<Text>();
         _logoText = Util.FindChild(_panel, "Logo", true).GetComponent<Text>();
         _scoreText = Util.FindChild(_panel, "ScoreText", true).GetComponent<Text>();
+        _restartText = Util.FindChild(_panel, "RestartText", true).GetComponent<Text>();
+        _mainText = Util.FindChild(_panel, "MainText", true).GetComponent<Text>();
         _restartBtn = Util.FindChild(_panel, "RestartBtn", false).GetComponent<Button>();
-        _exitBtn = Util.FindChild(_panel, "ExitBtn", false).GetComponent<Button>();
+        _mainBtn = Util.FindChild(_panel, "MainBtn", false).GetComponent<Button>();
 
-        _restartBtn.onClick.AddListener(() => Managers.Scene.LoadScene(Define.SceneType.InGame));
-        _restartBtn.onClick.AddListener(() => _restartBtn.interactable = false);
-        _restartBtn.onClick.AddListener(() => _exitBtn.interactable = false);
-        _exitBtn.onClick.AddListener(() => Managers.Scene.LoadScene(Define.SceneType.Main));
-        _exitBtn.onClick.AddListener(() => _restartBtn.interactable = false);
-        _exitBtn.onClick.AddListener(() => _exitBtn.interactable = false);
+        Managers.Language.SetText(_restartText, Define.TextKey.Restart);
+        Managers.Language.SetText(_mainText, Define.TextKey.Main);
+
+        UnityAction[] restart = new UnityAction[] { () => Managers.Scene.LoadScene(Define.SceneType.InGame) , () => _restartBtn.interactable = false ,
+        () => _mainBtn.interactable = false};
+
+        Util.SetButtonEvent(_restartBtn, restart);
+    
+        UnityAction[] exit = new UnityAction[] { () => Managers.Scene.LoadScene(Define.SceneType.Main) , () => _restartBtn.interactable = false ,
+        () => _mainBtn.interactable = false};
+
+        Util.SetButtonEvent(_mainBtn, exit);
+
         gameObject.SetActive(false);
     }
 
     public void SetGameOverUI(int round, int score, bool victory) {
-        if(victory)
-            _logoText.text = "Victory!!!";
+        if (victory)
+            Managers.Language.SetText(_logoText, Define.TextKey.Victory);
         else
-            _logoText.text = "Gameover...";
+            Managers.Language.SetText(_logoText, Define.TextKey.GameOver);
 
-        _roundText.text = $"최고 라운드 : {round}";
-        _scoreText.text = $"최고 스코어 : {score}";
+       Managers.Language.SetText(_roundText, Define.TextKey.HighRound, true,
+            $"{Managers.Data.GetLanguage((int)Define.TextKey.HighRound, (int)Managers.Language.CurrentLanguage)} : {round}");
+
+
+        Managers.Language.SetText(_scoreText, Define.TextKey.HighScore, true,
+            $"{Managers.Data.GetLanguage((int)Define.TextKey.HighScore, (int)Managers.Language.CurrentLanguage)} : {score}");
     }
 }

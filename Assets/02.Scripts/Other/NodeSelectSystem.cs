@@ -68,8 +68,9 @@ public class NodeSelectSystem : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool col = Physics.Raycast(ray, out var hit, float.MaxValue, SelectLayer);
         DeSelect();
-
+        
         if (col) {
+            Managers.Audio.PlaySfx(Define.SfxType.ObjectSelect);
             if (hit.collider.TryGetComponent<ISelectedObject>(out _lastSelectObject))
                 _lastSelectObject.OnSelect();
         }

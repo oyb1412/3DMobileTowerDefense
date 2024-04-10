@@ -81,4 +81,57 @@ public class Define
         InGame,
         Exit,
     }
+
+    public enum SfxType {
+        BeamProjectile,
+        CanonProjectile,
+        MagicProjectile,
+        Build,
+        BuildCompleted,
+        Demolition,
+        Victory,
+        Lose,
+        RoundStart,
+        EnemyArrive,
+        BtnSelect,
+        ObjectSelect,
+        Count
+    }
+    public enum BgmType {
+        Main,
+        Ingame,
+        Count,
+    }
+
+    public enum Language {
+        Korean,
+        English,
+        Count,
+    }
+
+    public enum TextKey {
+        GameStart,
+        Setting,
+        GameExit,
+        LanguageSetting,
+        BgmVolumeSetting,
+        SfxVolumeSetting,
+        SensitivitySetting,
+        ToNextRound,
+        StartNextRound,
+        Wave,
+        Score,
+        Build,
+        Demolition,
+        ArcherTowerDescription,
+        CanonTowerDescription,
+        MagicTowerDescription,
+        DeathTowerDescription,
+        HighRound,
+        HighScore,
+        Restart,
+        Main,
+        Victory,
+        GameOver,
+    }
 }

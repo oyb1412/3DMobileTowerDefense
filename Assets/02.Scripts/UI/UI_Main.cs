@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UI_Main : MonoBehaviour
@@ -10,24 +11,40 @@ public class UI_Main : MonoBehaviour
     private Button _exitBtn;
     private GameObject _uiSetting;
 
+    private Text _startText;
+    private Text _settingText;
+    private Text _exitText;
+
     private void Start() {
         _startBtn = Util.FindChild(gameObject, "StartBtn", false).GetComponent<Button>();
         _settingBtn = Util.FindChild(gameObject, "SettingBtn", false).GetComponent<Button>();
         _exitBtn = Util.FindChild(gameObject, "ExitBtn", false).GetComponent<Button>();
-        _uiSetting = GameObject.Find("UI_Setting");  
+        _uiSetting = GameObject.Find("UI_Setting");
 
-        _startBtn.onClick.AddListener(() => Managers.Scene.LoadScene(Define.SceneType.InGame));
-        _startBtn.onClick.AddListener(() => _startBtn.interactable = false);
-        _startBtn.onClick.AddListener(() => _settingBtn.interactable = false);
-        _startBtn.onClick.AddListener(() => _exitBtn.interactable = false);
+        _startText = Util.FindChild(gameObject, "StartText", true).GetComponent<Text>();
+        _settingText = Util.FindChild(gameObject, "SettingText", true).GetComponent<Text>();
+        _exitText = Util.FindChild(gameObject, "ExitText", true).GetComponent<Text>();
 
-        _settingBtn.onClick.AddListener(() => _uiSetting.SetActive(true)); ;
+        Managers.Language.SetText(_startText, Define.TextKey.GameStart);
+        Managers.Language.SetText(_settingText, Define.TextKey.Setting);
+        Managers.Language.SetText(_exitText, Define.TextKey.GameExit);
 
-        _exitBtn.onClick.AddListener(() => Managers.Scene.LoadScene(Define.SceneType.Exit));
-        _exitBtn.onClick.AddListener(() => _startBtn.interactable = false);
-        _exitBtn.onClick.AddListener(() => _settingBtn.interactable = false);
-        _exitBtn.onClick.AddListener(() => _exitBtn.interactable = false);
+        UnityAction[] startBtnAction = new UnityAction[] {
+           () => Managers.Scene.LoadScene(Define.SceneType.InGame),() => _startBtn.interactable = false,
+           () => _settingBtn.interactable = false, () => _exitBtn.interactable = false
+        };
+
+        Util.SetButtonEvent(_startBtn, startBtnAction);
 
 
+        Util.SetButtonEvent(_settingBtn, null, () => _uiSetting.transform.GetChild(0).gameObject.SetActive(true));
+
+
+        UnityAction[] exitBtnAction = new UnityAction[] {
+           () => Managers.Scene.LoadScene(Define.SceneType.Exit),() => _startBtn.interactable = false,
+           () => _settingBtn.interactable = false, () => _exitBtn.interactable = false
+        };
+
+        Util.SetButtonEvent(_exitBtn, exitBtnAction);
     }
 }

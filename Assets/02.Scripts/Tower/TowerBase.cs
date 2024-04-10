@@ -55,6 +55,7 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
         GameSystem.Instance.SetGold(sellGold);
         GameObject go = Managers.Resources.Instantiate(_destroyEffect.gameObject, null);
         go.transform.position = transform.position;
+        Managers.Audio.PlaySfx(Define.SfxType.Demolition);
         Managers.Resources.Destroy(gameObject);
     }
 

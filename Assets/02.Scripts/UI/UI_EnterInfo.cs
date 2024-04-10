@@ -15,6 +15,7 @@ public class UI_EnterInfo : UIBase
     private Text _delayText;
     private Text _rangeText;
     private Text _costText;
+    private Text _createText;
     private GameObject _panel;
     private RectTransform _rectTransform;
     private void Start() {
@@ -26,6 +27,9 @@ public class UI_EnterInfo : UIBase
         _delayText = Util.FindChild(gameObject, "AttackDelayText", true).GetComponent<Text>();
         _rangeText = Util.FindChild(gameObject, "AttackRangeText", true).GetComponent<Text>();
         _costText = Util.FindChild(gameObject, "CostText", true).GetComponent<Text>();
+        _createText = Util.FindChild(gameObject, "CreateText", true).GetComponent<Text>();
+
+        Managers.Language.SetText(_createText, Define.TextKey.Build);
 
         _rectTransform = _panel.GetComponent<RectTransform>();
         gameObject.SetActive(false);
@@ -38,16 +42,29 @@ public class UI_EnterInfo : UIBase
         else {
             _enterButton.interactable = true;
             _enterButton.onClick.RemoveAllListeners();
-            _enterButton.onClick.AddListener(call);
+            Util.SetButtonEvent(_enterButton, null, call);
         }
     }
-    public void SetEnterInfoUI(string name, string info, int damage, float delay, float range, int cost) {
+    public void SetEnterInfoUI(string name, int damage, float delay, float range, int cost, Define.TowerType type) {
         _name.text = name;
-        _info.text = info;
         _damageText.text = damage.ToString();
         _delayText.text = delay.ToString();
         _rangeText.text = range.ToString();
         _costText.text = cost.ToString();
+        switch (type) {
+            case Define.TowerType.ArcherTower:
+                Managers.Language.SetText(_info, Define.TextKey.ArcherTowerDescription);
+                break;
+            case Define.TowerType.CanonTower:
+                Managers.Language.SetText(_info, Define.TextKey.CanonTowerDescription);
+                break;
+            case Define.TowerType.MagicTower:
+                Managers.Language.SetText(_info, Define.TextKey.MagicTowerDescription);
+                break;
+            case Define.TowerType.DeathTower:
+                Managers.Language.SetText(_info, Define.TextKey.DeathTowerDescription);
+                break;
+        }
     }
 
     public void SetPosition(RectTransform rect) {

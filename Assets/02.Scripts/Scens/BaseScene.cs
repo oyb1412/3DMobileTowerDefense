@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public abstract class BaseScene : MonoBehaviour
 {
     public Define.SceneType SceneType { get; protected set; } = Define.SceneType.None;
+
     private UI_Fade _fade;
 
     public abstract void Clear();
@@ -19,16 +20,15 @@ public abstract class BaseScene : MonoBehaviour
 
         if(_fade == null)
             _fade = GameObject.Find("UI_Fade").GetComponent<UI_Fade>();
-
     }
+
+
 
     private void Awake() {
         Init();
     }
 
-    private void Start() {
+    protected virtual void Start() {
         _fade.SetFade(false);
-
-
     }
 }

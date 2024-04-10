@@ -18,6 +18,7 @@ public class CanonTowerController : TowerControllerBase {
 
         CanonProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<CanonProjectileController>();
         projectile.Init(_firePoint.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy, _base);
+        Managers.Audio.PlaySfx(Define.SfxType.CanonProjectile);
         _currentAttackDelay = 0;
     }
 }

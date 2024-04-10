@@ -18,6 +18,7 @@ public class ArcherTowerController : TowerControllerBase {
             
         ArcherProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<ArcherProjectileController>();
         projectile.Init(_firePoint.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy, _base);
+        Managers.Audio.PlaySfx(Define.SfxType.BeamProjectile);
         _currentAttackDelay = 0;
     }
 }

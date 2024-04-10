@@ -13,5 +13,6 @@ public class GameScene : BaseScene
         base.Init();
         SceneType = Define.SceneType.InGame;
         Managers.Spawn.Init();
+        Managers.Audio.PlayBgm(true, Define.BgmType.Ingame);
     }
 }

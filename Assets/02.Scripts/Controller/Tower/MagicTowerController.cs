@@ -17,6 +17,7 @@ public class MagicTowerController : TowerControllerBase{
 
         MagicProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<MagicProjectileController>();
         projectile.Init(_firePoint.position, _targetEnemy.transform.position, _status.AttackDamage, _targetEnemy, _base);
+        Managers.Audio.PlaySfx(Define.SfxType.MagicProjectile);
         _currentAttackDelay = 0;
     }
 }

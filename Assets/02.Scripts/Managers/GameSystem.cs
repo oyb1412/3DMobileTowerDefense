@@ -77,6 +77,8 @@ public class GameSystem : MonoBehaviour
             _gameoverUI.gameObject.SetActive(true);
             _gameoverUI.SetGameOverUI(_gameLevel, _currentGameScore, true);
             _gameState = Define.GameState.GameOver;
+            Managers.Audio.PlayBgm(false);
+            Managers.Audio.PlaySfx(Define.SfxType.Victory);
             return;
         }
 
@@ -114,6 +116,8 @@ public class GameSystem : MonoBehaviour
             _gameoverUI.gameObject.SetActive(true);
             _gameoverUI.SetGameOverUI(_gameLevel, _currentGameScore, false);
             _gameState = Define.GameState.GameOver;
+            Managers.Audio.PlayBgm(false);
+            Managers.Audio.PlaySfx(Define.SfxType.Lose);
         }
     }
 }

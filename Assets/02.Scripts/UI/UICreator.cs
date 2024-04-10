@@ -30,7 +30,7 @@ public class UICreator : UIBase
 
         for (int i = 0; i < _towersIcon.Length; i++) {
             int index = i;
-            _towersIcon[i].GetComponent<Button>().onClick.AddListener(() => SelecteCreator((Define.TowerType)index));
+            Util.SetButtonEvent(_towersIcon[i].GetComponent<Button>(), null, () => SelecteCreator((Define.TowerType)index));
         }
 
         _rectTransform = _centerImage.GetComponentInChildren<RectTransform>();
@@ -41,7 +41,6 @@ public class UICreator : UIBase
         _creatorInfoPanel.gameObject.SetActive(true);
 
         string name = $"{type.ToString()} Lvl{1}";
-        string info = _data.GetTowerInfo((int)type);
         int damage = _data.GetTowerAttackDamage((int)type, 1);
         float delay = _data.GetTowerAttacnDelay((int)type, 1);
         float range = _data.GetTowerAttacmRange((int)type, 1);
@@ -51,7 +50,7 @@ public class UICreator : UIBase
         }
         Util.SetOutLine(_towersIcon[(int)type], true);
 
-        _creatorInfoPanel.SetEnterInfoUI(name, info, damage, delay, range, cost);
+        _creatorInfoPanel.SetEnterInfoUI(name, damage, delay, range, cost, type);
         _creatorInfoPanel.SetBtn(() => CreateTower(type, _selectObject.MyTransform.position, cost, name), cost);
     }
 

@@ -46,8 +46,8 @@ public class UITower : UIBase {
         _lowerIcon = Util.FindChild(_lower, "Icon", false).GetComponent<Image>();
         _upgradeIcon = Util.FindChild(_center, "Icon", true).GetComponent<Image>();
 
-        _upgrade.GetComponent<Button>().onClick.AddListener(SelecteCreator);
-        _sell.GetComponent<Button>().onClick.AddListener(SelecteSell);
+        Util.SetButtonEvent(_upgrade.GetComponent<Button>(), null, SelecteCreator);
+        Util.SetButtonEvent(_sell.GetComponent<Button>(), null, SelecteSell);
 
         _data = Managers.Data;
 
@@ -62,7 +62,6 @@ public class UITower : UIBase {
         _sellInfoPanel.gameObject.SetActive(false);
 
         string name = $"{_selectTower.TowerStatus.TowerType.ToString()} Lvl{_selectTower.TowerStatus.Level + 1}";
-        string info = _data.GetTowerInfo((int)_selectTower.TowerStatus.TowerType);
         int damage = _data.GetTowerAttackDamage((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level + 1);
         float delay = _data.GetTowerAttacnDelay((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level + 1);
         float range = _data.GetTowerAttacmRange((int)_selectTower.TowerStatus.TowerType, _selectTower.TowerStatus.Level + 1);
@@ -72,7 +71,7 @@ public class UITower : UIBase {
         ResetOutline();
         Util.SetOutLine(_upgrade, true);
 
-        _creatorInfoPanel.SetEnterInfoUI(name, info, damage, delay, range, cost);
+        _creatorInfoPanel.SetEnterInfoUI(name,  damage, delay, range, cost, _selectTower.TowerStatus.TowerType);
         _creatorInfoPanel.SetBtn(UpgradeTower, cost);
     }
 

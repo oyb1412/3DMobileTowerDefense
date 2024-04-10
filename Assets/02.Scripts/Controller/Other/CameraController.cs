@@ -16,8 +16,8 @@ public class CameraController : MonoBehaviour
     private Camera _camera;
     private float initialDistance;
     private Vector2 _touchStartPos;
-    [SerializeField] float _wheelSpeed;
-    [SerializeField] float _moveSpeed;
+    private float _wheelSpeed = 5;
+    private float _moveSpeed = 25;
 
     public Camera Camera => _camera;
     void Start()
@@ -35,8 +35,18 @@ public class CameraController : MonoBehaviour
         if (!GameSystem.Instance.IsPlay())
             return;
 
+        if (Managers.Scene.CurrentScene is not GameScene)
+            return;
+
         ZoomInandOut();
         CameraMove();
+    }
+
+    public void SetCameraSens(float sens) {
+        int wheel = (int)sens * 10;
+        int move = (int)sens * 50;
+        _wheelSpeed = wheel;
+        _moveSpeed = move;
     }
 
     public void CameraShake() {
