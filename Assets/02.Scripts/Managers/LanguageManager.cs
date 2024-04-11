@@ -16,12 +16,19 @@ public class LanguageManager
         }
     }
 
+    public void Clear() {
+        _textList.Clear();
+    }
+
     public void SetText(Text text, Define.TextKey key,  bool trigger = true, string add = null) {
         if(add != null)
             text.text = add;
         else
             text.text = Managers.Data.GetLanguage((int)key, (int)_currentLanguage);
-        if(trigger) 
-            _textList.Add(key, text);
+        if(trigger) {
+            if(!_textList.ContainsValue(text)) {
+                _textList.Add(key, text);
+            }
+        }
     }
 }

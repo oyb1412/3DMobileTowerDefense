@@ -7,12 +7,12 @@ public class BuildingStatus : MonoBehaviour {
     [SerializeField]protected Define.TowerType _towerType;
     public Define.TowerType TowerType => _towerType;
 
-    private float _currentBuildingAmout = 0;
     private float _maxBuildingAmout;
     private int _killNumber;
 
     public int KillNumber { get { return _killNumber; } set {_killNumber = value; } }
-    public float CurrentBuildingAmout => _currentBuildingAmout;
+    public float CurrentBuildingAmout { get; set; } = 0f;
+    
     public float MaxBuildingAmout => _maxBuildingAmout;
 
     public int Level => _level;

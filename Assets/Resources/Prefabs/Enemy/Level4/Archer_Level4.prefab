@@ -55,6 +55,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 4
   _enemyType: 0
+  _currentHp: 0
+  _maxHp: 0
+  _number: 0
 --- !u!114 &2512777365829159778
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using System.Text;
 using static Define;
 using Unity.VisualScripting;
 using UnityEngine.SocialPlatforms.Impl;
+using static GameSystem;
 
 public class Data {
     [System.Serializable]
@@ -110,7 +111,7 @@ public class Data {
         public int[,] _enemyCurrentHp = new int[(int)Define.EnemyType.Count, (int)Define.EnemyLevel.Count];
 
         public float[,] _enemyMoveSpeed = new float[,] {
-        {100f,11f,11f,12f,12f,13f },
+        {10f,11f,11f,12f,12f,13f },
         {12f,13f,13f,14f,15f,16f },
         {14f,15f,15f,16f,16f,17f },
         {14f,15f,15f,16f,16f,17f },
@@ -173,6 +174,25 @@ public class Data {
         };
     }
 
+    [System.Serializable]
+    public class GameSystemData {
+        public GameSystemData(int round, int gold, int hp, int score,  Dictionary<int, GameSystem.ConData> conDatas = null,
+            Dictionary<int, GameSystem.TowerData> towerDatas = null) {
+            CurrentRound = round;
+            CurrentScore = score;
+            CurrentGold = gold;
+            CurrentHp = hp;
+            ConData = conDatas;
+            TowerData = towerDatas;
+        }
+        public int CurrentRound;
+        public int CurrentGold;
+        public int CurrentHp;
+        public int CurrentScore;
+
+        public Dictionary<int, GameSystem.ConData> ConData = new Dictionary<int, GameSystem.ConData>();
+        public Dictionary<int, GameSystem.TowerData> TowerData = new Dictionary<int, GameSystem.TowerData>();
+    }
 
     public class EnemySpawnData {
         public int Count;
@@ -450,6 +470,7 @@ public class Data {
 
         LanguagePack _pack = new LanguagePack();
         AddLanguageData(_pack, Define.TextKey.GameStart, Define.Language.Korean, "게임 시작");
+        AddLanguageData(_pack, Define.TextKey.Continue, Define.Language.Korean, "이어하기");
         AddLanguageData(_pack, Define.TextKey.Setting, Define.Language.Korean, "게임 설정");
         AddLanguageData(_pack, Define.TextKey.GameExit, Define.Language.Korean, "게임 종료");
         AddLanguageData(_pack, Define.TextKey.LanguageSetting, Define.Language.Korean, "언어 설정");
@@ -475,6 +496,7 @@ public class Data {
 
 
         AddLanguageData(_pack, Define.TextKey.GameStart, Define.Language.English, "GameStart");
+        AddLanguageData(_pack, Define.TextKey.Continue, Define.Language.English, "Continue");
         AddLanguageData(_pack, Define.TextKey.Setting, Define.Language.English, "GameSetting");
         AddLanguageData(_pack, Define.TextKey.GameExit, Define.Language.English, "ExitGame");
         AddLanguageData(_pack, Define.TextKey.LanguageSetting, Define.Language.English, "Language Setting");
@@ -589,19 +611,32 @@ public class Data {
         }
         pack._languagePack[key][language] = text;
     }
-    private void SaveJson(string path, string name, string jsonData) {
-        string Path = string.Format("{0}/{1}.json", path, name);
-        if(File.Exists(Path)) {
-            Debug.Log("이미 파일이 존재합니다");
-            return;
+
+    public GameSystemData GetSaveData() {
+        GameSystemData data = LoadJson<GameSystemData>(Application.dataPath, "SaveData");
+        if(data == default) {
+            return null;
         }
+        return data;
+    }
+    public void SaveJson(string path, string name, string jsonData) {
+        string Path = string.Format("{0}/{1}.json", path, name);
+        //if(File.Exists(Path)) {
+        //    Debug.Log("이미 파일이 존재합니다");
+        //    return;
+        //}
         FileStream stream = new FileStream(Path, FileMode.Create);
         byte[] data = Encoding.UTF8.GetBytes(jsonData);
         stream.Write(data, 0, data.Length);
         stream.Close();
         Debug.Log($"{Path}에 {name}이름의 Json파일 세이브");
     }
-    private T LoadJson<T>(string path, string name) {
+    public T LoadJson<T>(string path, string name) {
+        string Path = string.Format("{0}/{1}.json", path, name);
+        if (!File.Exists(Path)) {
+            Debug.Log($"Load실패. {path}에 {name}이름 파일이 없습니다.");
+            return default;
+        }
         FileStream stream = new FileStream(string.Format("{0}/{1}.json", path, name), FileMode.Open);
         byte[] data = new byte[stream.Length];
         stream.Read(data, 0, data.Length);

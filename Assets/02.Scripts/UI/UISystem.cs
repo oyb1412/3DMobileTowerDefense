@@ -1,7 +1,9 @@
+using Newtonsoft.Json;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static Data;
 
 public class UISystem : UIBase {
     private GameObject _uiSetting;
@@ -15,13 +17,14 @@ public class UISystem : UIBase {
     private Button _startBtn;
     private Button _settingBtn;
     private GameSystem _gameSystem;
-
+    private Data.GameSystemData _saveData;
 
     void Start() {
         Init();
     }
 
     private void Init() {
+
         _uiSetting = GameObject.Find("UI_Setting");
         _goldText = Util.FindChild(gameObject, "GoldText", true).GetComponent<Text>();
         _waveText = Util.FindChild(gameObject, "WaveText", true).GetComponent<Text>();
@@ -31,9 +34,49 @@ public class UISystem : UIBase {
         _startText = Util.FindChild(gameObject, "StartText", true).GetComponent<Text>();
         _hpSlider = Util.FindChild(gameObject, "HpSlider", true).GetComponent<Slider>();
         _startBtn = Util.FindChild(gameObject, "StartBtn", true).GetComponent<Button>();
-        _settingBtn = Util.FindChild(gameObject, "SettingBtn", true).GetComponent<Button>();
-
+        _settingBtn = Util.FindChild(gameObject, "SettingBtn", false).GetComponent<Button>();
         _gameSystem = GameSystem.Instance;
+
+        if (!Managers.Scene.isContinue) {
+            StartInit();
+        }
+        else {
+            Continue();
+        }
+    }
+
+    private void Continue() {
+        _saveData = Managers.Data.GetSaveData();
+
+        _goldText.text = $"{_saveData.CurrentGold.ToString()}g";
+        _gameSystem.OnGoldEvent += ((currentGold) => _goldText.text = $"{currentGold.ToString()}g");
+
+        Managers.Language.SetText(_waveText, Define.TextKey.Wave, true, $"{Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage)} {_saveData.CurrentRound} / {GameSystem.MaxGameLevel}");
+        _gameSystem.OnGameLevelEvent += ((level) => _waveText.text = $"{Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage)} {level} / {GameSystem.MaxGameLevel}");
+
+        Managers.Language.SetText(_scoreText, Define.TextKey.Score, true, $"{Managers.Data.GetLanguage((int)Define.TextKey.Score, (int)Managers.Language.CurrentLanguage)} : {_saveData.CurrentScore}");
+        _gameSystem.OnScoreEvent += ((score) => _scoreText.text = $"{Managers.Data.GetLanguage((int)Define.TextKey.Score, (int)Managers.Language.CurrentLanguage)} : {score}");
+
+        _hpText.text = $"{_saveData.CurrentHp}";
+        _gameSystem.OnGameHpEvent += ((hp) => _hpText.text = $"{hp}");
+
+        Managers.Language.SetText(_startText, Define.TextKey.StartNextRound);
+
+        _startBtn.interactable = false;
+        Util.SetButtonEvent(_startBtn, null, GameStart);
+        _gameSystem.OnStartEvent += (() => _startBtn.interactable = true);
+
+        Util.SetButtonEvent(_settingBtn, null, PanelEnable);
+
+        _hpSlider.maxValue = GameSystem.MaxGameHp;
+        _hpSlider.value = _saveData.CurrentHp;
+        _gameSystem.OnGameHpEvent += ((hp) => _hpSlider.value = hp);
+
+        Managers.Language.SetText(_timeText, Define.TextKey.ToNextRound, true, $"{Managers.Data.GetLanguage((int)Define.TextKey.ToNextRound, (int)Managers.Language.CurrentLanguage)} 60s");
+        GameSystem.Instance.OnTimeEvent += ((time) => _timeText.text = $"{Managers.Data.GetLanguage((int)Define.TextKey.ToNextRound, (int)Managers.Language.CurrentLanguage)} {time}s");
+    }
+
+    private void StartInit() {
 
         _goldText.text = $"{_gameSystem.CurrentGold.ToString()}g";
         _gameSystem.OnGoldEvent += ((currentGold) => _goldText.text = $"{currentGold.ToString()}g");
@@ -50,18 +93,26 @@ public class UISystem : UIBase {
         Managers.Language.SetText(_startText, Define.TextKey.StartNextRound);
 
         _startBtn.interactable = false;
-        Util.SetButtonEvent( _startBtn, null, GameStart);
+        Util.SetButtonEvent(_startBtn, null, GameStart);
         _gameSystem.OnStartEvent += (() => _startBtn.interactable = true);
 
-        Util.SetButtonEvent(_settingBtn, null, () => _uiSetting.transform.GetChild(0).gameObject.SetActive(true));
+        Util.SetButtonEvent(_settingBtn, null, PanelEnable);
 
         _hpSlider.maxValue = GameSystem.MaxGameHp;
         _hpSlider.value = _hpSlider.maxValue;
-        _gameSystem.OnGameHpEvent += ((hp) => _hpSlider.value = hp );
+        _gameSystem.OnGameHpEvent += ((hp) => _hpSlider.value = hp);
 
         Managers.Language.SetText(_timeText, Define.TextKey.ToNextRound, true, $"{Managers.Data.GetLanguage((int)Define.TextKey.ToNextRound, (int)Managers.Language.CurrentLanguage)} 60s");
         GameSystem.Instance.OnTimeEvent += ((time) => _timeText.text = $"{Managers.Data.GetLanguage((int)Define.TextKey.ToNextRound, (int)Managers.Language.CurrentLanguage)} {time}s");
-        
+    }
+
+
+
+    private void PanelEnable() {
+        if (Managers.Scene.CurrentScene is GameScene) {
+            Time.timeScale = 0f;
+        }
+        _uiSetting.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     private void GameStart() {

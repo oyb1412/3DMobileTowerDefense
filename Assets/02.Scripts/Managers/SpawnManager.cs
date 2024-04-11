@@ -24,6 +24,7 @@ public class SpawnManager
 
    
     public void SpawnEnemy(int currentGameLevel, ParticleSystem effect) {
+        GameSystem.Instance.SaveGameData();
         Managers.Audio.PlaySfx(Define.SfxType.RoundStart);
         GameSystem.Instance.StartCoroutine(CoSpwan(currentGameLevel, effect));
     }
@@ -39,8 +40,9 @@ public class SpawnManager
                     GameSystem.Instance.StopAllCoroutines();
 
                 _enemyNumber++;
-                Managers.Resources.Instantiate($"Enemy/{data.EnemyLevel.ToString()}/{data.EnemyType.ToString()}_{data.EnemyLevel.ToString()}", null)
-                    .GetComponent<EnemyController>().Init(_spawnPoint.position, _enemyNumber);
+                EnemyController enemy = Managers.Resources.Instantiate($"Enemy/{data.EnemyLevel.ToString()}/{data.EnemyType.ToString()}_{data.EnemyLevel.ToString()}", null)
+                    .GetComponent<EnemyController>();
+                enemy.Init(_spawnPoint.position, _enemyNumber);
                 yield return new WaitForSeconds(_spawnDelay);
             }
         }

@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     private Animator _animator;
     private EnemyStatus _status;
     private Define.EnemyState _state;
-    private int _moveIndex;
     private int _lastMoveIndex;
     private CapsuleCollider _collider;
     private Transform[] _movePoint;
@@ -21,6 +20,9 @@ public class EnemyController : MonoBehaviour
     private Tween _moveTween;
     private Tween _rotateTween;
     private ParticleSystem _arriveEffect;
+
+
+    public int MoveIndex { get; set; }
 
     public EnemyStatus Status => _status;
     public int CurrentHp { get { return _status.CurrentHp; } }
@@ -40,15 +42,27 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-  
 
-    public void Init(Vector3 pos, int number) {
+
+    public void Init(Vector3 pos, int number, int moveIndex = 0) {
         transform.position = pos;
         _collider.enabled = true;
         _status.Init(number);
         State = Define.EnemyState.Move;
-        _moveIndex = 0;
-        transform.LookAt(_movePoint[_moveIndex].position);
+        MoveIndex = moveIndex;
+        transform.LookAt(_movePoint[MoveIndex].position);
+        StartCoroutine(CoMove());
+        GetComponentInChildren<UIEnemy>().Init();
+    }
+
+    public void Init(Vector3 pos, int move, int hp, int number) {
+        transform.position = pos;
+        _collider.enabled = true;
+        _status.Init(number);
+        _status.CurrentHp = hp;
+        State = Define.EnemyState.Move;
+        MoveIndex = move;
+        transform.LookAt(_movePoint[MoveIndex].position);
         StartCoroutine(CoMove());
         GetComponentInChildren<UIEnemy>().Init();
     }
@@ -63,10 +77,11 @@ public class EnemyController : MonoBehaviour
         for (int i = 0; i < _movePoints.childCount; i++) {
             _movePoint[i] = _movePoints.GetChild(i).transform;
         }
+        _lastMoveIndex = _movePoint.Length;
+
     }
 
     private void Start() {
-        _lastMoveIndex = _movePoint.Length;
     }
 
     private void Update() {
@@ -112,36 +127,36 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator CoMove() {
 
-        Vector3 dir = _movePoint[_moveIndex].position - transform.position;
+        Vector3 dir = _movePoint[MoveIndex].position - transform.position;
 
         float moveTime = Mathf.Max(dir.magnitude / _status.MoveSpeed, 1f);
 
-        _moveTween = transform.DOMove(_movePoint[_moveIndex].position, moveTime).SetEase(Ease.Linear);
+        _moveTween = transform.DOMove(_movePoint[MoveIndex].position, moveTime).SetEase(Ease.Linear);
 
         yield return _moveTween.WaitForCompletion();
 
-        _moveIndex++;
+        MoveIndex++;
 
-        if (_moveIndex == _lastMoveIndex && gameObject.activeInHierarchy) {
+        if (MoveIndex == _lastMoveIndex && gameObject.activeInHierarchy) {
             Managers.MainCamera.CameraShake();
             Managers.Audio.PlaySfx(Define.SfxType.EnemyArrive);
             GameSystem.Instance.SetGameHp(-10);
             State = Define.EnemyState.Die;
         }
 
-        if(_moveIndex < _lastMoveIndex) {
-            if (_movePoint[_moveIndex - 1].position.x < _movePoint[_moveIndex].position.x && _movePoint[_moveIndex - 1].position.z == _movePoint[_moveIndex].position.z) {
+        if(MoveIndex < _lastMoveIndex) {
+            if (_movePoint[MoveIndex - 1].position.x < _movePoint[MoveIndex].position.x && _movePoint[MoveIndex - 1].position.z == _movePoint[MoveIndex].position.z) {
                 _rotateTween = transform.DORotateQuaternion(Quaternion.Euler(0f, 90f, 0f), .3f).SetEase(Ease.Linear);
-            } else if (_movePoint[_moveIndex - 1].position.x > _movePoint[_moveIndex].position.x && _movePoint[_moveIndex - 1].position.z == _movePoint[_moveIndex].position.z) {
+            } else if (_movePoint[MoveIndex - 1].position.x > _movePoint[MoveIndex].position.x && _movePoint[MoveIndex - 1].position.z == _movePoint[MoveIndex].position.z) {
                 _rotateTween = transform.DORotateQuaternion(Quaternion.Euler(0f, -90f, 0f), .3f).SetEase(Ease.Linear);
-            } else if (_movePoint[_moveIndex - 1].position.z > _movePoint[_moveIndex].position.z && _movePoint[_moveIndex - 1].position.x == _movePoint[_moveIndex].position.x) {
+            } else if (_movePoint[MoveIndex - 1].position.z > _movePoint[MoveIndex].position.z && _movePoint[MoveIndex - 1].position.x == _movePoint[MoveIndex].position.x) {
                 _rotateTween = transform.DORotateQuaternion(Quaternion.Euler(0f, 180f, 0f), .3f).SetEase(Ease.Linear);
-            } else if (_movePoint[_moveIndex - 1].position.z < _movePoint[_moveIndex].position.z && _movePoint[_moveIndex - 1].position.x == _movePoint[_moveIndex].position.x) {
+            } else if (_movePoint[MoveIndex - 1].position.z < _movePoint[MoveIndex].position.z && _movePoint[MoveIndex - 1].position.x == _movePoint[MoveIndex].position.x) {
                 _rotateTween = transform.DORotateQuaternion(Quaternion.Euler(0f, 0f, 0f), .3f).SetEase(Ease.Linear);
             }
         }
 
-        if(_moveIndex < _lastMoveIndex && gameObject.activeInHierarchy)
+        if(MoveIndex < _lastMoveIndex && gameObject.activeInHierarchy)
             StartCoroutine(CoMove());
     }
 }

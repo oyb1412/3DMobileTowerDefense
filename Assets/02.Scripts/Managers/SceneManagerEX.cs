@@ -10,6 +10,8 @@ using UnityEngine.UI;
 public class SceneManagerEX
 {
     public BaseScene CurrentScene => GameObject.FindFirstObjectByType(typeof(BaseScene)).GetComponent<BaseScene>();
+    public bool isContinue { get; set; } = false;
+
     private UI_Fade _fade;
 
     public void Init() {
@@ -19,9 +21,19 @@ public class SceneManagerEX
     {
         var tween = _fade.SetFade(true);
         if(type == Define.SceneType.Exit) {
-            tween.OnComplete(() => Util.ExitGame());
+            tween.OnComplete(DoNextGame);
         }
         else
-            tween.OnComplete(() => SceneManager.LoadScene(type.ToString()));
+            tween.OnComplete(() => DoNextScene(type));
+    }
+
+    private void DoNextGame() {
+        Managers.Instance.Clear();
+        Util.ExitGame();
+    }
+
+    private void DoNextScene(Define.SceneType type) {
+        Managers.Instance.Clear();
+        SceneManager.LoadScene(type.ToString());
     }
 }

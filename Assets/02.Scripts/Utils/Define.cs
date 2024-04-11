@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Define 
 {
+    public enum ObjectType {
+        Enemy,
+        Tower,
+        Con,
+    }
     public enum GameState {
         Play,
         GameOver,
@@ -111,6 +116,7 @@ public class Define
 
     public enum TextKey {
         GameStart,
+        Continue,
         Setting,
         GameExit,
         LanguageSetting,

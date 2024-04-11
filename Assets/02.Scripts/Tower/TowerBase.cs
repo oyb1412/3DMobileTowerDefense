@@ -11,12 +11,13 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
     protected TowerStatus _towerStatus;
     public Action<int> OnKillEvent;
     public TowerStatus TowerStatus => _towerStatus;
+
+    public int TowerHandle { get; set; }
     public Transform MyTransform { get { return transform; } }
     private void Start() {
-        Init();
     }
 
-    protected virtual void Init() {
+    public virtual void Init() {
         _towerStatus = GetComponent<TowerStatus>();
         _attackRange = Util.FindChild(gameObject, "AttackRange", true);
         _mark = Util.FindChild(gameObject, "Mark", true);
@@ -53,6 +54,7 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
     public void SellTower() {
         int sellGold = Managers.Data.GetSellCost((int)_towerStatus.TowerType, TowerStatus.Level);
         GameSystem.Instance.SetGold(sellGold);
+        GameSystem.Instance.RemoveTowerObject(TowerHandle);
         GameObject go = Managers.Resources.Instantiate(_destroyEffect.gameObject, null);
         go.transform.position = transform.position;
         Managers.Audio.PlaySfx(Define.SfxType.Demolition);
@@ -69,8 +71,11 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
         GameSystem.Instance.SetGold(-cost);
 
         BuildingTower con = Managers.Resources.Instantiate($"Towers/{TowerStatus.TowerType.ToString()}/{_nextConPath}", null).GetComponent<BuildingTower>();
-        con.Init(transform.position, _towerStatus.KillNumber);
+        con.Init(transform.position,_towerStatus.KillNumber);
+        int handle = GameSystem.Instance.AddConObject(con, con.Status.TowerType, con.Status.Level, con.Status.KillNumber);
+        con.ConHandle = handle;
 
+        GameSystem.Instance.RemoveTowerObject(TowerHandle);
         Managers.Resources.Destroy(gameObject);
     }
 

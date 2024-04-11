@@ -47,6 +47,9 @@ public class Managers : MonoBehaviour
         Input.OnUpdate();
     }
 
+    public void Clear() {
+        Language.Clear();
+    }
   
     public static void Init()
     {

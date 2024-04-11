@@ -7,5 +7,7 @@ public class CreatorManager {
         string path = name.Substring(0, name.Length - 5);
         BuildingTower tower = Managers.Resources.Instantiate($"Towers/{path}/{path}_Lvl1Cons", null).GetComponent<BuildingTower>();
         tower.Init(createPos);
+        int handle = GameSystem.Instance.AddConObject(tower, tower.Status.TowerType, tower.Status.Level, tower.Status.KillNumber);
+        tower.ConHandle = handle;
     }
 }

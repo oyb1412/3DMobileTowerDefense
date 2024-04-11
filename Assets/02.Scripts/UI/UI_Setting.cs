@@ -28,7 +28,7 @@ public class UI_Setting : MonoBehaviour
         _exitBtn = Util.FindChild(gameObject, "ExitBtn", true).GetComponent<Button>();
         _panels = Util.FindChild(gameObject, "Panels", false);
 
-        Util.SetButtonEvent(_exitBtn, null, () => _panels.SetActive(false));
+        Util.SetButtonEvent(_exitBtn, null, PanelDisable);
 
         _bgmVolumeSlider = Util.FindChild(gameObject, "BgmVolumeSlider", true).GetComponent<Slider>();
         _bgmVolumeText = Util.FindChild(gameObject, "CurrentBgmVolumeText", true).GetComponent<Text>();
@@ -57,6 +57,14 @@ public class UI_Setting : MonoBehaviour
         _sfxVolumeSlider.onValueChanged.AddListener(SetSfxVolume);
         _sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
 
+        PanelDisable();
+    }
+
+
+    private void PanelDisable() {
+        if (Managers.Scene.CurrentScene is GameScene) {
+            Time.timeScale = 1f;
+        }
         _panels.SetActive(false);
     }
 
