@@ -20,6 +20,8 @@ public abstract class BaseScene : MonoBehaviour
 
         if(_fade == null)
             _fade = GameObject.Find("UI_Fade").GetComponent<UI_Fade>();
+
+    
     }
 
 

@@ -11,8 +11,8 @@ public class UI_Loading : MonoBehaviour
     private const string LoadingText = "Loading...";
     private const string CompleteText = "Completed!!";
     private Text _loadingText;
-    private Slider _loadingSlider;
     private Tween _textTween;
+    private Slider _loadingSlider;
     private float _loadingTime = 0f;
     private bool _loadingComplete;
     private Coroutine _textCoroutine;
@@ -37,6 +37,8 @@ public class UI_Loading : MonoBehaviour
         _loadingText.text = string.Empty;
         _textCoroutine = StartCoroutine(CoText());
     }
+
+    
 
     private IEnumerator SceneLoad(Define.SceneType type) {
         AsyncOperation async = SceneManager.LoadSceneAsync(type.ToString());

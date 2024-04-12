@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Define 
 {
+    #region Enum
     public enum ObjectType {
         Enemy,
         Tower,
@@ -140,4 +141,11 @@ public class Define
         Victory,
         GameOver,
     }
+    #endregion
+    #region string
+    public const string MOVE_POINT = "MovePoints";
+    public const string SENSITYVITY = "Sensitivity";
+    public const string TAG_ENEMY = "Enemy";
+    public const string FIREPOINT = "FirePoint";
+    #endregion
 }

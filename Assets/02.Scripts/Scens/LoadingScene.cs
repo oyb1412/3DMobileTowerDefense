@@ -10,7 +10,7 @@ public class LoadingScene : BaseScene
     }
 
     public override void Init() {
-        var q = Managers.Instance;
+        Managers.Init();
         base.Init();
     }
 

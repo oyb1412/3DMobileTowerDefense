@@ -32,7 +32,7 @@ public class UI_GameOver : MonoBehaviour
         Managers.Language.SetText(_mainText, Define.TextKey.Main);
 
         UnityAction[] restart = new UnityAction[] { () => Managers.Scene.LoadScene(Define.SceneType.InGame) , () => _restartBtn.interactable = false ,
-        () => _mainBtn.interactable = false};
+        () => _mainBtn.interactable = false, () => Managers.Pool.Clear()};
 
         Util.SetButtonEvent(_restartBtn, restart);
     
@@ -50,11 +50,12 @@ public class UI_GameOver : MonoBehaviour
         else
             Managers.Language.SetText(_logoText, Define.TextKey.GameOver);
 
+        string bestRound = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.HighRound, (int)Managers.Language.CurrentLanguage), round);
        Managers.Language.SetText(_roundText, Define.TextKey.HighRound, true,
-            $"{Managers.Data.GetLanguage((int)Define.TextKey.HighRound, (int)Managers.Language.CurrentLanguage)} : {round}");
+            bestRound);
 
-
+        string bestScore = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.HighScore, (int)Managers.Language.CurrentLanguage), score);
         Managers.Language.SetText(_scoreText, Define.TextKey.HighScore, true,
-            $"{Managers.Data.GetLanguage((int)Define.TextKey.HighScore, (int)Managers.Language.CurrentLanguage)} : {score}");
+            bestScore);
     }
 }

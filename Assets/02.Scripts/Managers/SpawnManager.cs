@@ -10,16 +10,21 @@ public class SpawnManager
     private Transform _movePoints;
     private Data _data;
     private Transform _spawnPoint;
-    private Transform _arrivalPoint;
     private int _enemyNumber;
+    //TODO
+    //게임 재시작 시, 적절한 타이밍에 초기화가 필요함.
+    //재시작 시 이 번호가 중복될 가능성이 있음
   
     public void Init() {
         _movePoints = GameObject.Find("MovePoints").transform;
 
         _spawnPoint = _movePoints.GetChild(0).transform;
-        _arrivalPoint = _movePoints.GetChild(_movePoints.childCount -1).transform;
 
         _data = Managers.Data;
+    }
+
+    public void Clear() {
+
     }
 
    

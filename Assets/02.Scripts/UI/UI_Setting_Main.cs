@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Setting : MonoBehaviour
+public class UI_Setting_Main : MonoBehaviour
 {
     private Button _exitBtn;
     private Slider _bgmVolumeSlider;
@@ -19,11 +19,12 @@ public class UI_Setting : MonoBehaviour
     private Text _sfxText;
     private Text _sensText;
 
-    private float _saveSens;
-
     private Dropdown _languageDropdown;
     private void Awake() {
-        DontDestroyOnLoad(this);
+        PlayerPrefs.SetFloat("BgmVolume", float.MaxValue);
+        PlayerPrefs.SetFloat("SfxVolume", float.MaxValue);
+        PlayerPrefs.SetFloat("Sensitivity", float.MaxValue);
+
     }
     void Start()
     {
@@ -62,26 +63,25 @@ public class UI_Setting : MonoBehaviour
         PanelDisable();
     }
 
-
     private void PanelDisable() {
-        if (Managers.Scene.CurrentScene is GameScene) {
-            Time.timeScale = 1f;
-        }
         _panels.SetActive(false);
     }
 
     private void SetBgmVolume(float volume) {
         Managers.Audio.SetBgmVolume(volume);
+        PlayerPrefs.SetFloat("BgmVolume", volume);
         _bgmVolumeText.text = ((int)(volume * 100)).ToString();
     }
 
     private void SetSfxVolume(float volume) {
         Managers.Audio.SetSfxVolume(volume);
+        PlayerPrefs.SetFloat("SfxVolume", volume);
         _sfxVolumeText.text = ((int)(volume * 100)).ToString();
     }
 
     private void SetSensitivity(float sens) {
         Managers.MainCamera.SetCameraSens(sens);
+        PlayerPrefs.SetFloat("Sensitivity", sens);
         _sensitivityText.text = ((int)(sens * 100)).ToString();
     }
 }

@@ -13,13 +13,15 @@ public class GameScene : BaseScene
 
     public override void Init() {
         base.Init();
+        Managers.Init();
+
         SceneType = Define.SceneType.InGame;
         Managers.Spawn.Init();
         Managers.Audio.PlayBgm(true, Define.BgmType.Ingame);
 
         if(Managers.Scene.isContinue) {
-            Dictionary<int, ConData> conData = Managers.Data.LoadJson<GameSystemData>(Application.dataPath, "SaveData").ConData;
-            Dictionary<int, GameSystem.TowerData> towerData = Managers.Data.LoadJson<GameSystemData>(Application.dataPath, "SaveData").TowerData;
+            Dictionary<int, ConData> conData = Managers.Data.LoadJson<GameSystemData>(Application.persistentDataPath, "SaveData").ConData;
+            Dictionary<int, GameSystem.TowerData> towerData = Managers.Data.LoadJson<GameSystemData>(Application.persistentDataPath, "SaveData").TowerData;
 
             foreach(var item in conData) {
                 ConData loadData = item.Value;

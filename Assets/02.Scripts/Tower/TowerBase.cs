@@ -22,9 +22,6 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
         _attackRange = Util.FindChild(gameObject, "AttackRange", true);
         _mark = Util.FindChild(gameObject, "Mark", true);
  
-        _attackRange.GetComponent<RectTransform>().sizeDelta = 
-            new Vector2(_towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize, _towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize);
-
         _nextConPath = $"{_towerStatus.TowerType.ToString()}_Lvl{_towerStatus.Level + 1}Cons";
 
         _attackRange.SetActive(false);
@@ -47,6 +44,10 @@ public class TowerBase : MonoBehaviour, ISelectedObject {
         UITower.Instance.SetTowerUI(true, this);
         _attackRange.SetActive(true);
         _mark.SetActive(true);
+
+        _attackRange.GetComponent<RectTransform>().sizeDelta =
+            new Vector2(_towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize, _towerStatus.AttackRange * GameSystem.TowerAttackRangeImageSize);
+
 
         return this;
     }

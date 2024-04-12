@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public class PoolManager
 {
@@ -68,8 +69,13 @@ public class PoolManager
         if (_root == null)
         {
             _root = new GameObject("@Pool_root").transform;
-            //Object.DontDestroyOnLoad(_root.GameObject());
+            Object.DontDestroyOnLoad(_root.GameObject());
         }
+    }
+
+    public void Clear() {
+        _pools.Clear();
+        Managers.Resources.Destroy(_root.gameObject);
     }
 
     public void Release(Poolable poolable)

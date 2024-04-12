@@ -22,6 +22,7 @@ public class BuildingTower : MonoBehaviour
     public void Init(Vector3 pos, int killNumber = 0) {
         transform.position = pos;
         _status = GetComponent<BuildingStatus>();
+        _status.CurrentBuildingAmout = 0;
         _status.KillNumber = killNumber;
         string name = gameObject.name;
         _createTowerPath = name.Substring(0, name.Length - 4);

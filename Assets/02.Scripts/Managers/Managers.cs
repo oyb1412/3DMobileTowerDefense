@@ -65,13 +65,14 @@ public class Managers : MonoBehaviour
             DontDestroyOnLoad(managers);
             _instance = managers.GetComponent<Managers>();
 
-            MainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
             Audio = GameObject.Find("@AudioManager").GetComponent<AudioManager>();
-            Pool.Init();
             Data.Init();
-            Scene.Init();
         }
+        Scene.Init();
+        Pool.Init();
+        MainCamera = GameObject.Find("Main Camera").GetComponent<CameraController>();
+
     }
 
-  
+
 }

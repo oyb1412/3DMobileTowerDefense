@@ -24,7 +24,7 @@ public class UI_Main : MonoBehaviour
         _continueBtn = Util.FindChild(gameObject, "ContinueBtn", false).GetComponent<Button>();
         _settingBtn = Util.FindChild(gameObject, "SettingBtn", false).GetComponent<Button>();
         _exitBtn = Util.FindChild(gameObject, "ExitBtn", false).GetComponent<Button>();
-        _uiSetting = GameObject.Find("UI_Setting");
+        _uiSetting = GameObject.Find("UI_Setting_Main");
 
         _startText = Util.FindChild(gameObject, "StartText", true).GetComponent<Text>();
         _continueText = Util.FindChild(gameObject, "ContinueText", true).GetComponent<Text>();
@@ -36,7 +36,7 @@ public class UI_Main : MonoBehaviour
         Managers.Language.SetText(_settingText, Define.TextKey.Setting);
         Managers.Language.SetText(_exitText, Define.TextKey.GameExit);
 
-        string Path = string.Format("{0}/{1}.json", Application.dataPath, "SaveData");
+        string Path = string.Format("{0}/{1}.json", Application.persistentDataPath, "SaveData");
         if (File.Exists(Path))
             _continueBtn.interactable = true;
         else

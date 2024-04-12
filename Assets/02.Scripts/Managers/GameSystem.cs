@@ -21,8 +21,8 @@ public class GameSystem : MonoBehaviour
     private int _currentGameHp;
     private int _gameLevel = 0;
     private float _currentTime;
-    [SerializeField]private float _maxTime = 60f;
-    [SerializeField]private int _currentGold;
+    private float _maxTime = 60f;
+    private int _currentGold = 350;
 
     public Action<int> OnGoldEvent;
     public Action<int> OnGameLevelEvent;
@@ -224,7 +224,7 @@ public class GameSystem : MonoBehaviour
         var savedata = new Data.GameSystemData(round, gold, hp, score, conData, towerData);
 
         string gamedata = JsonConvert.SerializeObject(savedata, Formatting.Indented);
-        Managers.Data.SaveJson(Application.dataPath, "SaveData", gamedata);
+        Managers.Data.SaveJson(Application.persistentDataPath, "SaveData", gamedata);
     }
 
     public void RemoveTowerObject(int handle) {
