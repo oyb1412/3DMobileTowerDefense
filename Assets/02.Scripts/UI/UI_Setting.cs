@@ -19,6 +19,8 @@ public class UI_Setting : MonoBehaviour
     private Text _sfxText;
     private Text _sensText;
 
+    private float _saveSens;
+
     private Dropdown _languageDropdown;
     private void Awake() {
         DontDestroyOnLoad(this);

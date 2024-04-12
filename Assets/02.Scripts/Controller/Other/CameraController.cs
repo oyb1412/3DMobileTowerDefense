@@ -32,15 +32,18 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (Managers.Scene.CurrentScene is not GameScene)
+            return;
+
         if (!GameSystem.Instance.IsPlay())
             return;
 
-        if (Managers.Scene.CurrentScene is not GameScene)
-            return;
+
 
         ZoomInandOut();
         CameraMove();
     }
+
 
     public void SetCameraSens(float sens) {
         int wheel = (int)sens * 10;
