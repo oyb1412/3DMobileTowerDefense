@@ -5,10 +5,8 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Text;
-using static Define;
-using Unity.VisualScripting;
-using UnityEngine.SocialPlatforms.Impl;
-using static GameSystem;
+using UnityEngine.Networking;
+using System.Linq;
 
 public class Data {
     [System.Serializable]
@@ -118,35 +116,18 @@ public class Data {
     public Material RedMaterial => _redMaterial; 
     
     public void Init() {
-        #region LoadJson
-        _towerData = LoadJson<TowerData>(Application.persistentDataPath, "TowerData");
-        _enemyData = LoadJson<EnemyData>(Application.persistentDataPath, "EnemyData");
-        _otherData = LoadJson<OtherData>(Application.persistentDataPath, "OtherData");
-        _enemySpawnData._enemySpawnData = LoadJson<Dictionary<int, List<EnemySpawnData>>>(Application.persistentDataPath, "SpawnData");
-        _languageData._languagePack = LoadJson<Dictionary<Define.TextKey, Dictionary<Define.Language, string>>>(Application.persistentDataPath, "LanguageData");
-        #endregion
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("TowerData"));
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("EnemyData"));
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("OtherData"));
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("SpawnData"));
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("LanguageData"));
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("SaveData"));
+        string[] path = new string[] { "TowerData", "EnemyData", "OtherData", "SpawnData", "LanguageData", "SaveData" };
+        Coroutine[] co = new Coroutine[] { CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("TowerData")), CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("EnemyData")),
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("OtherData")), CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("SpawnData")),
+        CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("LanguageData")), CouroutineHelper.Instance.StartCoroutine(FirstDataSetting("SaveData"))};
 
-        _defaultMaterial = Resources.Load<Material>(_otherData.DefaultMaterialPath);
-        _redMaterial = Resources.Load<Material>(_otherData.RedMaterialPath);
-        _towerIcon = new Sprite[(int)Define.TowerType.Count, (int)Define.TowerLevel.Count];
-        _enemyIcon = new Sprite[(int)Define.EnemyType.Count, (int)Define.EnemyLevel.Count];
-
-        #region IconSpriteInit
-
-        for (int i = 0;i < (int)Define.TowerType.Count; i++) {
-            for(int j = 0;j < (int)Define.TowerLevel.Count; j++) {
-                _towerIcon[i, j] = (Sprite)Resources.Load<Sprite>(_towerData.TowerIconPath[i,j]);
-            }
-        }
-
-        for (int i = 0; i < (int)Define.EnemyType.Count; i++) {
-            for (int j = 0; j < (int)Define.EnemyLevel.Count; j++) {
-                _enemyIcon[i, j] = (Sprite)Resources.Load<Sprite>(_enemyData.EnemyIconPath[i, j]);
-            }
-        }
-
-        
-        #endregion
+        CouroutineHelper.Instance.StartCoroutine(AllDataLoad(path, co));
     }
 
     public GameSystemData GetSaveData() {
@@ -165,6 +146,7 @@ public class Data {
         stream.Close();
         Debug.Log($"{Path}에 {name}이름의 Json파일 세이브");
     }
+
     public T LoadJson<T>(string path, string name) {
         string Path = string.Format("{0}/{1}.json", path, name);
         if (!File.Exists(Path)) {
@@ -178,7 +160,61 @@ public class Data {
         string jsonData = Encoding.UTF8.GetString(data);
         Debug.Log($"{path}에서 {name}이름의 Json파일 로드");
         return JsonConvert.DeserializeObject<T>(jsonData);
+    }
 
+    public IEnumerator AllDataLoad(string[] path, Coroutine[] co) {
+        bool[] done = new bool[co.Length ];
+
+        for(int i = 0; i< co.Length; i++) {
+            int index = i;
+            CouroutineHelper.Instance.StartCoroutine(Notify(co[i], () => done[index] = true));
+        }
+
+        while(done.Contains(false)) {
+            yield return null;
+        }
+
+        _towerData = LoadJson<TowerData>(Application.persistentDataPath, "TowerData");
+        _enemyData = LoadJson<EnemyData>(Application.persistentDataPath, "EnemyData");
+        _otherData = LoadJson<OtherData>(Application.persistentDataPath, "OtherData");
+        _enemySpawnData._enemySpawnData = LoadJson<Dictionary<int, List<EnemySpawnData>>>(Application.persistentDataPath, "SpawnData");
+        _languageData._languagePack = LoadJson<Dictionary<Define.TextKey, Dictionary<Define.Language, string>>>(Application.persistentDataPath, "LanguageData");
+
+        _defaultMaterial = Resources.Load<Material>(_otherData.DefaultMaterialPath);
+        _redMaterial = Resources.Load<Material>(_otherData.RedMaterialPath);
+        _towerIcon = new Sprite[(int)Define.TowerType.Count, (int)Define.TowerLevel.Count];
+        _enemyIcon = new Sprite[(int)Define.EnemyType.Count, (int)Define.EnemyLevel.Count];
+
+
+        for (int i = 0; i < (int)Define.TowerType.Count; i++) {
+            for (int j = 0; j < (int)Define.TowerLevel.Count; j++) {
+                _towerIcon[i, j] = (Sprite)Resources.Load<Sprite>(_towerData.TowerIconPath[i, j]);
+            }
+        }
+
+        for (int i = 0; i < (int)Define.EnemyType.Count; i++) {
+            for (int j = 0; j < (int)Define.EnemyLevel.Count; j++) {
+                _enemyIcon[i, j] = (Sprite)Resources.Load<Sprite>(_enemyData.EnemyIconPath[i, j]);
+            }
+        }
+    }
+
+    private IEnumerator Notify(Coroutine co, Action com) {
+        yield return co;
+        com();
+    }
+
+    public IEnumerator FirstDataSetting(string fileName) {
+        string path = Path.Combine(Application.streamingAssetsPath, $"{fileName}.json");
+        string destPath = Path.Combine(Application.persistentDataPath, $"{fileName}.json");
+
+        using (UnityWebRequest www = UnityWebRequest.Get(path)) {
+            yield return www.SendWebRequest();
+        
+            if (www.result == UnityWebRequest.Result.Success) {
+                File.WriteAllBytes(destPath, www.downloadHandler.data);
+            } 
+        }
     }
     public List<EnemySpawnData> GetEnemySpawnData(int level) {
         return _enemySpawnData._enemySpawnData[level];

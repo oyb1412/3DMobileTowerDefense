@@ -169,9 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14524b71b496a2547886a069f66443a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: []
-  _targetEnemy: {fileID: 0}
-  _state: 0
 --- !u!1 &2768447075118440483
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,8 +297,8 @@ GameObject:
   - component: {fileID: 6179713689557724257}
   - component: {fileID: 5602542537196995}
   - component: {fileID: 6251853593131627237}
-  - component: {fileID: 102217656243982681}
   - component: {fileID: 5805650479819747759}
+  - component: {fileID: -3783230603837300768}
   m_Layer: 7
   m_Name: DeathTower_Lvl2
   m_TagString: Untagged
@@ -412,18 +409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feffc064f07bb2b4f8d5972d11f010b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &102217656243982681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4847034358126345977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f8524bc217f34c48af8cfc5c2c0bb48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5805650479819747759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +419,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3783230603837300768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847034358126345977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac108ac20f8e5b046a7c6129af8feb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6617672868543912083

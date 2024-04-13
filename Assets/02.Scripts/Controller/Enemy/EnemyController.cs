@@ -50,6 +50,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void OnEnable() {
+        if(_collider == null)
+            _collider = _collider.GetComponentInChildren<CapsuleCollider>();
+
+        _collider.enabled = true;
+    }
+
     /// <summary>
     /// 기본 초기화
     /// 매개변수가 필요 없는 고정 초기화 값들을 초기화
@@ -135,8 +142,8 @@ public class EnemyController : MonoBehaviour
         if (_status.CurrentHp <= 0) {  //애너미 사망 시
             OnRewardEvent?.Invoke();  //화면에 골드 보상 UI 생성
             tower.SetKill();  //처치한 타워의 이벤트 호출 
-            GameSystem.Instance.SetGold(_status.ProvideGold);  //골드 보상
-            GameSystem.Instance.SetScore(_status.ProvideScore);  //점수 보상
+            GameSystem.Instance.SetGold(_status.RewardGold);  //골드 보상
+            GameSystem.Instance.SetScore(_status.RewardScore);  //점수 보상
             State = Define.EnemyState.Die;  //상태 변환
         }
     }

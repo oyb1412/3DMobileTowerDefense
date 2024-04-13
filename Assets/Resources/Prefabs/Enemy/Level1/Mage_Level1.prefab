@@ -53,9 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _level: 1
   _enemyType: 1
-  _currentHp: 0
-  _maxHp: 0
-  _number: 0
 --- !u!114 &3087203961370348439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +508,10 @@ PrefabInstance:
     - target: {fileID: 7545674268462615527, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014699014341682456, guid: 570ecf0d0d790a04a9703f8988b2b54e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

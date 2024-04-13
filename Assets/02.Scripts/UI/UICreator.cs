@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UICreator : UIBase
+public class UICreator : MonoBehaviour
 {
     private Data _data;
     private UI_EnterInfo _creatorInfoPanel;

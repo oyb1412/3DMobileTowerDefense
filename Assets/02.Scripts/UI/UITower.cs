@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static Define;
 
-public class UITower : UIBase {
+public class UITower : MonoBehaviour {
     public static UITower Instance;
 
     private UI_EnterInfo _creatorInfoPanel;
@@ -55,7 +55,7 @@ public class UITower : UIBase {
     }
 
     private void SelecteCreator() {
-        if (_selectTower.TowerStatus.Level == GameSystem.TowerMaxLevel)
+        if (_selectTower.TowerStatus.Level == GameSystem.MAX_TOWER_LEVEL)
             return;
 
         _creatorInfoPanel.gameObject.SetActive(true);
@@ -114,8 +114,8 @@ public class UITower : UIBase {
         _selectTower = null;
         ResetOutline();
         if (trigger) {
-            int max = Mathf.Min(GameSystem.TowerMaxLevel, tower.TowerStatus.Level + 1);
-            if(tower.TowerStatus.Level >= GameSystem.TowerMaxLevel) {
+            int max = Mathf.Min(GameSystem.MAX_TOWER_LEVEL, tower.TowerStatus.Level + 1);
+            if(tower.TowerStatus.Level >= GameSystem.MAX_TOWER_LEVEL) {
                 _upgrade.SetActive(false);
             }
             else

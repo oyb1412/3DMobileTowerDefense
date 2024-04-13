@@ -44,12 +44,10 @@ public class UIEnemyInfo : MonoBehaviour
             _moveSpeedText.text = status.MoveSpeed.ToString();
             _physicsDefnseText.text = status.PhysicsDefense.ToString();
             _magicDefnseText.text = status.MagicDefense.ToString();
-            _provideGoldText.text = status.ProvideGold.ToString();
+            _provideGoldText.text = status.RewardGold.ToString();
             _icon.sprite = status.Icon;
         }
     }
 
-    private void SetHpText(int currentHp, int maxHp) {
-        _hpText.text = $"{currentHp.ToString()} / {maxHp.ToString()}";
-    }
+    private void SetHpText(int currentHp, int maxHp) => _hpText.text = $"{currentHp.ToString()} / {maxHp.ToString()}";
 }

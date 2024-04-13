@@ -147,5 +147,7 @@ public class Define
     public const string SENSITYVITY = "Sensitivity";
     public const string TAG_ENEMY = "Enemy";
     public const string FIREPOINT = "FirePoint";
+    public const string LOADING = "Loading...";
+    public const string LOADING_COMPLETE = "Completed!!";
     #endregion
 }

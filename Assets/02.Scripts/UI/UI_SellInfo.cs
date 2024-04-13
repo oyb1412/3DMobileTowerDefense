@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// 타워 철거시 활성화 UI
+/// </summary>
 public class UI_SellInfo : MonoBehaviour
 {
     private GameObject _panel;
@@ -11,6 +12,7 @@ public class UI_SellInfo : MonoBehaviour
     private Text _sellText;
     private Button _sellBtn;
     private RectTransform _rectTransform;
+
     void Start()
     {
         Init();
@@ -33,11 +35,6 @@ public class UI_SellInfo : MonoBehaviour
 
         Util.SetButtonEvent(_sellBtn, null, call);
     }
-    public void SetSellInfoUI(int reward) {
-        _rewardText.text = reward.ToString();
-    }
 
-    public void SetPosition(RectTransform rect) {
-        _rectTransform.anchoredPosition = rect.anchoredPosition + new Vector2(964f, 740f);
-    }
+    public void SetSellInfoUI(int reward) => _rewardText.text = reward.ToString();
 }

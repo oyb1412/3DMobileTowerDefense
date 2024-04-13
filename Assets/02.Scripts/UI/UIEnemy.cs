@@ -46,10 +46,8 @@ public class UIEnemy : MonoBehaviour
         _hpSlider.gameObject.SetActive(true);
         _hpSlider.maxValue = _root.Status.MaxHp;
         _hpSlider.value = _hpSlider.maxValue;
-        _rewardText.text = $"+ {_root.Status.ProvideGold}g";
+        _rewardText.text = $"+ {_root.Status.RewardGold}g";
     }
-
-
 
     private void Update() {
         Vector3 pos = new Vector3(_unitPoint.position.x, _unitPoint.position.y, _unitPoint.position.z + UpperAmout);

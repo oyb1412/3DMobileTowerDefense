@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 3680290350904911796}
   - component: {fileID: 4893829215583225781}
   - component: {fileID: 1862496772157587450}
-  - component: {fileID: 5964190406675305361}
   - component: {fileID: -2724977591214779154}
+  - component: {fileID: 7940373753518062905}
   m_Layer: 7
   m_Name: ArcherTower_Lvl1
   m_TagString: Untagged
@@ -155,18 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feffc064f07bb2b4f8d5972d11f010b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5964190406675305361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3701582639311379434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0b91f130c3130b4c94da3737f058488, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-2724977591214779154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +165,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7940373753518062905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701582639311379434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac108ac20f8e5b046a7c6129af8feb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4097176222810387584
@@ -468,9 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec6dd55256fee34ea384581ce780b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: []
-  _targetEnemy: {fileID: 0}
-  _state: 0
 --- !u!135 &2570480534678631812
 SphereCollider:
   m_ObjectHideFlags: 0

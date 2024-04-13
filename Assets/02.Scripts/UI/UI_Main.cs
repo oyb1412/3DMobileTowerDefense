@@ -1,11 +1,11 @@
-using DG.Tweening.Plugins.Core.PathCore;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// 메인 씬 UI
+/// </summary>
 public class UI_Main : MonoBehaviour
 {
     private Button _startBtn;
@@ -37,11 +37,13 @@ public class UI_Main : MonoBehaviour
         Managers.Language.SetText(_exitText, Define.TextKey.GameExit);
 
         string Path = string.Format("{0}/{1}.json", Application.persistentDataPath, "SaveData");
-        if (File.Exists(Path))
+
+        if (File.Exists(Path))  //저장 데이터가 존재할 시 이어하기 가능
             _continueBtn.interactable = true;
         else
             _continueBtn.interactable = false;
 
+        Util.SetButtonEvent(_settingBtn, null, () => _uiSetting.transform.GetChild(0).gameObject.SetActive(true));
 
         UnityAction[] startBtnAction = new UnityAction[] {
            () => Managers.Scene.LoadScene(Define.SceneType.InGame),() => _startBtn.interactable = false,
@@ -56,8 +58,6 @@ public class UI_Main : MonoBehaviour
            () => Managers.Scene.isContinue = true
         };
         Util.SetButtonEvent(_continueBtn, continueBtnAction);
-
-        Util.SetButtonEvent(_settingBtn, null, () => _uiSetting.transform.GetChild(0).gameObject.SetActive(true));
 
         UnityAction[] exitBtnAction = new UnityAction[] {
            () => Managers.Scene.LoadScene(Define.SceneType.Exit),() => _startBtn.interactable = false,

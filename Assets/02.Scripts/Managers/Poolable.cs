@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Poolable : MonoBehaviour
-{
-    
-}
+/// <summary>
+/// 풀링이 필요한 오브젝트에 할당
+/// </summary>
+public class Poolable : MonoBehaviour { }

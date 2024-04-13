@@ -46,9 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd06713d46a90e74fb3bf4053817e2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: []
-  _targetEnemy: {fileID: 0}
-  _state: 0
 --- !u!135 &487091585448911188
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -384,8 +381,8 @@ GameObject:
   - component: {fileID: 5910944174300546683}
   - component: {fileID: 2081330952789201182}
   - component: {fileID: 598729652912777374}
-  - component: {fileID: 8668418535847069901}
   - component: {fileID: 4105610801418790718}
+  - component: {fileID: 3086489633189120970}
   m_Layer: 7
   m_Name: MagicTower_Lvl2
   m_TagString: Untagged
@@ -496,18 +493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feffc064f07bb2b4f8d5972d11f010b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8668418535847069901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7099991735831156213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54ea0ecb75f1c364babc42c6727da591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4105610801418790718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +503,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3086489633189120970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099991735831156213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac108ac20f8e5b046a7c6129af8feb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7774074679190562794

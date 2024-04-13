@@ -1,3 +1,5 @@
+using UnityEngine;
+
 /// <summary>
 /// 캐논타워 관리
 /// </summary>
@@ -7,7 +9,8 @@ public class CanonTowerController : TowerControllerBase {
     /// 초기화
     /// </summary>
     protected override void Init() {
-        base.Init();  //타워 기본 설정 초기화
+        base.Init();
+        _projectileObject = (GameObject)Managers.Resources.Load<GameObject>(_projectilePath);
     }
 
     /// <summary>
@@ -21,7 +24,7 @@ public class CanonTowerController : TowerControllerBase {
             return;
         }
 
-        CanonProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<CanonProjectileController>();  //발사체 생성
+        CanonProjectileController projectile = Managers.Resources.Instantiate(_projectileObject, null).GetComponent<CanonProjectileController>();  //발사체 생성
         projectile.Init(_firePoint.position, _status.AttackDamage, _targetEnemy, _base);  //발사체 초기화
         Managers.Audio.PlaySfx(Define.SfxType.MagicProjectile);  //발사 효과음 출력
         _currentAttackDelay = 0;  //공격 딜레이 초기화

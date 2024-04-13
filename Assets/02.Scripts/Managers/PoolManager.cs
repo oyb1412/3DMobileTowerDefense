@@ -1,15 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
+/// <summary>
+/// 풀링 오브젝트 관리
+/// </summary>
 public class PoolManager
 {
+    /// <summary>
+    /// 풀링할 오브젝트 관리 클래스
+    /// </summary>
     class Pool
     {
         public GameObject Original { get; private set; }
-        public Transform Root { get; private set; }
+        public Transform Root { get; private set; }  
         private Stack<Poolable> _poolStack = new Stack<Poolable>();
 
         public void Init(GameObject original, int count = 5)

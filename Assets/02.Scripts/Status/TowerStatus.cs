@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static Define;
 
+/// <summary>
+/// 타워 능력치
+/// </summary>
 public class TowerStatus : MonoBehaviour
 {
     private Sprite _icon;

@@ -3,9 +3,8 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static Data;
 
-public class UISystem : UIBase {
+public class UISystem : MonoBehaviour {
     private GameObject _uiSetting;
     private Text _goldText;
     private Text _waveText;
@@ -51,10 +50,10 @@ public class UISystem : UIBase {
         _goldText.text = $"{_saveData.CurrentGold.ToString()}g";
         _gameSystem.OnGoldEvent += ((currentGold) => _goldText.text = $"{currentGold.ToString()}g");
 
-        string wave = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), _saveData.CurrentRound, GameSystem.MaxGameLevel);
+        string wave = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), _saveData.CurrentRound, GameSystem.MAX_GAME_ROUND);
 
         Managers.Language.SetText(_waveText, Define.TextKey.Wave, true, wave);
-        _gameSystem.OnGameLevelEvent += ((level) => _waveText.text = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), level, GameSystem.MaxGameLevel));
+        _gameSystem.OnGameRoundEvent += ((level) => _waveText.text = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), level, GameSystem.MAX_GAME_ROUND));
 
         string score = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Score, (int)Managers.Language.CurrentLanguage), _saveData.CurrentScore);
 
@@ -72,7 +71,7 @@ public class UISystem : UIBase {
 
         Util.SetButtonEvent(_settingBtn, null, PanelEnable);
 
-        _hpSlider.maxValue = GameSystem.MaxGameHp;
+        _hpSlider.maxValue = GameSystem.MAX_GAME_HP;
         _hpSlider.value = _saveData.CurrentHp;
         _gameSystem.OnGameHpEvent += ((hp) => _hpSlider.value = hp);
 
@@ -85,16 +84,16 @@ public class UISystem : UIBase {
         _goldText.text = $"{_gameSystem.CurrentGold.ToString()}g";
         _gameSystem.OnGoldEvent += ((currentGold) => _goldText.text = $"{currentGold.ToString()}g");
         var qw = Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage);
-        string wave = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), 0,  GameSystem.MaxGameLevel);
+        string wave = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), 0,  GameSystem.MAX_GAME_ROUND);
         Managers.Language.SetText(_waveText, Define.TextKey.Wave, true, wave);
-        _gameSystem.OnGameLevelEvent += ((level) => _waveText.text = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), level, GameSystem.MaxGameLevel));
+        _gameSystem.OnGameRoundEvent += ((level) => _waveText.text = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Wave, (int)Managers.Language.CurrentLanguage), level, GameSystem.MAX_GAME_ROUND));
 
         string score = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Score, (int)Managers.Language.CurrentLanguage), 0);
 
         Managers.Language.SetText(_scoreText, Define.TextKey.Score, true, score);
         _gameSystem.OnScoreEvent += ((score) => _scoreText.text = string.Format(Managers.Data.GetLanguage((int)Define.TextKey.Score, (int)Managers.Language.CurrentLanguage), score));
 
-        _hpText.text = $"{GameSystem.MaxGameHp}";
+        _hpText.text = $"{GameSystem.MAX_GAME_HP}";
         _gameSystem.OnGameHpEvent += ((hp) => _hpText.text = $"{hp}");
 
         Managers.Language.SetText(_startText, Define.TextKey.StartNextRound);
@@ -105,7 +104,7 @@ public class UISystem : UIBase {
 
         Util.SetButtonEvent(_settingBtn, null, PanelEnable);
 
-        _hpSlider.maxValue = GameSystem.MaxGameHp;
+        _hpSlider.maxValue = GameSystem.MAX_GAME_HP;
         _hpSlider.value = _hpSlider.maxValue;
         _gameSystem.OnGameHpEvent += ((hp) => _hpSlider.value = hp);
 

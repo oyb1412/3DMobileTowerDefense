@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class NodeSelectSystem : MonoBehaviour
+/// <summary>
+/// 오브젝트 선택
+/// </summary>
+public class SelectSystem : MonoBehaviour
 {
-    [SerializeField]private LayerMask SelectLayer;
-    private ISelectedObject _lastSelectObject;
-    private float _touchTime;
+    [SerializeField]private LayerMask SelectLayer;  //선택할 오브젝트들의 레이어
+    private ISelectedObject _lastSelectObject;  //선택한 오브젝트
+    private float _touchTime;  
     private bool _isLongTouch;
     private bool _isTouch;
-    private void Start() {
 
-    }
     private void Update() {
 
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
@@ -64,18 +62,24 @@ public class NodeSelectSystem : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 오브젝트 선택
+    /// </summary>
     private void Select() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool col = Physics.Raycast(ray, out var hit, float.MaxValue, SelectLayer);
-        DeSelect();
+        DeSelect();  //선택 해제
         
-        if (col) {
+        if (col) {  //감지된 오브젝트 선택
             Managers.Audio.PlaySfx(Define.SfxType.ObjectSelect);
             if (hit.collider.TryGetComponent<ISelectedObject>(out _lastSelectObject))
                 _lastSelectObject.OnSelect();
         }
     }
 
+    /// <summary>
+    /// 선택 해제
+    /// </summary>
     private void DeSelect() {
         if (_lastSelectObject == null)
             return;
@@ -83,7 +87,7 @@ public class NodeSelectSystem : MonoBehaviour
         if (!_lastSelectObject.IsValid())
             return;
 
-        _lastSelectObject.OnDeSelect();
+        _lastSelectObject.OnDeSelect();  //선택된 오브젝트가 존재하면, 선택 해제
         _lastSelectObject = null;
     }
 

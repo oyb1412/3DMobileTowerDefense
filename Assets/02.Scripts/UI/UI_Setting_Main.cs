@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// ∏ﬁ¿Œ æ¿ UI
+/// </summary>
 public class UI_Setting_Main : MonoBehaviour
 {
     private Button _exitBtn;
@@ -20,12 +21,13 @@ public class UI_Setting_Main : MonoBehaviour
     private Text _sensText;
 
     private Dropdown _languageDropdown;
+
     private void Awake() {
         PlayerPrefs.SetFloat("BgmVolume", float.MaxValue);
         PlayerPrefs.SetFloat("SfxVolume", float.MaxValue);
         PlayerPrefs.SetFloat("Sensitivity", float.MaxValue);
-
     }
+
     void Start()
     {
         _exitBtn = Util.FindChild(gameObject, "ExitBtn", true).GetComponent<Button>();
@@ -63,9 +65,7 @@ public class UI_Setting_Main : MonoBehaviour
         PanelDisable();
     }
 
-    private void PanelDisable() {
-        _panels.SetActive(false);
-    }
+    private void PanelDisable() => _panels.SetActive(false);
 
     private void SetBgmVolume(float volume) {
         Managers.Audio.SetBgmVolume(volume);

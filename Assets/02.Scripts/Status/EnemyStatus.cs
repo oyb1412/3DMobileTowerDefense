@@ -1,35 +1,40 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 애너미 능력치
+/// </summary>
 public class EnemyStatus : MonoBehaviour {
     [SerializeField] private int _level;
     [SerializeField] protected Define.EnemyType _enemyType;
-    public Define.EnemyType EnemyType => _enemyType;
-    [SerializeField] private int _currentHp;
-    [SerializeField] private int _maxHp;
-    private int _provideGold;
-    private int _provideScore;
-    [SerializeField] private int _number;
-    private Sprite _icon;
 
-    private float _moveSpeed;
+    private int _currentHp;
+    private int _maxHp;
+    private int _rewardGold;
+    private int _rewardScore;
+    private int _number;  //소환 순서
+
     private int _physicsDefense;
     private int _magicDefense;
+    private float _moveSpeed;
     public Action OnDeadEvent;
+    private Sprite _icon;
+
     public int CurrentHp { get { return _currentHp; } set { _currentHp = value; } }
-        
-    public Sprite Icon => _icon;
-    public int ProvideGold => _provideGold;
-   public int Number => _number;
-    public int ProvideScore => _provideScore;
+    public int RewardGold => _rewardGold;
+    public int Number => _number;
+    public int RewardScore => _rewardScore;
     public int MaxHp => _maxHp;
-    public float MoveSpeed => _moveSpeed;
     public int PhysicsDefense => _physicsDefense;
     public int MagicDefense => _magicDefense;
-    public int Level => _level;
+    public float MoveSpeed => _moveSpeed;
+    public Sprite Icon => _icon;
 
+
+    /// <summary>
+    /// 초기화
+    /// </summary>
+    /// <param name="number">생성 순서</param>
     public void Init(int number) {
         Data data = Managers.Data;
         _icon = data.GetEnemyIcon((int)_enemyType, _level);
@@ -38,11 +43,14 @@ public class EnemyStatus : MonoBehaviour {
         _moveSpeed = data.GetEnemyMoveSpeed((int)_enemyType, _level);
         _physicsDefense = data.GetEnemyPhysicsDefense((int)_enemyType, _level);
         _magicDefense = data.GetEnemyMagicDefense((int)_enemyType, _level);
-        _provideGold = data.GetEnemyProvideGold((int)_enemyType, _level);
-        _provideScore = data.GetEnemyProvideScore((int)_enemyType, _level);
+        _rewardGold = data.GetEnemyProvideGold((int)_enemyType, _level);
+        _rewardScore = data.GetEnemyProvideScore((int)_enemyType, _level);
         _number = number;
     }
 
+    /// <summary>
+    /// 사망시 호출 이벤트
+    /// </summary>
     public void OnDieEvent() {
         OnDeadEvent?.Invoke();
         Managers.Resources.Destroy(transform.parent.gameObject);

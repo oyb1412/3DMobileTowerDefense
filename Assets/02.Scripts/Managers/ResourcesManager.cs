@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// 자동 풀링 생성 및 제거 지원
+/// </summary>
 public class ResourcesManager 
 {
     public Object Load<T>(string path) where T : Object

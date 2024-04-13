@@ -1,3 +1,5 @@
+using UnityEngine;
+
 /// <summary>
 /// 아처 타워 관리
 /// </summary>
@@ -5,7 +7,10 @@ public class ArcherTowerController : TowerControllerBase {
     /// <summary>
     /// 초기화
     /// </summary>
-    protected override void Init() => base.Init();  //타워 기본 설정 초기화
+    protected override void Init() {
+        base.Init();
+        _projectileObject = (GameObject)Managers.Resources.Load<GameObject>(_projectilePath);
+    }
    
     /// <summary>
     /// 타워 공격 시 호출
@@ -19,7 +24,7 @@ public class ArcherTowerController : TowerControllerBase {
             return;
         }
             
-        ArcherProjectileController projectile = Managers.Resources.Instantiate(_projectilePath, null).GetComponent<ArcherProjectileController>();  //발사체 생성
+        ArcherProjectileController projectile = Managers.Resources.Instantiate(_projectileObject, null).GetComponent<ArcherProjectileController>();  //발사체 생성
         projectile.Init(_firePoint.position, _status.AttackDamage, _targetEnemy, _base);  //발사체 초기화
         Managers.Audio.PlaySfx(Define.SfxType.BeamProjectile);  //발사 효과음 출력
         _currentAttackDelay = 0;  //공격 딜레이 초기화

@@ -1,32 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class UI_GameOver : MonoBehaviour
+/// <summary>
+/// 게임 
+/// </summary>
+public class UI_GameEnd : MonoBehaviour
 {
-    private GameObject _panel;
-    private Text _roundText;
-    private Text _logoText;
-    private Text _scoreText;
-    private Button _restartBtn;
-    private Button _mainBtn;
-
-    private Text _restartText;
-    private Text _mainText;
-
+    private Text _restartText;  //재시작 텍스트
+    private Text _mainText;  //메인 텍스트
+    private Text _roundText;  //최대 라운드 
+    private Text _logoText;  //게임 종료 로고
+    private Text _scoreText;  //최대 점수
+    private Button _restartBtn;  //재시작 버튼
+    private Button _mainBtn;  //메인 버튼
 
     void Start()
     {
-        _panel = Util.FindChild(gameObject, "Panel", false);
-        _roundText = Util.FindChild(_panel, "RoundText", true).GetComponent<Text>();
-        _logoText = Util.FindChild(_panel, "Logo", true).GetComponent<Text>();
-        _scoreText = Util.FindChild(_panel, "ScoreText", true).GetComponent<Text>();
-        _restartText = Util.FindChild(_panel, "RestartText", true).GetComponent<Text>();
-        _mainText = Util.FindChild(_panel, "MainText", true).GetComponent<Text>();
-        _restartBtn = Util.FindChild(_panel, "RestartBtn", false).GetComponent<Button>();
-        _mainBtn = Util.FindChild(_panel, "MainBtn", false).GetComponent<Button>();
+        _roundText = Util.FindChild(gameObject, "RoundText", true).GetComponent<Text>();
+        _logoText = Util.FindChild(gameObject, "Logo", true).GetComponent<Text>();
+        _scoreText = Util.FindChild(gameObject, "ScoreText", true).GetComponent<Text>();
+        _restartText = Util.FindChild(gameObject, "RestartText", true).GetComponent<Text>();
+        _mainText = Util.FindChild(gameObject, "MainText", true).GetComponent<Text>();
+        _restartBtn = Util.FindChild(gameObject, "RestartBtn", true).GetComponent<Button>();
+        _mainBtn = Util.FindChild(gameObject, "MainBtn", true).GetComponent<Button>();
 
         Managers.Language.SetText(_restartText, Define.TextKey.Restart);
         Managers.Language.SetText(_mainText, Define.TextKey.Main);
@@ -44,7 +41,13 @@ public class UI_GameOver : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetGameOverUI(int round, int score, bool victory) {
+    /// <summary>
+    /// 게임 종료 시 UI 활성화
+    /// </summary>
+    /// <param name="round">최고 라운드</param>
+    /// <param name="score">최고 점수</param>
+    /// <param name="victory">승리, 패배</param>
+    public void SetGameEndUI(int round, int score, bool victory) {
         if (victory)
             Managers.Language.SetText(_logoText, Define.TextKey.Victory);
         else

@@ -1,12 +1,11 @@
 using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
+/// <summary>
+/// 씬 전환 관리
+/// </summary>
 public class SceneManagerEX
 {
     public BaseScene CurrentScene => GameObject.FindFirstObjectByType(typeof(BaseScene)).GetComponent<BaseScene>();

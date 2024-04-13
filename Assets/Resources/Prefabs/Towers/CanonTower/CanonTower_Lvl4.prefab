@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 103629534525680748}
   - component: {fileID: 8916037985174847094}
   - component: {fileID: 7933219390580171683}
-  - component: {fileID: 7992018126074762817}
   - component: {fileID: 5671895953506301343}
   - component: {fileID: 2309972144901354358}
+  - component: {fileID: -7318969977969783537}
   m_Layer: 7
   m_Name: CanonTower_Lvl4
   m_TagString: Untagged
@@ -144,18 +144,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 5.744896, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &7992018126074762817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4321477893176419067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266116fa912e0764dac76cf42fd12c3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5671895953506301343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +166,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c25a679888cafe4991738648a7d7488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7318969977969783537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321477893176419067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac108ac20f8e5b046a7c6129af8feb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5411131889693302027
@@ -247,9 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9a16dab4d63094f8b058f7119dc0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: []
-  _targetEnemy: {fileID: 0}
-  _state: 0
 --- !u!54 &6360367272470492054
 Rigidbody:
   m_ObjectHideFlags: 0

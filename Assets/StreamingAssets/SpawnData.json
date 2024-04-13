@@ -171,12 +171,12 @@
       "EnemyLevel": 2
     },
     {
-      "Count": 5,
+      "Count": 4,
       "EnemyType": 2,
       "EnemyLevel": 1
     },
     {
-      "Count": 5,
+      "Count": 4,
       "EnemyType": 3,
       "EnemyLevel": 1
     }
@@ -193,24 +193,24 @@
       "EnemyLevel": 2
     },
     {
-      "Count": 5,
+      "Count": 4,
       "EnemyType": 2,
       "EnemyLevel": 2
     },
     {
-      "Count": 5,
+      "Count": 4,
       "EnemyType": 3,
       "EnemyLevel": 2
     }
   ],
   "13": [
     {
-      "Count": 15,
+      "Count": 13,
       "EnemyType": 2,
       "EnemyLevel": 2
     },
     {
-      "Count": 15,
+      "Count": 13,
       "EnemyType": 3,
       "EnemyLevel": 2
     }
@@ -227,12 +227,12 @@
       "EnemyLevel": 2
     },
     {
-      "Count": 15,
+      "Count": 13,
       "EnemyType": 2,
       "EnemyLevel": 2
     },
     {
-      "Count": 15,
+      "Count": 13,
       "EnemyType": 3,
       "EnemyLevel": 2
     }
@@ -251,17 +251,17 @@
   ],
   "16": [
     {
-      "Count": 15,
+      "Count": 14,
       "EnemyType": 0,
       "EnemyLevel": 3
     },
     {
-      "Count": 15,
+      "Count": 14,
       "EnemyType": 1,
       "EnemyLevel": 3
     },
     {
-      "Count": 15,
+      "Count": 14,
       "EnemyType": 2,
       "EnemyLevel": 3
     }
@@ -283,7 +283,7 @@
       "EnemyLevel": 3
     },
     {
-      "Count": 15,
+      "Count": 10,
       "EnemyType": 3,
       "EnemyLevel": 3
     }
@@ -322,7 +322,7 @@
       "EnemyLevel": 4
     },
     {
-      "Count": 10,
+      "Count": 7,
       "EnemyType": 3,
       "EnemyLevel": 4
     }
@@ -339,12 +339,12 @@
       "EnemyLevel": 4
     },
     {
-      "Count": 15,
+      "Count": 12,
       "EnemyType": 2,
       "EnemyLevel": 4
     },
     {
-      "Count": 15,
+      "Count": 12,
       "EnemyType": 3,
       "EnemyLevel": 4
     }
@@ -361,7 +361,7 @@
       "EnemyLevel": 5
     },
     {
-      "Count": 10,
+      "Count": 8,
       "EnemyType": 2,
       "EnemyLevel": 5
     }
@@ -378,12 +378,12 @@
       "EnemyLevel": 5
     },
     {
-      "Count": 10,
+      "Count": 8,
       "EnemyType": 2,
       "EnemyLevel": 5
     },
     {
-      "Count": 10,
+      "Count": 8,
       "EnemyType": 3,
       "EnemyLevel": 5
     }
@@ -400,12 +400,12 @@
       "EnemyLevel": 5
     },
     {
-      "Count": 15,
+      "Count": 13,
       "EnemyType": 2,
       "EnemyLevel": 5
     },
     {
-      "Count": 15,
+      "Count": 13,
       "EnemyType": 3,
       "EnemyLevel": 5
     }
@@ -422,12 +422,12 @@
       "EnemyLevel": 5
     },
     {
-      "Count": 20,
+      "Count": 15,
       "EnemyType": 2,
       "EnemyLevel": 5
     },
     {
-      "Count": 20,
+      "Count": 15,
       "EnemyType": 3,
       "EnemyLevel": 5
     }

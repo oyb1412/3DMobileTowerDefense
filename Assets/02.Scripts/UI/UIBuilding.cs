@@ -7,12 +7,12 @@ public class UIBuilding : MonoBehaviour {
     [SerializeField]float LowerAmout;
     private RectTransform _sliderRect;
     private Slider _creatorSlider;
-    private BuildingTower _buildingTower;
+    private ConBase _buildingTower;
     private Transform _towerPoint;
 
     private void Start() {
         _towerPoint = transform.parent;
-        _buildingTower = GetComponentInParent<BuildingTower>();
+        _buildingTower = GetComponentInParent<ConBase>();
         _creatorSlider = GetComponentInChildren<Slider>();
         _sliderRect = _creatorSlider.GetComponent<RectTransform>();
 

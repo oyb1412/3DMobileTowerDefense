@@ -39,8 +39,8 @@ public abstract class TowerControllerBase : MonoBehaviour
     /// </summary>
     protected virtual void Init() {
         _firePoint = Util.FindChild(transform.parent.gameObject, Define.FIREPOINT, false).transform;  //타워 발사 위치 FIND
-        _attackRangeCollider.radius = _status.AttackRange * (GameSystem.TowerAttackRangeImageSize * .5f);  //타워 공격 사거리 시각적으로 표현하기 위한 크기 설정
-        _projectilePath = $"Projectile/{_status.TowerType.ToString()}/{_status.TowerType.ToString()}ProjectileLvl{_status.Level}";  //타워 발사체 패스 지정
+        _attackRangeCollider.radius = _status.AttackRange * (GameSystem.TOWER_ATTACKRANGE_SIZE * .5f);  //타워 공격 사거리 시각적으로 표현하기 위한 크기 설정
+        _projectilePath = $"Prefabs/Projectile/{_status.TowerType.ToString()}/{_status.TowerType.ToString()}ProjectileLvl{_status.Level}";  //타워 발사체 패스 지정
     }
 
     /// <summary>
@@ -86,14 +86,11 @@ public abstract class TowerControllerBase : MonoBehaviour
         if (_status.AttackDelay > _currentAttackDelay)  //공격 조건에 적합되기 전까지 return
             return;
 
-        if (Vector2.Distance(transform.position, _targetEnemy.transform.position) >= _status.AttackRange &&
-            !Util.NullCheck(_targetEnemy)) {  //현재 공격 대상 적이 NULL상태거나, 공격 범위에서 벗어나면
+        if (!Util.NullCheck(_targetEnemy) && Vector2.Distance(transform.position, _targetEnemy.transform.position) >= _status.AttackRange)   //현재 공격 대상 적이 NULL상태거나, 공격 범위에서 벗어나면
             _targetEnemy = GetFirstEnemy();  //새롭게 공격 대상을 지정
-        }
 
-        if (Util.NullCheck(_targetEnemy)) {  //현재 공격 대상 적이 NULL상태면
+        if (Util.NullCheck(_targetEnemy))   //현재 공격 대상 적이 NULL상태면
             _targetEnemy = GetFirstEnemy();  //새롭게 공격 대상을 지정
-        }
 
         if(Util.NullCheck(_targetEnemy)) {  //현재 공격 대상 적이 NULL상태면
             ChangeState(Define.TowerState.Idle);  //상태 변환

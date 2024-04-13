@@ -59,7 +59,6 @@ public class UI_Setting_Ingame : MonoBehaviour
             _sensitivitySlider.value = sens;
             SetSensitivity(sens);
         }
-        
 
         _bgmVolumeSlider.onValueChanged.AddListener(SetBgmVolume);
         _sfxVolumeSlider.onValueChanged.AddListener(SetSfxVolume);

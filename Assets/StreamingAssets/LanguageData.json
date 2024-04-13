@@ -40,12 +40,12 @@
     "English": "Start"
   },
   "Wave": {
-    "Korean": "웨이브",
-    "English": "Wave"
+    "Korean": "웨이브 {0} / {1}",
+    "English": "Wave {0} / {1}"
   },
   "Score": {
-    "Korean": "점수",
-    "English": "Score"
+    "Korean": "점수 {0}",
+    "English": "Score {0}"
   },
   "Build": {
     "Korean": "건설",
@@ -72,12 +72,12 @@
     "English": "It is a tower that ignores the enemy's defensive type with fast attack speed."
   },
   "HighRound": {
-    "Korean": "최고 라운드",
-    "English": "High Round"
+    "Korean": "최고 라운드 : {0}",
+    "English": "Best Round : {0}"
   },
   "HighScore": {
-    "Korean": "최고 점수",
-    "English": "High Score"
+    "Korean": "최고 점수 : {0}",
+    "English": "Best Score : {0}"
   },
   "Restart": {
     "Korean": "재시작",

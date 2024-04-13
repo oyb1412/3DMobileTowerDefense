@@ -102,9 +102,4 @@ public class Util : MonoBehaviour
 
         return component;
     }
-
-    public static void CreateErrorMessage(string message) {
-        UI_Error error = Managers.Resources.Instantiate("UI/UI_Error", null).GetComponent<UI_Error>();
-        error.Init(message);
-    }
 }
